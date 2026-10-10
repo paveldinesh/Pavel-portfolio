@@ -50,13 +50,13 @@ export default function CustomCursor() {
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">
       {/* Outer follow ring */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full border border-emerald-400/40 bg-emerald-400/5 backdrop-blur-[1px] pointer-events-none"
+        className="fixed top-0 left-0 rounded-full border border-[#F14417]/40 bg-[#F14417]/10 backdrop-blur-[1px] pointer-events-none"
         animate={{
           x: mousePosition.x - (isHovered ? 24 : 16),
           y: mousePosition.y - (isHovered ? 24 : 16),
           width: isHovered ? 48 : 32,
           height: isHovered ? 48 : 32,
-          borderColor: isHovered ? "rgba(52, 211, 153, 0.8)" : "rgba(52, 211, 153, 0.3)",
+          borderColor: isHovered ? "rgba(241, 68, 23, 0.9)" : "rgba(241, 68, 23, 0.4)",
           scale: isHovered ? 1.15 : 1,
         }}
         transition={{
@@ -68,10 +68,10 @@ export default function CustomCursor() {
       />
       {/* Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-emerald-400 pointer-events-none"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-[#F14417] pointer-events-none shadow-[0_0_12px_#F14417]"
         animate={{
-          x: mousePosition.x - 3,
-          y: mousePosition.y - 3,
+          x: mousePosition.x - 4,
+          y: mousePosition.y - 4,
           scale: isHovered ? 0 : 1,
         }}
         transition={{

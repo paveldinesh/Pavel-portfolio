@@ -16,8 +16,9 @@ export default {
         borderLight: "#2e2e34",
         textPrimary: "#f5f5f7",
         textSecondary: "#8e8e93",
-        accent: "#34d399", // Soft emerald
-        emeraldGlow: "rgba(52, 211, 153, 0.15)",
+        accent: "#F14417", // Signature Vibrant Orange-Red
+        accentGlow: "rgba(241, 68, 23, 0.2)",
+        emeraldGlow: "rgba(241, 68, 23, 0.15)",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "Inter", "system-ui", "sans-serif"],

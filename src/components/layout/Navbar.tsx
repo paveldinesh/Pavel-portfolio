@@ -40,16 +40,16 @@ export default function Navbar() {
       </a>
 
       {/* Centered Navigation */}
-      <nav className="hidden md:flex items-center gap-16 lg:gap-20 absolute left-1/2 -translate-x-1/2">
+      <nav className="hidden md:flex items-center gap-12 lg:gap-16 absolute left-1/2 -translate-x-1/2">
         {links.map((link) => (
           <a
             key={link.name}
             href={link.href}
-            className="text-[13px] text-[#7A7873] hover:text-[#F5F4F1] transition-colors inline-flex items-baseline gap-1 font-body font-normal"
+            className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors inline-flex items-baseline gap-1 font-body font-normal"
           >
             <span>{link.name}</span>
             {link.mark && (
-              <span className="text-[10px] text-[#7A7873] font-mono">
+              <span className="text-[18px] text-[#F14417] font-mono">
                 {link.mark}
               </span>
             )}
@@ -61,9 +61,9 @@ export default function Navbar() {
       <div className="flex items-center gap-4">
         <a
           href="#contact"
-          className="text-[13px] text-[#7A7873] hover:text-[#F5F4F1] transition-colors"
+          className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-medium"
         >
-          Let&apos;s talk ↗
+          Let&apos;s talk <span className="text-[#F14417]">↗</span>
         </a>
 
         {/* Mobile toggle button */}
@@ -113,7 +113,7 @@ export default function Navbar() {
             <a
               href="#contact"
               onClick={() => setMobileOpen(false)}
-              className="text-2xl font-display font-medium text-[#FF4F18] mt-2"
+              className="text-2xl font-display font-medium text-[#F14417] mt-2"
             >
               Let&apos;s talk ↗
             </a>

@@ -65,23 +65,26 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="relative z-10 flex items-center justify-between w-full pt-4 pb-5 text-xs font-mono text-[#7A7873]"
+        className="relative z-10 flex items-center justify-between w-full pt-4 pb-5 text-[18px] font-mono text-[#A09D95]"
       >
-        <span className="select-none tracking-wider">/2026/</span>
+        <span className="select-none tracking-wider text-[#A09D95]">
+          /<span className="text-[#F14417]">2026</span>/
+        </span>
 
         <a
           href="#work"
-          className="inline-flex items-center gap-1.5 text-[#7A7873] hover:text-[#F5F4F1] transition-colors select-none"
+          className="inline-flex items-center gap-1.5 text-[#A09D95] hover:text-[#F14417] transition-colors select-none text-[18px]"
         >
           <span>Scroll down</span>
+          <span className="text-[#F14417]">↓</span>
         </a>
 
         <a
           href="#contact"
-          className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-white/20 bg-[#0B0B0A]/80 backdrop-blur-md text-[11px] font-mono tracking-wider text-[#F5F4F1] hover:border-white hover:bg-white hover:text-[#0B0B0A] transition-all"
+          className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#F14417]/50 bg-[#F14417]/10 backdrop-blur-md text-[18px] font-mono tracking-wider text-[#F5F4F1] hover:border-[#F14417] hover:bg-[#F14417] hover:text-white transition-all shadow-[0_0_25px_rgba(241,68,23,0.25)]"
         >
           <span>START THE PROJECT</span>
-          <span className="text-xs">↗</span>
+          <span className="text-[18px]">↗</span>
         </a>
       </motion.div>
 

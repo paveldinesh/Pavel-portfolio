@@ -7,8 +7,9 @@
   --bg-raise: #121211;
   --bg-raise-2: #181816;
   --fg: #F5F4F1;
-  --muted: #7A7873;
-  --muted-2: #4E4C47;
+  --muted: #A09D95;
+  --muted-2: #7A7873;
+  --accent: #F14417;
   --line: rgba(245, 244, 241, 0.10);
   --line-2: rgba(245, 244, 241, 0.05);
 
@@ -21,6 +22,7 @@ html {
   background-color: #0B0B0A;
   color: #F5F4F1;
   font-family: var(--font-geist-sans), "Geist", system-ui, -apple-system, sans-serif;
+  font-size: 18px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
@@ -28,6 +30,8 @@ html {
 body {
   background-color: #0B0B0A;
   color: #F5F4F1;
+  font-size: 18px;
+  line-height: 1.6;
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
@@ -100,5 +104,15 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 244, 241, 0.3);
+  background: rgba(241, 68, 23, 0.6);
+}
+
+::selection {
+  background-color: #F14417;
+  color: #FFFFFF;
+}
+
+/* Enforce portfolio minimum font size 18px across labels, paragraphs, buttons, and spans */
+p, a, span, button, li, label, input, textarea {
+  font-size: max(18px, 1em);
 }

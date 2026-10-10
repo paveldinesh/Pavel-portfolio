@@ -51,12 +51,12 @@ export default function Projects() {
       {/* Section Header */}
       <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
         <div className="flex items-baseline gap-4">
-          <span className="font-mono text-xs text-[#7A7873]">/work</span>
+          <span className="font-mono text-[18px] text-[#F14417]">/work</span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
-            Selected work<span className="font-mono text-sm text-[#7A7873] ml-1.5">{"//"}</span>
+            Selected work<span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
           </h2>
         </div>
-        <span className="font-mono text-xs text-[#7A7873]">[ 04 projects ]</span>
+        <span className="font-mono text-[18px] text-[#A09D95]">[ 04 projects ]</span>
       </div>
 
       {/* Numbered Rows List (No cards) */}
@@ -68,23 +68,23 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, delay: idx * 0.08 }}
-            className="grid grid-cols-1 md:grid-cols-[80px_1fr_1.1fr] gap-6 md:gap-12 items-center py-10 border-b border-white/[0.08] group"
+            className="grid grid-cols-1 md:grid-cols-[100px_1fr_1.1fr] gap-6 md:gap-12 items-center py-12 border-b border-white/[0.08] group"
           >
-            <span className="font-mono text-sm text-[#7A7873]">{proj.num}</span>
+            <span className="font-mono text-[18px] text-[#A09D95] group-hover:text-[#F14417] transition-colors">{proj.num}</span>
 
-            <div className="flex flex-col gap-2.5">
-              <span className="font-mono text-xs text-[#7A7873]">{proj.category}</span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover:opacity-75 transition-opacity">
+            <div className="flex flex-col gap-3">
+              <span className="font-mono text-[18px] text-[#F14417] font-medium">{proj.category}</span>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover:text-[#F14417] transition-colors">
                 {proj.title}
               </h3>
-              <p className="text-[#7A7873] text-[14.5px] leading-relaxed max-w-[46ch]">
+              <p className="text-[#A09D95] text-[18px] leading-relaxed max-w-[46ch]">
                 {proj.description}
               </p>
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-2.5 mt-3">
                 {proj.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[11px] text-[#7A7873] border border-white/10 rounded-full px-2.5 py-0.5"
+                    className="font-mono text-[18px] text-[#A09D95] border border-white/10 rounded-full px-4 py-1 group-hover:border-[#F14417]/30 transition-colors"
                   >
                     {tag}
                   </span>
@@ -93,14 +93,14 @@ export default function Projects() {
             </div>
 
             {/* Media Placeholder Tile */}
-            <div className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center p-6 text-center group-hover:border-white/20 transition-colors">
-              <span className="absolute top-3.5 right-3.5 font-mono text-[11px] text-[#7A7873] bg-[#0B0B0A]/80 px-2.5 py-1 rounded-full border border-white/10">
+            <div className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center p-6 text-center group-hover:border-[#F14417]/40 transition-colors">
+              <span className="absolute top-4 right-4 font-mono text-[18px] text-[#F14417] bg-[#0B0B0A]/85 px-3 py-1 rounded-full border border-white/10">
                 {proj.year}
               </span>
-              <span className="font-display font-bold text-6xl text-white/[0.08] leading-none select-none">
+              <span className="font-display font-bold text-7xl text-white/[0.06] group-hover:text-[#F14417]/20 transition-colors leading-none select-none">
                 {proj.num}
               </span>
-              <span className="font-mono text-[11px] text-white/40 mt-2">
+              <span className="font-mono text-[18px] text-[#A09D95] mt-2">
                 {proj.title}
               </span>
             </div>

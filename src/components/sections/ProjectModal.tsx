@@ -51,14 +51,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Header Close */}
           <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#121216]/90 backdrop-blur-md border-b border-[#1f1f23]">
             <div className="flex items-center gap-3">
-              <span className="font-mono-code text-xs text-emerald-400 font-semibold px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+              <span className="font-mono text-[18px] text-[#F14417] font-semibold px-3 py-1 rounded bg-[#F14417]/10 border border-[#F14417]/30">
                 CASE {project.id}
               </span>
-              <span className="text-xs text-[#8e8e93]">{project.year}</span>
+              <span className="text-[18px] text-[#A09D95]">{project.year}</span>
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-full bg-[#1c1c22] hover:bg-[#25252e] text-[#8e8e93] hover:text-white transition-colors"
+              className="p-2 rounded-full bg-[#1c1c22] hover:bg-[#F14417] text-[#A09D95] hover:text-white transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -68,10 +68,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div className="p-6 sm:p-8 space-y-8">
             {/* Title & Category */}
             <div>
-              <span className="text-xs uppercase tracking-wider text-emerald-400 font-semibold">
+              <span className="text-[18px] uppercase tracking-wider text-[#F14417] font-semibold">
                 {project.category}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-bold font-display tracking-tight text-[#f5f5f7] mt-1">
+              <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-[#f5f5f7] mt-1">
                 {project.title}
               </h2>
             </div>
@@ -89,13 +89,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* Metrics Callout */}
             {project.metrics && (
-              <div className="p-4 sm:p-5 rounded-xl bg-emerald-500/5 border border-emerald-500/20 flex items-start gap-3.5">
-                <Sparkles className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+              <div className="p-5 sm:p-6 rounded-xl bg-[#F14417]/10 border border-[#F14417]/30 flex items-start gap-4">
+                <Sparkles className="w-6 h-6 text-[#F14417] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+                  <h4 className="text-[18px] font-semibold uppercase tracking-wider text-[#F14417]">
                     Impact &amp; Key Result
                   </h4>
-                  <p className="text-sm sm:text-base text-[#f5f5f7] font-medium mt-0.5">
+                  <p className="text-[18px] text-[#f5f5f7] font-medium mt-1">
                     {project.metrics}
                   </p>
                 </div>
@@ -105,23 +105,23 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {/* Overview & Deliverables */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
               <div className="md:col-span-2 space-y-3">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#8e8e93]">
+                <h4 className="text-[18px] font-semibold uppercase tracking-wider text-[#A09D95]">
                   Project Overview &amp; Execution
                 </h4>
-                <p className="text-sm sm:text-base text-[#d1d1d6] leading-relaxed">
+                <p className="text-[18px] text-[#d1d1d6] leading-relaxed">
                   {project.overview || project.description}
                 </p>
               </div>
 
               {project.deliverables && (
                 <div className="space-y-3">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#8e8e93]">
+                  <h4 className="text-[18px] font-semibold uppercase tracking-wider text-[#A09D95]">
                     Core Deliverables
                   </h4>
                   <ul className="space-y-2">
                     {project.deliverables.map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-[#8e8e93]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <li key={idx} className="flex items-center gap-3 text-[18px] text-[#d1d1d6]">
+                        <CheckCircle2 className="w-4 h-4 text-[#F14417] shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -131,11 +131,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Tags Matrix */}
-            <div className="pt-4 border-t border-[#1f1f23] flex flex-wrap gap-2">
+            <div className="pt-4 border-t border-[#1f1f23] flex flex-wrap gap-2.5">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-3 py-1 rounded-full bg-[#18181d] border border-[#26262e] text-[#8e8e93]"
+                  className="text-[18px] px-4 py-1 rounded-full bg-[#18181d] border border-[#26262e] text-[#A09D95]"
                 >
                   {tag}
                 </span>
@@ -144,7 +144,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* Action Bar */}
             <div className="flex items-center justify-between pt-4 border-t border-[#1f1f23]">
-              <span className="text-xs text-[#8e8e93]">
+              <span className="text-[18px] text-[#A09D95]">
                 Pavel Dinesh &bull; Design Portfolio
               </span>
               <a
@@ -155,10 +155,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     alert("Direct case study link or live demo will open here!");
                   }
                 }}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-black font-semibold text-xs transition-colors"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#F14417] hover:bg-[#d63a12] text-white font-semibold text-[18px] transition-colors shadow-[0_0_20px_rgba(241,68,23,0.3)]"
               >
                 <span>Launch Project Artifact</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <ArrowUpRight className="w-5 h-5" />
               </a>
             </div>
           </div>

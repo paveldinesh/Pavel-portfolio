@@ -63,9 +63,9 @@ export default function Skills() {
     <section id="skills" className="py-24 sm:py-36 px-6 sm:px-12 max-w-[1260px] mx-auto relative z-10 border-t border-white/[0.08]">
       <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
         <div className="flex items-baseline gap-4">
-          <span className="font-mono text-xs text-[#7A7873]">/toolkit</span>
+          <span className="font-mono text-[18px] text-[#F14417]">/toolkit</span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
-            Skills &amp; tools<span className="font-mono text-sm text-[#7A7873] ml-1.5">®</span>
+            Skills &amp; tools<span className="font-mono text-[18px] text-[#F14417] ml-2">®</span>
           </h2>
         </div>
       </div>
@@ -78,16 +78,16 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.08 }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-5"
           >
-            <span className="font-mono text-xs font-medium text-[#F5F4F1] pb-3 border-b border-white/[0.08]">
+            <span className="font-mono text-[18px] font-semibold text-[#F14417] pb-3 border-b border-white/[0.08]">
               {group.title}
             </span>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-3">
               {group.items.map((item) => (
                 <li
                   key={item}
-                  className="text-[14.5px] text-[#7A7873] hover:text-[#F5F4F1] transition-colors"
+                  className="text-[18px] text-[#A09D95] hover:text-[#F5F4F1] hover:translate-x-1 transition-all"
                 >
                   {item}
                 </li>

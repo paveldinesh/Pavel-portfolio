@@ -37,9 +37,9 @@ export default function Experience() {
     <section id="experience" className="py-24 sm:py-36 px-6 sm:px-12 max-w-[1260px] mx-auto relative z-10 border-t border-white/[0.08]">
       <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
         <div className="flex items-baseline gap-4">
-          <span className="font-mono text-xs text-[#7A7873]">/experience</span>
+          <span className="font-mono text-[18px] text-[#F14417]">/experience</span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
-            Work history<span className="font-mono text-sm text-[#7A7873] ml-1.5">#</span>
+            Work history<span className="font-mono text-[18px] text-[#F14417] ml-2">#</span>
           </h2>
         </div>
       </div>
@@ -52,34 +52,34 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.08 }}
-            className="grid grid-cols-1 md:grid-cols-[60px_1fr] gap-6 md:gap-10 py-10 border-b border-white/[0.08]"
+            className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-6 md:gap-10 py-12 border-b border-white/[0.08] group"
           >
-            <span className="font-mono text-sm text-[#7A7873]">{exp.num}</span>
+            <span className="font-mono text-[18px] text-[#A09D95] group-hover:text-[#F14417] transition-colors">{exp.num}</span>
 
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap items-baseline justify-between gap-4">
                 <div>
-                  <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-[#F5F4F1]">
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-[#F5F4F1] group-hover:text-[#F14417] transition-colors">
                     {exp.company}
                   </h3>
-                  <span className="text-sm font-medium text-[#F5F4F1] mt-0.5 block">
+                  <span className="text-[18px] font-medium text-[#F5F4F1] mt-1 block">
                     {exp.role}
                   </span>
                 </div>
-                <span className="font-mono text-xs text-[#7A7873] whitespace-nowrap">
+                <span className="font-mono text-[18px] text-[#F14417] whitespace-nowrap">
                   {exp.period}
                 </span>
               </div>
 
-              <p className="text-[#7A7873] text-[14.5px] leading-relaxed max-w-[68ch] mt-1">
+              <p className="text-[#A09D95] text-[18px] leading-relaxed max-w-[68ch] mt-1">
                 {exp.description}
               </p>
 
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-2.5 mt-3">
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[11px] text-[#7A7873] border border-white/10 rounded-full px-2.5 py-0.5"
+                    className="font-mono text-[18px] text-[#A09D95] border border-white/10 rounded-full px-4 py-1 group-hover:border-[#F14417]/30 transition-colors"
                   >
                     {tag}
                   </span>
