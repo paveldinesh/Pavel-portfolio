@@ -3,6 +3,25 @@
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const items = [
+    "UI/UX Design",
+    "Design Systems",
+    "Frontend UI Development",
+    "Figma",
+    "Prototyping",
+    "Brand Direction",
+    "Dashboard Design",
+    "AI-Assisted Development",
+    "UI/UX Design",
+    "Design Systems",
+    "Frontend UI Development",
+    "Figma",
+    "Prototyping",
+    "Brand Direction",
+    "Dashboard Design",
+    "AI-Assisted Development",
+  ];
+
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-0 px-6 sm:px-12 md:px-16 w-full overflow-hidden bg-[#0B0B0A]">
       {/* Background Hero Image (Shadows.png) */}
@@ -69,30 +88,13 @@ export default function Hero() {
       {/* Embedded Marquee Ticker at bottom of hero */}
       <div className="-mx-6 sm:-mx-12 md:-mx-16 overflow-hidden border-t border-b border-white/[0.08] bg-[#121211]/80 backdrop-blur-sm relative z-10 py-4 select-none">
         <div className="animate-marquee flex items-center gap-8 whitespace-nowrap">
-          {[
-            "UI/UX Design",
-            "Design Systems",
-            "Frontend UI Development",
-            "Figma",
-            "Prototyping",
-            "Brand Direction",
-            "Dashboard Design",
-            "AI-Assisted Development",
-            "UI/UX Design",
-            "Design Systems",
-            "Frontend UI Development",
-            "Figma",
-            "Prototyping",
-            "Brand Direction",
-            "Dashboard Design",
-            "AI-Assisted Development",
-          ].map((item, idx) => (
+          {items.map((item, idx) => (
             <span
               key={idx}
-              className="font-display font-semibold text-lg sm:text-xl md:text-2xl tracking-tight text-[#63615B] flex items-center gap-8"
+              className="font-display font-semibold text-[18px] sm:text-2xl md:text-3xl tracking-tight text-[#8E8B83] flex items-center gap-8"
             >
               <span>{item}</span>
-              <span className="font-mono text-xs text-[#7A7873]">{"//"}</span>
+              <span className="font-mono text-[18px] text-[#A09D95]">{"//"}</span>
             </span>
           ))}
         </div>
