@@ -1,0 +1,80 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0A0B0E"/>
+  
+  <!-- Subtle Grid Lines -->
+  <line x1="0" y1="250" x2="1600" y2="250" stroke="#1b1d24" stroke-width="1"/>
+  <line x1="0" y1="750" x2="1600" y2="750" stroke="#1b1d24" stroke-width="1"/>
+  <line x1="450" y1="0" x2="450" y2="1000" stroke="#1b1d24" stroke-width="1"/>
+  <line x1="1150" y1="0" x2="1150" y2="1000" stroke="#1b1d24" stroke-width="1"/>
+
+  <!-- Radial Glow -->
+  <circle cx="900" cy="500" r="500" fill="#0EA5E9" fill-opacity="0.06" filter="blur(140px)"/>
+  <circle cx="400" cy="400" r="350" fill="#34D399" fill-opacity="0.06" filter="blur(120px)"/>
+
+  <!-- Brand System & Digital Redesign Mockup -->
+  <g transform="translate(180, 140)">
+    <rect width="1240" height="720" rx="20" fill="#111218" stroke="#222430" stroke-width="1.5"/>
+    
+    <!-- Header -->
+    <rect width="1240" height="58" rx="20" fill="#161720"/>
+    <text x="40" y="35" fill="#F5F5F7" font-family="system-ui, sans-serif" font-size="15" font-weight="700">BCMCH DIGITAL PLATFORM // BRAND &amp; UI TRANSFORMATION</text>
+    <rect x="1030" y="15" width="170" height="28" rx="6" fill="#0EA5E9" fill-opacity="0.15"/>
+    <text x="1115" y="33" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">45+ DESIGN TEMPLATES</text>
+
+    <!-- Layout: Brand tokens and responsive UI views -->
+    <g transform="translate(40, 85)">
+      <!-- Left: Design Tokens Card -->
+      <rect x="0" y="0" width="360" height="580" rx="14" fill="#151620" stroke="#252735" stroke-width="1"/>
+      <text x="30" y="40" fill="#8E8E93" font-family="system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="1">TYPOGRAPHY &amp; TOKENS</text>
+      
+      <!-- Typographic specimen -->
+      <text x="30" y="85" fill="#F5F5F7" font-family="system-ui, sans-serif" font-size="28" font-weight="800">Aa Bb Gg 09</text>
+      <text x="30" y="115" fill="#6B7280" font-family="system-ui, sans-serif" font-size="13">Syne Grotesque • Variable Weight</text>
+
+      <!-- Color Token Swatches -->
+      <text x="30" y="165" fill="#8E8E93" font-family="system-ui, sans-serif" font-size="11" font-weight="600">COLOR HARMONY</text>
+      <rect x="30" y="180" width="60" height="40" rx="6" fill="#0F172A"/>
+      <rect x="100" y="180" width="60" height="40" rx="6" fill="#0284C7"/>
+      <rect x="170" y="180" width="60" height="40" rx="6" fill="#34D399"/>
+      <rect x="240" y="180" width="60" height="40" rx="6" fill="#F5F5F7"/>
+
+      <text x="30" y="270" fill="#8E8E93" font-family="system-ui, sans-serif" font-size="11" font-weight="600">COMPONENT LIBRARIES</text>
+      <rect x="30" y="290" width="300" height="44" rx="8" fill="#1E202C"/>
+      <text x="46" y="317" fill="#F5F5F7" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Navigation Shells &amp; Mega Menus</text>
+      
+      <rect x="30" y="346" width="300" height="44" rx="8" fill="#1E202C"/>
+      <text x="46" y="373" fill="#F5F5F7" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Patient Journey &amp; Booking Funnels</text>
+
+      <rect x="30" y="402" width="300" height="44" rx="8" fill="#1E202C"/>
+      <text x="46" y="429" fill="#F5F5F7" font-family="system-ui, sans-serif" font-size="13" font-weight="500">Accessible Form &amp; Validation States</text>
+    </g>
+
+    <!-- Right: High-fidelity web view -->
+    <g transform="translate(430, 85)">
+      <rect width="770" height="580" rx="14" fill="#151620" stroke="#252735" stroke-width="1"/>
+      
+      <!-- Top banner mockup -->
+      <rect x="30" y="30" width="710" height="200" rx="10" fill="#1A1C28"/>
+      <rect x="60" y="60" width="260" height="24" rx="4" fill="#38BDF8"/>
+      <rect x="60" y="100" width="480" height="14" rx="3" fill="#E2E8F0"/>
+      <rect x="60" y="125" width="360" height="14" rx="3" fill="#94A3B8"/>
+      <rect x="60" y="160" width="130" height="36" rx="18" fill="#34D399"/>
+      
+      <!-- 2 column content blocks -->
+      <rect x="30" y="255" width="340" height="290" rx="10" fill="#1A1C28"/>
+      <rect x="50" y="280" width="120" height="16" rx="4" fill="#38BDF8"/>
+      <rect x="50" y="310" width="300" height="12" rx="3" fill="#64748B"/>
+      <rect x="50" y="335" width="280" height="12" rx="3" fill="#64748B"/>
+      <rect x="50" y="360" width="220" height="12" rx="3" fill="#64748B"/>
+
+      <rect x="400" y="255" width="340" height="290" rx="10" fill="#1A1C28"/>
+      <rect x="420" y="280" width="120" height="16" rx="4" fill="#34D399"/>
+      <rect x="420" y="310" width="300" height="12" rx="3" fill="#64748B"/>
+      <rect x="420" y="335" width="280" height="12" rx="3" fill="#64748B"/>
+      <rect x="420" y="360" width="220" height="12" rx="3" fill="#64748B"/>
+    </g>
+  </g>
+
+  <!-- Watermark / Editorial Tag -->
+  <text x="1420" y="930" fill="#4B5563" font-family="system-ui, sans-serif" font-size="14" font-weight="600" letter-spacing="2" text-anchor="end">CASE 04 // BRAND SYSTEMS &amp; RESPONSIVE PLATFORM REDESIGN</text>
+</svg>

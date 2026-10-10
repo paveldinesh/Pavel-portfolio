@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pavel Dinesh — UI/UX Designer &amp; Frontend UI Developer</title>
+<meta name="description" content="Pavel Dinesh is a UI/UX designer and frontend UI developer designing web, dashboard and mobile products, from discovery through developer handoff.">
+
+<!-- Single Font: Geist & Geist Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Scroll progress -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- Custom cursor (desktop only, see script.js) -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav-logo" data-magnetic aria-label="Home">
+      <img src="images/Logo.svg" alt="Pavel Dinesh Logo" class="nav-logo-svg" height="34">
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#top" data-nav>Home</a>
+      <a href="#work" data-nav>Work<span class="nav-sup">//</span></a>
+      <a href="#about" data-nav>About<span class="nav-sup">*</span></a>
+      <a href="#experience" data-nav>Experience<span class="nav-sup">#</span></a>
+      <a href="#skills" data-nav>Toolkit<span class="nav-sup">®</span></a>
+      <a href="#contact" data-nav>Contact<span class="nav-sup">™</span></a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#contact" class="nav-talk-link" data-magnetic>Let's talk ↗</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#top" data-nav>Home</a>
+    <a href="#work" data-nav>Work<span class="nav-sup">//</span></a>
+    <a href="#about" data-nav>About<span class="nav-sup">*</span></a>
+    <a href="#experience" data-nav>Experience<span class="nav-sup">#</span></a>
+    <a href="#skills" data-nav>Toolkit<span class="nav-sup">®</span></a>
+    <a href="#contact" data-nav>Let's talk<span class="nav-sup">™</span></a>
+    <a href="#" id="mobileResumeBtn" target="_blank" rel="noopener">Download résumé ↓</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO (Reference Layout) ============ -->
+    <section class="hero hero-cinematic" id="hero">
+      <!-- Background Landscape Rock Layer with subtle dust/stars -->
+      <div class="hero-bg-landscape" aria-hidden="true"></div>
+      <div class="hero-bg-vignette" aria-hidden="true"></div>
+
+      <!-- Top Row / Indicator -->
+      <div class="hero-top reveal-up">
+        <span class="badge" id="availabilityBadge">
+          <span class="badge-dot"></span>
+          <span id="availabilityText">Available for work</span>
+        </span>
+        <span class="hero-location" id="heroLocation">Kerala, India</span>
+      </div>
+
+      <!-- Main Central Grid -->
+      <div class="hero-main-editorial">
+        <!-- Left Side: Interactive Portrait Card -->
+        <div class="hero-portrait-wrap reveal-up">
+          <div class="hero-portrait" id="heroPortrait"><!-- injected by script.js --></div>
+        </div>
+
+        <!-- Right Side: Editorial Statement Headline -->
+        <div class="hero-statement-wrap reveal-up">
+          <h1 class="hero-editorial-title" id="heroTitle">
+            <!-- Rendered by script.js -->
+          </h1>
+        </div>
+      </div>
+
+      <!-- Bottom Status & CTA Row -->
+      <div class="hero-bottom-bar reveal-up">
+        <span class="hero-year-tag">/2026/</span>
+        <a href="#work" class="hero-scroll-btn" aria-label="Scroll down">
+          <span>Scroll down</span>
+          <span class="scroll-arrow-down">↓</span>
+        </a>
+        <a href="#contact" class="btn-pill-cta" data-magnetic id="heroStartBtn">
+          <span>START THE PROJECT</span>
+          <span class="btn-arrow-diag">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE 1 : role keywords ============ -->
+    <div class="marquee-wrap">
+      <div class="marquee" id="marquee1" aria-hidden="true"></div>
+    </div>
+
+    <!-- ============ WORK ============ -->
+    <section class="section" id="work">
+      <div class="section-head reveal-up">
+        <span class="section-eyebrow">/work</span>
+        <h2>Selected work<span class="head-mark">//</span></h2>
+        <span class="section-count" id="workCount"></span>
+      </div>
+
+      <div class="work-list" id="workList"><!-- injected by script.js from content.js --></div>
+    </section>
+
+    <!-- ============ PULL-QUOTE MOMENT (Editorial Statement) ============ -->
+    <section class="pullquote-section" id="pullquote">
+      <div class="pullquote-container reveal-up">
+        <span class="pullquote-mark" id="pullquoteMark">/* 01 */</span>
+        <blockquote class="pullquote-text" id="pullquoteText">
+          <!-- Injected by script.js from content.js -->
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE 2 : client / project names ============ -->
+    <div class="marquee-wrap">
+      <div class="marquee marquee-reverse" id="marquee2" aria-hidden="true"></div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="about-grid">
+        <div class="about-copy reveal-up">
+          <span class="section-eyebrow">/about</span>
+          <h2>About<span class="head-mark">*</span></h2>
+          <p id="aboutBio"></p>
+        </div>
+        <div class="about-stats" id="aboutStats"><!-- injected --></div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section class="section" id="experience">
+      <div class="section-head reveal-up">
+        <span class="section-eyebrow">/experience</span>
+        <h2>Work history<span class="head-mark">#</span></h2>
+      </div>
+      <div class="timeline" id="timelineList"><!-- injected --></div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section" id="skills">
+      <div class="section-head reveal-up">
+        <span class="section-eyebrow">/toolkit</span>
+        <h2>Skills &amp; tools<span class="head-mark">®</span></h2>
+      </div>
+      <div class="skills-grid" id="skillsGrid"><!-- injected --></div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section contact" id="contact">
+      <span class="section-eyebrow reveal-up">/contact</span>
+      <h2 class="contact-heading reveal-up" id="contactHeading"></h2>
+      <a class="contact-email reveal-up" id="contactEmail" href="#" data-magnetic></a>
+      <div class="contact-socials reveal-up" id="contactSocials"><!-- injected --></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span id="footerName"></span>
+    <span id="footerCopyright"></span>
+    <a href="#top" class="footer-top" data-magnetic>Back to top ↑</a>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

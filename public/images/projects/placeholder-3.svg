@@ -1,0 +1,81 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#0B0C10"/>
+  
+  <!-- Subtle Grid Lines -->
+  <line x1="0" y1="300" x2="1600" y2="300" stroke="#1c1e26" stroke-width="1"/>
+  <line x1="0" y1="700" x2="1600" y2="700" stroke="#1c1e26" stroke-width="1"/>
+  <line x1="500" y1="0" x2="500" y2="1000" stroke="#1c1e26" stroke-width="1"/>
+  <line x1="1100" y1="0" x2="1100" y2="1000" stroke="#1c1e26" stroke-width="1"/>
+
+  <!-- Radial Glow -->
+  <circle cx="800" cy="400" r="450" fill="#10B981" fill-opacity="0.08" filter="blur(140px)"/>
+  <circle cx="300" cy="300" r="300" fill="#EC4899" fill-opacity="0.04" filter="blur(120px)"/>
+
+  <!-- AI-assisted Design-to-Code Presentation Screen -->
+  <g transform="translate(160, 130)">
+    <!-- Split Architecture: Left Figma Mockup, Right Next.js React Code -->
+    <rect width="1280" height="740" rx="20" fill="#12131A" stroke="#222533" stroke-width="1.5"/>
+    
+    <!-- Title header -->
+    <rect width="1280" height="56" rx="20" fill="#171822"/>
+    <text x="40" y="34" fill="#F5F5F7" font-family="system-ui, sans-serif" font-size="15" font-weight="700">ARMIA SYSTEMS // DESIGN-TO-CODE PIPELINE</text>
+    <rect x="1060" y="14" width="180" height="28" rx="6" fill="#10B981" fill-opacity="0.15"/>
+    <text x="1150" y="32" fill="#34D399" font-family="monospace" font-size="12" font-weight="600" text-anchor="middle">PROMPT → REACT COMPONENT</text>
+
+    <!-- Left: Design Canvas (Figma layout) -->
+    <g transform="translate(40, 80)">
+      <rect width="570" height="600" rx="14" fill="#181924" stroke="#282B3C" stroke-width="1"/>
+      <text x="30" y="45" fill="#A1A1AA" font-family="system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="1">DESIGN CANVAS (FIGMA)</text>
+      
+      <!-- Hero Card mockup -->
+      <rect x="30" y="70" width="510" height="280" rx="10" fill="#202230"/>
+      <rect x="50" y="100" width="180" height="24" rx="4" fill="#34D399"/>
+      <rect x="50" y="136" width="380" height="16" rx="4" fill="#E4E4E7"/>
+      <rect x="50" y="162" width="310" height="16" rx="4" fill="#A1A1AA"/>
+      <rect x="50" y="210" width="140" height="40" rx="20" fill="#34D399"/>
+      <rect x="204" y="210" width="140" height="40" rx="20" fill="#2B2D3F"/>
+
+      <!-- Feature Grid mockup -->
+      <rect x="30" y="370" width="156" height="170" rx="8" fill="#202230"/>
+      <rect x="207" y="370" width="156" height="170" rx="8" fill="#202230"/>
+      <rect x="384" y="370" width="156" height="170" rx="8" fill="#202230"/>
+    </g>
+
+    <!-- Center Arrow / Flow indicator -->
+    <g transform="translate(620, 360)">
+      <circle cx="20" cy="20" r="24" fill="#34D399" fill-opacity="0.1" stroke="#34D399" stroke-width="1.5"/>
+      <path d="M 12 20 L 26 20 M 20 14 L 26 20 L 20 26" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Right: Code Canvas (Semantic TypeScript / React) -->
+    <g transform="translate(670, 80)">
+      <rect width="570" height="600" rx="14" fill="#0E0F15" stroke="#282B3C" stroke-width="1"/>
+      <text x="30" y="45" fill="#34D399" font-family="monospace" font-size="12" font-weight="600">PAGE.TSX (NEXT.JS + TAILWIND)</text>
+      
+      <!-- Code lines -->
+      <g transform="translate(30, 80)" font-family="monospace" font-size="12">
+        <text y="20" fill="#EC4899">export default function <tspan fill="#60A5FA">HeroSection</tspan>() {</text>
+        <text y="44" fill="#9CA3AF">  return (</text>
+        <text y="68" fill="#9CA3AF">    &lt;<tspan fill="#60A5FA">section</tspan> <tspan fill="#FBBF24">className</tspan>=<tspan fill="#34D399">"relative min-h-screen"</tspan>&gt;</text>
+        <text y="92" fill="#9CA3AF">      &lt;<tspan fill="#60A5FA">motion.div</tspan></text>
+        <text y="116" fill="#FBBF24">        initial</text><text x="75" y="116" fill="#9CA3AF">={{ opacity: 0, y: 20 }}</text>
+        <text y="140" fill="#FBBF24">        animate</text><text x="75" y="140" fill="#9CA3AF">={{ opacity: 1, y: 0 }}</text>
+        <text y="164" fill="#FBBF24">        transition</text><text x="100" y="164" fill="#9CA3AF">={{ duration: 0.8 }}</text>
+        <text y="188" fill="#9CA3AF">      &gt;</text>
+        <text y="212" fill="#9CA3AF">        &lt;<tspan fill="#60A5FA">h1</tspan> <tspan fill="#FBBF24">className</tspan>=<tspan fill="#34D399">"text-6xl font-black"</tspan>&gt;</text>
+        <text y="236" fill="#F5F5F7">          Enterprise NextGen Cloud</text>
+        <text y="260" fill="#9CA3AF">        &lt;/<tspan fill="#60A5FA">h1</tspan>&gt;</text>
+        <text y="284" fill="#9CA3AF">        &lt;<tspan fill="#60A5FA">div</tspan> <tspan fill="#FBBF24">className</tspan>=<tspan fill="#34D399">"flex gap-4 mt-8"</tspan>&gt;</text>
+        <text y="308" fill="#9CA3AF">          &lt;<tspan fill="#60A5FA">Button</tspan> <tspan fill="#FBBF24">variant</tspan>=<tspan fill="#34D399">"emerald"</tspan>&gt;Get Started&lt;/<tspan fill="#60A5FA">Button</tspan>&gt;</text>
+        <text y="332" fill="#9CA3AF">        &lt;/<tspan fill="#60A5FA">div</tspan>&gt;</text>
+        <text y="356" fill="#9CA3AF">      &lt;/<tspan fill="#60A5FA">motion.div</tspan>&gt;</text>
+        <text y="380" fill="#9CA3AF">    &lt;/<tspan fill="#60A5FA">section</tspan>&gt;</text>
+        <text y="404" fill="#9CA3AF">  );</text>
+        <text y="428" fill="#EC4899">}</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Watermark / Editorial Tag -->
+  <text x="1440" y="930" fill="#4B5563" font-family="system-ui, sans-serif" font-size="14" font-weight="600" letter-spacing="2" text-anchor="end">CASE 03 // AI-ASSISTED DESIGN-TO-CODE WORKFLOW</text>
+</svg>
