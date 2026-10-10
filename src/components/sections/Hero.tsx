@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-10 px-6 sm:px-12 md:px-16 w-full overflow-hidden bg-[#0B0B0A]">
+    <section className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-0 px-6 sm:px-12 md:px-16 w-full overflow-hidden bg-[#0B0B0A]">
       {/* Background Hero Image (Shadows.png) */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center md:bg-[center_top_30%] bg-no-repeat opacity-90 pointer-events-none"
