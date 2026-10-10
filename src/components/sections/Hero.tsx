@@ -1,51 +1,26 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-10 px-6 sm:px-12 md:px-16 w-full overflow-hidden bg-[#0B0B0A]">
-      {/* Background Landscape Rock Image */}
+      {/* Background Hero Image (Shadows.png) */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-bottom bg-no-repeat opacity-95 pointer-events-none"
-        style={{ backgroundImage: `url('/images/hero-landscape.png')` }}
+        className="absolute inset-0 z-0 bg-cover bg-center md:bg-[center_top_30%] bg-no-repeat opacity-90 pointer-events-none"
+        style={{ backgroundImage: `url('/images/Shadows.png')` }}
       />
-      {/* Subtle atmospheric vignette gradient */}
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_50%_20%,transparent_0%,rgba(11,11,10,0.6)_60%,#0B0B0A_100%)] pointer-events-none" />
+      {/* Subtle atmospheric vignette and gradient for text readability */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#0B0B0A]/90 via-[#0B0B0A]/60 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(11,11,10,0.4)_50%,#0B0B0A_100%)] pointer-events-none" />
 
-      {/* Main Hero Row: Left Portrait Card + Right Statement Headline (anchored to left side) */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[560px_1fr] xl:grid-cols-[620px_1fr] items-center gap-10 lg:gap-16 xl:gap-20 pt-16 sm:pt-24 md:pt-32 pb-12 w-full max-w-[1720px] mr-auto ml-0">
-        {/* Left Side: Photo / Portrait Card */}
+      {/* Main Hero Row: Statement Headline positioned on the left */}
+      <div className="relative z-10 flex flex-col justify-center pt-24 sm:pt-32 md:pt-40 pb-16 w-full max-w-[1720px]">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-[560px] xl:max-w-[620px]"
-        >
-          {/* Card Container scaled up proportionally */}
-          <div className="relative w-full aspect-[462/233] rounded-sm overflow-hidden border border-white/[0.14] bg-[#121211] shadow-2xl">
-            {/* Portrait Image */}
-            <Image
-              src="/images/Shadows.png"
-              alt="Pavel Dinesh"
-              fill
-              priority
-              sizes="(min-width: 1280px) 620px, (min-width: 1024px) 560px, 100vw"
-              className="object-cover object-center grayscale contrast-110 hover:scale-105 transition-transform duration-700"
-            />
-
-            {/* Subtle inner dark gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-          </div>
-        </motion.div>
-
-        {/* Right Side: Editorial Statement Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col w-full items-start"
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-start max-w-4xl"
         >
           {/* Editorial Headline */}
           <h1 className="font-body font-normal text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[84px] leading-[1.12] tracking-[-0.035em] text-white flex flex-col w-fit">
