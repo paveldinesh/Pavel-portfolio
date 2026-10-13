@@ -142,7 +142,7 @@ export default function TinyBitsOfLoveCaseStudy() {
         {/* Hero Visual Banner */}
         <motion.div
           {...fadeIn}
-          className="mt-12 relative w-full aspect-[16/9] sm:aspect-[21/10] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
+          className="mt-12 relative w-full h-[320px] sm:h-[440px] md:h-[546px] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
         >
           <Image
             src="/images/projects/tiny-bits/hero-trio.jpg"
@@ -152,7 +152,7 @@ export default function TinyBitsOfLoveCaseStudy() {
             sizes="(max-width: 1260px) 100vw, 1260px"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
         </motion.div>
       </section>
 
@@ -836,7 +836,7 @@ export default function TinyBitsOfLoveCaseStudy() {
           {/* Full Width Final Collage */}
           <motion.div
             {...fadeIn}
-            className="w-full relative aspect-[16/9] sm:aspect-[21/10] rounded-2xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
+            className="w-full relative h-[320px] sm:h-[440px] md:h-[546px] rounded-2xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
           >
             <Image
               src="/images/projects/tiny-bits/hero-trio.jpg"
