@@ -71,7 +71,7 @@ function Screen({
               fill
               priority={priority}
               sizes="(max-width: 1260px) 100vw, 1260px"
-              className="object-cover object-top"
+              className="object-cover object-center"
               onError={() => setMissing(true)}
             />
           )}
