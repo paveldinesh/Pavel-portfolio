@@ -16,14 +16,19 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
  * Use dummy patient data in every screenshot.
  */
 const IMG = {
-  hero: "/images/projects/descartes/hero.png",
+  hero: "/images/projects/descartes/hero-or-mockup.jpg",
   dashboard: "/images/projects/descartes/dashboard.png",
   liveMonitor: "/images/projects/descartes/live-monitor.png",
   createProcedure: "/images/projects/descartes/create-procedure.png",
-  workflows: "/images/projects/descartes/workflows.png",
+  workflows: "/images/projects/descartes/workflow-library.png",
   insightsPredictive: "/images/projects/descartes/insights-predictive.png",
-  insightsComparative: "/images/projects/descartes/insights-comparative.png",
-  designSystem: "/images/projects/descartes/design-system.png",
+  insightsComparative: "/images/projects/descartes/insights-ai.png",
+  designSystem: "/images/projects/descartes/brand-logo.png",
+  brandLogo: "/images/projects/descartes/brand-logo.png",
+  duoMonitors: "/images/projects/descartes/duo-monitors.png",
+  trioMonitors: "/images/projects/descartes/trio-monitors.png",
+  proceduresCalendar: "/images/projects/descartes/procedures-calendar.png",
+  proceduresMain: "/images/projects/descartes/procedures-main.png",
 };
 
 /** Desktop-style screen frame with graceful fallback when the image isn't added yet. */
@@ -175,14 +180,19 @@ export default function DescartesCaseStudy() {
           ))}
         </motion.div>
 
-        <motion.div {...fadeIn} className="mt-12">
-          <Screen
+        <motion.div
+          {...fadeIn}
+          className="mt-12 relative w-full h-[320px] sm:h-[440px] md:h-[546px] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
+        >
+          <Image
             src={IMG.hero}
-            alt="Descartes platform overview"
-            caption="Fig 01 — Descartes dashboard overview"
-            ratio="aspect-[16/9]"
+            alt="Descartes operating room multi-device platform overview"
+            fill
             priority
+            sizes="(max-width: 1260px) 100vw, 1260px"
+            className="object-cover object-center"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
         </motion.div>
       </section>
 
@@ -518,12 +528,26 @@ export default function DescartesCaseStudy() {
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn}>
+          <motion.div {...fadeIn} className="flex flex-col gap-6">
             <Screen
               src={IMG.liveMonitor}
               alt="Descartes Live Monitor"
               caption="Fig 03 — Live Monitor: current critical step, phases, voice status and Periscope"
             />
+
+            <div className="mt-4 rounded-xl p-6 sm:p-10 bg-[#121211] border border-white/[0.08] flex flex-col items-center justify-center">
+              <div className="relative w-full aspect-[16/9] max-w-[860px]">
+                <Image
+                  src={IMG.duoMonitors}
+                  alt="Descartes Live Monitor and Dashboard side-by-side monitors"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-mono text-xs text-[#7A7873] mt-4 text-center">
+                Multi-station setup: Telemetry Live Monitor (dark mode for OR) paired with the Operational Dashboard
+              </span>
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -817,6 +841,24 @@ export default function DescartesCaseStudy() {
         >
           &ldquo;Descartes does not direct the surgery. It supports the planned workflow, quietly and consistently, from preparation to completion.&rdquo;
         </motion.blockquote>
+
+        {/* Full Width Hardware Ecosystem Showcase */}
+        <motion.div
+          {...fadeIn}
+          className="mt-16 w-full rounded-2xl overflow-hidden border border-white/[0.08] bg-[#121211] p-6 sm:p-12 flex flex-col items-center justify-center shadow-2xl"
+        >
+          <div className="relative w-full aspect-[16/9] max-w-[980px]">
+            <Image
+              src={IMG.trioMonitors}
+              alt="Descartes platform ecosystem across multi-monitor setup"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <span className="font-mono text-xs text-[#7A7873] mt-6 text-center">
+            Ecosystem Overview — Multi-station synchronization across surgical prep, intra-operative monitoring and recovery
+          </span>
+        </motion.div>
       </section>
 
       {/* ========================================================= */}
