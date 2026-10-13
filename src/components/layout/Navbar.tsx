@@ -8,8 +8,8 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/#top" },
-    { name: "About", href: "/#about", mark: "*" },
-    { name: "Works", href: "/#work", mark: "2" },
+    { name: "About", href: "/#about" },
+    { name: "Work", href: "/#work" },
   ];
 
   return (
@@ -45,14 +45,9 @@ export default function Navbar() {
           <a
             key={link.name}
             href={link.href}
-            className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors inline-flex items-baseline gap-1 font-body font-normal"
+            className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-body font-normal"
           >
-            <span>{link.name}</span>
-            {link.mark && (
-              <span className="text-[18px] text-[#F14417] font-mono">
-                {link.mark}
-              </span>
-            )}
+            {link.name}
           </a>
         ))}
       </nav>
