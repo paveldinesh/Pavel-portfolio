@@ -17,6 +17,53 @@ import {
   Activity 
 } from "lucide-react";
 
+function DeviceMockup({
+  src,
+  alt,
+  caption,
+  className = "",
+  maxWidth = "max-w-[340px] sm:max-w-[360px]",
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  className?: string;
+  maxWidth?: string;
+}) {
+  return (
+    <div className={`flex flex-col items-center justify-center w-full ${className}`}>
+      {/* Outer Phone Frame */}
+      <div
+        className={`relative w-full ${maxWidth} aspect-[9/19.2] rounded-[48px] sm:rounded-[54px] p-[10px] sm:p-[12px] bg-gradient-to-b from-[#2e2e34] via-[#1a1a1d] to-[#121214] ring-1 ring-white/15 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.06),0_0_40px_rgba(241,68,23,0.06)] transition-transform duration-500 hover:scale-[1.01]`}
+      >
+        {/* Hardware buttons on chassis */}
+        <div className="absolute -left-[3px] top-24 w-[3px] h-8 bg-[#3e3e44] rounded-l" />
+        <div className="absolute -left-[3px] top-36 w-[3px] h-8 bg-[#3e3e44] rounded-l" />
+        <div className="absolute -right-[3px] top-28 w-[3px] h-12 bg-[#3e3e44] rounded-r" />
+
+        {/* Inner Phone Screen Frame */}
+        <div className="relative w-full h-full rounded-[38px] sm:rounded-[44px] overflow-hidden bg-black ring-1 ring-white/10 shadow-inner">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 100vw, 420px"
+            className="object-cover object-top"
+          />
+          {/* Subtle Glass Sheen */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none z-10" />
+        </div>
+      </div>
+
+      {caption && (
+        <span className="font-mono text-sm text-[#7A7873] mt-5 text-center max-w-[40ch]">
+          {caption}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export default function TinyBitsOfLoveCaseStudy() {
   const fadeIn = {
     initial: { opacity: 0, y: 24 },
@@ -204,18 +251,11 @@ export default function TinyBitsOfLoveCaseStudy() {
               {...fadeIn}
               className="lg:col-span-7 rounded-xl bg-[#121211] border border-white/[0.08] p-6 sm:p-10 flex flex-col items-center justify-center relative overflow-hidden"
             >
-              <div className="relative w-full max-w-[380px] aspect-[1/2] rounded-2xl overflow-hidden shadow-2xl border border-white/[0.05]">
-                <Image
-                  src="/images/projects/tiny-bits/tree-home.png"
-                  alt="Relationship Tree Home Screen"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-mono text-sm text-[#7A7873] mt-6">
-                Fig 01 — Home canopy view with avatar pins and status metrics
-              </span>
+              <DeviceMockup
+                src="/images/projects/tiny-bits/tree-home.png"
+                alt="Relationship Tree Home Screen"
+                caption="Fig 01 — Home canopy view with avatar pins and status metrics"
+              />
             </motion.div>
 
             {/* Editorial Annotations Column */}
@@ -404,15 +444,11 @@ export default function TinyBitsOfLoveCaseStudy() {
             {...fadeIn}
             className="lg:col-span-6 rounded-xl bg-[#121211] border border-white/[0.08] p-6 sm:p-12 flex items-center justify-center"
           >
-            <div className="relative w-full max-w-[420px] aspect-[1/2] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/projects/tiny-bits/tree-home.png"
-                alt="Detailed tree screen annotation"
-                fill
-                sizes="(max-width: 768px) 100vw, 420px"
-                className="object-contain"
-              />
-            </div>
+            <DeviceMockup
+              src="/images/projects/tiny-bits/tree-home.png"
+              alt="Detailed tree screen annotation"
+              caption="Fig 02 — Main Home View with living botanical canopy and quick action triggers"
+            />
           </motion.div>
         </div>
       </section>
@@ -426,15 +462,11 @@ export default function TinyBitsOfLoveCaseStudy() {
             {...fadeIn}
             className="lg:col-span-6 order-2 lg:order-1 rounded-xl bg-[#121211] border border-white/[0.08] p-6 sm:p-12 flex items-center justify-center"
           >
-            <div className="relative w-full max-w-[400px] aspect-[1/2] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/projects/tiny-bits/connections-list.png"
-                alt="Relationship management list view"
-                fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-contain"
-              />
-            </div>
+            <DeviceMockup
+              src="/images/projects/tiny-bits/connections-list.png"
+              alt="Relationship management list view"
+              caption="Fig 03 — Fast directory search and status-filtered friend list"
+            />
           </motion.div>
 
           <motion.div {...fadeIn} className="lg:col-span-6 order-1 lg:order-2 flex flex-col gap-6">
@@ -495,15 +527,11 @@ export default function TinyBitsOfLoveCaseStudy() {
               {...fadeIn}
               className="lg:col-span-6 rounded-xl bg-[#121211] border border-white/[0.08] p-6 sm:p-12 flex items-center justify-center"
             >
-              <div className="relative w-full max-w-[400px] aspect-[1/2] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/projects/tiny-bits/affirmation-modal.png"
-                  alt="Affirmation leaf modal interaction"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  className="object-contain"
-                />
-              </div>
+              <DeviceMockup
+                src="/images/projects/tiny-bits/affirmation-modal.png"
+                alt="Affirmation leaf modal interaction"
+                caption="Fig 04 — Tactile affirmation leaf token with 1-tap reply trigger"
+              />
             </motion.div>
 
             {/* Interaction Rationale */}
@@ -688,15 +716,11 @@ export default function TinyBitsOfLoveCaseStudy() {
             {...fadeIn}
             className="lg:col-span-6 rounded-xl bg-[#121211] border border-white/[0.08] p-6 sm:p-12 flex items-center justify-center"
           >
-            <div className="relative w-full max-w-[400px] aspect-[1/2] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/projects/tiny-bits/tree-themes.png"
-                alt="Tree Customisation and Themes Screen"
-                fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-contain"
-              />
-            </div>
+            <DeviceMockup
+              src="/images/projects/tiny-bits/tree-themes.png"
+              alt="Tree Customisation and Themes Screen"
+              caption="Fig 05 — Seasonal tree theme sanctuary (Enchanted, Winter, Sakura)"
+            />
           </motion.div>
         </div>
       </section>
