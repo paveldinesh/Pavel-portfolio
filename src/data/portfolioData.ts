@@ -22,6 +22,9 @@ export interface Project {
   tags: string[];
   image: string;
   link: string;
+  website?: string;
+  appStore?: string;
+  playStore?: string;
   metrics?: string;
   deliverables?: string[];
   overview?: string;
@@ -79,7 +82,10 @@ export const portfolioData: PortfolioDataType = {
       description: "Mindful relationship wellness app designed around nurturing bonds through daily affirmations, shared streaks, and gamified growth.",
       tags: ["Mobile UX", "Gamification", "Design Systems", "iOS Design"],
       image: "/images/projects/tiny-bits-of-love.png",
-      link: "#",
+      link: "/work/tiny-bits-of-love",
+      website: "https://tinybits.app/",
+      appStore: "https://apps.apple.com/us/app/tiny-bits-of-love/id6757837595",
+      playStore: "https://play.google.com/store/apps/details?id=com.tinybits",
       metrics: "Daily active streak retention increased by 42% with interactive leaf affirmation loops.",
       deliverables: ["Mobile UI/UX", "Gamified Systems", "Design System", "Interactive Prototype"],
       overview: "A mindful relationship wellness app designed to help couples and close friends stay connected. Features gamified connection trees, interactive leaf affirmations, daily check-in streaks, and custom micro-interactions.",

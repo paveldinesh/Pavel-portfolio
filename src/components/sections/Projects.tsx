@@ -16,6 +16,11 @@ export default function Projects() {
       tags: ["Mobile App", "UI/UX", "Gamification", "Design System"],
       image: "/images/projects/tiny-bits-of-love.png",
       link: "/work/tiny-bits-of-love",
+      liveLinks: {
+        website: "https://tinybits.app/",
+        appStore: "https://apps.apple.com/us/app/tiny-bits-of-love/id6757837595",
+        playStore: "https://play.google.com/store/apps/details?id=com.tinybits",
+      },
     },
     {
       num: "02",
@@ -102,8 +107,8 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              {proj.link && proj.link !== "#" && (
-                <div className="mt-2">
+              <div className="mt-2 flex items-center gap-3.5 flex-wrap">
+                {proj.link && proj.link !== "#" && (
                   <Link
                     href={proj.link}
                     className="font-mono text-[16px] text-[#F14417] hover:underline inline-flex items-center gap-1.5"
@@ -111,8 +116,37 @@ export default function Projects() {
                     <span>View case study</span>
                     <span>→</span>
                   </Link>
-                </div>
-              )}
+                )}
+                {"liveLinks" in proj && proj.liveLinks && (
+                  <div className="flex items-center gap-3">
+                    <span className="text-white/20 select-none">/</span>
+                    <a
+                      href={proj.liveLinks.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-[14px] text-[#A09D95] hover:text-[#F14417] transition-colors"
+                    >
+                      Website ↗
+                    </a>
+                    <a
+                      href={proj.liveLinks.appStore}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-[14px] text-[#A09D95] hover:text-[#F14417] transition-colors"
+                    >
+                      App Store ↗
+                    </a>
+                    <a
+                      href={proj.liveLinks.playStore}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-[14px] text-[#A09D95] hover:text-[#F14417] transition-colors"
+                    >
+                      Play Store ↗
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Media Tile */}
