@@ -16,19 +16,14 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
  * Use dummy patient data in every screenshot.
  */
 const IMG = {
-  hero: "/images/projects/descartes/hero-or-mockup.jpg",
+  hero: "/images/projects/descartes/hero.png",
   dashboard: "/images/projects/descartes/dashboard.png",
   liveMonitor: "/images/projects/descartes/live-monitor.png",
   createProcedure: "/images/projects/descartes/create-procedure.png",
-  workflows: "/images/projects/descartes/workflow-library.png",
+  workflows: "/images/projects/descartes/workflows.png",
   insightsPredictive: "/images/projects/descartes/insights-predictive.png",
   insightsComparative: "/images/projects/descartes/insights-comparative.png",
-  designSystem: "/images/projects/descartes/brand-logo.png",
-  brandLogo: "/images/projects/descartes/brand-logo.png",
-  duoMonitors: "/images/projects/descartes/duo-monitors.png",
-  trioMonitors: "/images/projects/descartes/trio-monitors.png",
-  proceduresCalendar: "/images/projects/descartes/procedures-calendar.png",
-  proceduresMain: "/images/projects/descartes/procedures-main.png",
+  designSystem: "/images/projects/descartes/design-system.png",
 };
 
 /** Desktop-style screen frame with graceful fallback when the image isn't added yet. */
@@ -36,17 +31,22 @@ function Screen({
   src,
   alt,
   caption,
-  ratio = "aspect-[16/10]",
+  ratio = "aspect-[16/9]",
   priority = false,
+  hideIfMissing = false,
 }: {
   src: string;
   alt: string;
   caption?: string;
   ratio?: string;
   priority?: boolean;
+  /** Render nothing (instead of a placeholder) until the image file exists. */
+  hideIfMissing?: boolean;
 }) {
   const [missing, setMissing] = useState(false);
   const fileName = src.split("/").pop();
+
+  if (missing && hideIfMissing) return null;
 
   return (
     <div className="w-full flex flex-col gap-4">
@@ -180,19 +180,14 @@ export default function DescartesCaseStudy() {
           ))}
         </motion.div>
 
-        <motion.div
-          {...fadeIn}
-          className="mt-12 relative w-full h-[320px] sm:h-[440px] md:h-[546px] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
-        >
-          <Image
+        <motion.div {...fadeIn} className="mt-12">
+          <Screen
             src={IMG.hero}
-            alt="Descartes operating room multi-device platform overview"
-            fill
+            alt="Descartes dashboard and Live Monitor screens"
+            caption="Descartes: the dashboard overview and the Live Monitor"
+            ratio="aspect-[16/9]"
             priority
-            sizes="(max-width: 1260px) 100vw, 1260px"
-            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
         </motion.div>
       </section>
 
@@ -484,7 +479,7 @@ export default function DescartesCaseStudy() {
               Open on the day, not on a menu
             </h3>
             <p className="text-[#A09D95] text-lg leading-relaxed">
-              The dashboard answers one question quickly: what is ahead, what is active, and what needs attention. It combines four KPI cards, a compact live procedure view, today&apos;s and recent procedures, and an AI snapshot. When a case is active, a strong Open Live Monitor action takes over.
+              The dashboard answers one question quickly: what is ahead, what is active, and what needs attention. A Weekly Overview of four KPIs sits on top, followed by a compact Live Procedure Monitor, today&apos;s and recent procedures, and an AI snapshot. When a case is active, the green Live Active Monitor button in the header and an Open Live Monitor action make it one tap away.
             </p>
           </motion.div>
 
@@ -492,12 +487,12 @@ export default function DescartesCaseStudy() {
             <Screen
               src={IMG.dashboard}
               alt="Descartes dashboard"
-              caption="Fig 02 — Surgical overview: KPIs, live procedure, today's cases and AI snapshot"
+              caption="Dashboard: weekly overview, live procedure, today's cases and AI snapshot"
             />
           </motion.div>
 
           <motion.div {...fadeIn} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {["Upcoming procedures", "Active alerts", "Average case duration", "Workflow compliance %"].map((k) => (
+            {["Upcoming procedures", "Active alerts", "Average procedure time", "Workflow compliance %"].map((k) => (
               <div key={k} className="p-4 rounded-lg bg-[#121211] border border-white/[0.08]">
                 <span className="font-mono text-xs text-[#7A7873] block mb-1">KPI</span>
                 <span className="text-[#F5F4F1] text-[16px] font-medium">{k}</span>
@@ -524,38 +519,24 @@ export default function DescartesCaseStudy() {
               Make the current step the hero, and everything else supporting
             </h3>
             <p className="text-[#A09D95] text-lg leading-relaxed">
-              This is the most critical screen in the product. It shows the procedure, patient, surgeon and OR, elapsed time and progress, the phase list (completed, current, upcoming), voice status and Periscope predictions. The current critical step sits at the centre, and any alerts appear inside the step they relate to.
+              This is the most critical screen in the product. It shows the procedure, patient, surgeon and OR, elapsed time and progress, the phase list (completed, current, upcoming), voice status and Periscope predictions. The current critical step sits at the centre, highlighted against the completed and upcoming steps around it, and active alerts get their own red-bordered panel so they can&apos;t be missed.
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="flex flex-col gap-6">
+          <motion.div {...fadeIn}>
             <Screen
               src={IMG.liveMonitor}
               alt="Descartes Live Monitor"
-              caption="Fig 03 — Live Monitor: current critical step, phases, voice status and Periscope"
+              caption="Live Monitor: phases, current critical step, voice control, Periscope predictions and active alerts"
             />
-
-            <div className="mt-4 rounded-xl p-6 sm:p-10 bg-[#121211] border border-white/[0.08] flex flex-col items-center justify-center">
-              <div className="relative w-full aspect-[16/9] max-w-[860px]">
-                <Image
-                  src={IMG.duoMonitors}
-                  alt="Descartes Live Monitor and Dashboard side-by-side monitors"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-mono text-xs text-[#7A7873] mt-4 text-center">
-                Multi-station setup: Telemetry Live Monitor (dark mode for OR) paired with the Operational Dashboard
-              </span>
-            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <motion.div {...fadeIn} className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]">
               <span className="font-mono text-xs text-[#F14417] block mb-2">VOICE</span>
-              <h4 className="font-display font-bold text-xl text-[#F5F4F1] mb-2">Say &ldquo;Hey Descartes&rdquo;</h4>
+              <h4 className="font-display font-bold text-xl text-[#F5F4F1] mb-2">Hands-free by default</h4>
               <p className="text-[#A09D95] text-[15px] leading-relaxed mb-4">
-                Complete, Pause, Resume, Remove and Add Voice Note. Every action asks for confirmation before it executes, and voice notes are transcribed into the procedure record.
+                A wake phrase starts listening. Commands cover Complete, Pause, Resume, Remove and Add Voice Note, and every action asks for confirmation before it executes. Voice notes are transcribed into the procedure record.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Ready", "Listening", "Processing", "Completed", "Not understood"].map((s) => (
@@ -585,7 +566,7 @@ export default function DescartesCaseStudy() {
 
           <motion.div {...fadeIn}>
             <DecisionNote
-              decision="Use a dark, high-contrast layout with large type, voice as the primary input, and view-only access for Master Accounts."
+              decision="Use a dark, high-contrast layout with large type, voice as the primary input and manual controls (Complete Step, Pause Monitoring, Add Voice Note, Flag Issue) as a backup row, with view-only access for Master Accounts."
               why="The OR is dimly lit, hands are busy and attention belongs on the patient. Glanceability and confirmation matter more than density, and observers must never be able to affect a live case."
               tradeoff="Strict gating adds friction. An explicit, confirmed Remove action keeps the surgeon in control when a step genuinely doesn't apply."
             />
@@ -606,18 +587,18 @@ export default function DescartesCaseStudy() {
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <motion.div {...fadeIn} className="flex flex-col gap-10">
             <Screen
               src={IMG.workflows}
-              alt="Workflow library and editor"
-              caption="Fig 04 — Workflow library and editor"
-              ratio="aspect-[4/3]"
+              alt="Workflow library"
+              caption="Workflow library: reusable templates with status, procedure type and quick actions"
+              ratio="aspect-[1920/1123]"
             />
             <Screen
               src={IMG.createProcedure}
               alt="Create procedure multi-step flow"
-              caption="Fig 05 — Create procedure, step by step"
-              ratio="aspect-[4/3]"
+              caption="Create procedure, step by step"
+              hideIfMissing
             />
           </motion.div>
 
@@ -650,33 +631,38 @@ export default function DescartesCaseStudy() {
           <motion.div {...fadeIn} className="flex flex-col gap-4 max-w-[62ch]">
             <span className="font-mono text-sm text-[#F14417]">DECISION 04 • INSIGHTS & AI</span>
             <h3 className="font-display font-bold text-2xl sm:text-4xl tracking-tight text-[#F5F4F1]">
-              Show the analysis, and stay clear of the recommendation
+              Never show a prediction without something to compare it to
             </h3>
             <p className="text-[#A09D95] text-lg leading-relaxed">
-              Before a case, predictive analytics shows expected procedure time, length of stay, complication rate and 30-day outcome, benchmarked against the hospital average and the top 5%. After cases, comparative analytics surfaces best and worst outcomes, rankings, sources of delay and performance over time. During a case, Periscope updates predicted remaining time and risk as the workflow progresses.
+              Before a case, the surgeon enters the planned procedure and patient context (age, diagnosis, co-morbidities, medications) and generates predictions for procedure time, complication rate, length of stay and 30-day readmission. Each figure is set against the top 5%, the hospital average and the national figure, followed by improvement opportunities ranked by expected impact. After cases, comparative analytics surfaces best and worst outcomes, rankings, sources of delay and performance over time. During a case, Periscope updates predicted remaining time and risk as the workflow progresses.
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Screen
-              src={IMG.insightsPredictive}
-              alt="Pre-operative predictive analytics"
-              caption="Fig 06 — Pre-operative insights and benchmark comparison"
-              ratio="aspect-[4/3]"
-            />
-            <Screen
-              src={IMG.insightsComparative}
-              alt="Post-operative comparative analytics"
-              caption="Fig 07 — Post-operative comparative analytics"
-              ratio="aspect-[4/3]"
-            />
+          <motion.div {...fadeIn} className="flex flex-col gap-10">
+            <div className="w-full max-w-[1000px] mx-auto">
+              <Screen
+                src={IMG.insightsPredictive}
+                alt="Pre-operative predictive analytics"
+                caption="Pre-operative insights: configuration, benchmark comparison and ranked opportunities"
+                ratio="aspect-[1920/1720]"
+              />
+            </div>
+            <div className="w-full max-w-[1000px] mx-auto">
+              <Screen
+                src={IMG.insightsComparative}
+                alt="Post-operative comparative analytics"
+                caption="Post-operative comparative analytics"
+                ratio="aspect-[1920/1720]"
+                hideIfMissing
+              />
+            </div>
           </motion.div>
 
           <motion.div {...fadeIn}>
             <DecisionNote
-              decision="Present analytical results only. No instructions to change a procedure, treatment or team. Show 'Insufficient Data' when history is too thin."
-              why="Predictions are only useful if clinicians can trust their limits, and the platform's role is to inform preparation, not to decide."
-              tradeoff="Less prescriptive than a recommendation engine. That is intentional, because it keeps responsibility with the clinical team."
+              decision="Pair every predicted figure with benchmarks, and rank improvement opportunities by expected impact."
+              why="A single number is hard to judge on its own. Comparing against the top 5%, the hospital and the national figure gives the surgical team context to prepare with."
+              tradeoff="Ranked opportunities sit close to clinical advice, so their wording needs the most care. The platform's role is to inform the team's planning, not to decide for them."
             />
           </motion.div>
         </div>
@@ -749,8 +735,9 @@ export default function DescartesCaseStudy() {
             <Screen
               src={IMG.designSystem}
               alt="Descartes design system components"
-              caption="Fig 08 — Component library and tokens"
+              caption="Component library and tokens"
               ratio="aspect-[16/9]"
+              hideIfMissing
             />
           </motion.div>
         </div>
@@ -841,24 +828,6 @@ export default function DescartesCaseStudy() {
         >
           &ldquo;Descartes does not direct the surgery. It supports the planned workflow, quietly and consistently, from preparation to completion.&rdquo;
         </motion.blockquote>
-
-        {/* Full Width Hardware Ecosystem Showcase */}
-        <motion.div
-          {...fadeIn}
-          className="mt-16 w-full rounded-2xl overflow-hidden border border-white/[0.08] bg-[#121211] p-6 sm:p-12 flex flex-col items-center justify-center shadow-2xl"
-        >
-          <div className="relative w-full aspect-[16/9] max-w-[980px]">
-            <Image
-              src={IMG.trioMonitors}
-              alt="Descartes platform ecosystem across multi-monitor setup"
-              fill
-              className="object-contain"
-            />
-          </div>
-          <span className="font-mono text-xs text-[#7A7873] mt-6 text-center">
-            Ecosystem Overview — Multi-station synchronization across surgical prep, intra-operative monitoring and recovery
-          </span>
-        </motion.div>
       </section>
 
       {/* ========================================================= */}
