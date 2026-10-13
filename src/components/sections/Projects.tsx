@@ -45,12 +45,13 @@ export default function Projects() {
     {
       num: "04",
       title: "Descartes Dashboard",
-      category: "Internal Dashboard",
+      category: "Internal Dashboard • Surgical AI",
       year: "2026",
       description:
-        "End-to-end dashboard redesign balancing usability and information hierarchy, delivered alongside developers for a production-ready handoff.",
-      tags: ["Dashboard", "UI Design", "Handoff"],
-      link: "#",
+        "End-to-end surgical activity dashboard, procedural workflows, and AI predictive analytics platform designed for clinical efficiency and real-time OR insights.",
+      tags: ["Dashboard", "Surgical AI", "Complex Data", "Design System"],
+      image: "/images/projects/descartes.png",
+      link: "/work/descartes",
     },
   ];
 

@@ -915,7 +915,7 @@ export default function TinyBitsOfLoveCaseStudy() {
       <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
           <Link
-            href="/#work"
+            href="/work/descartes"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
