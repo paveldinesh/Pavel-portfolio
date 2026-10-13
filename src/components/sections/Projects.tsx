@@ -14,7 +14,7 @@ export default function Projects() {
       description:
         "Mindful relationship wellness app designed around nurturing bonds through daily affirmations, shared streaks, and gamified growth.",
       tags: ["Mobile App", "UI/UX", "Gamification", "Design System"],
-      image: "/images/projects/tiny-bits-of-love.jpg",
+      image: "/images/projects/tiny-bits-of-love.png",
       link: "/work/tiny-bits-of-love",
     },
     {

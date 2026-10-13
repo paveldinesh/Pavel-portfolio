@@ -78,7 +78,7 @@ export const portfolioData: PortfolioDataType = {
       year: "2026",
       description: "Mindful relationship wellness app designed around nurturing bonds through daily affirmations, shared streaks, and gamified growth.",
       tags: ["Mobile UX", "Gamification", "Design Systems", "iOS Design"],
-      image: "/images/projects/tiny-bits-of-love.jpg",
+      image: "/images/projects/tiny-bits-of-love.png",
       link: "#",
       metrics: "Daily active streak retention increased by 42% with interactive leaf affirmation loops.",
       deliverables: ["Mobile UI/UX", "Gamified Systems", "Design System", "Interactive Prototype"],
