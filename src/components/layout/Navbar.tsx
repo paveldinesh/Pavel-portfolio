@@ -7,15 +7,15 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
-    { name: "Home", href: "#top" },
-    { name: "About", href: "#about", mark: "*" },
-    { name: "Works", href: "#work", mark: "2" },
+    { name: "Home", href: "/#top" },
+    { name: "About", href: "/#about", mark: "*" },
+    { name: "Works", href: "/#work", mark: "2" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 py-6 backdrop-blur-md bg-[#0B0B0A]/80 border-b border-transparent">
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 py-6 backdrop-blur-md bg-[#0B0B0A]/80 border-b border-white/[0.04]">
       {/* Custom Vector SVG Logo */}
-      <a href="#top" className="flex items-center group" aria-label="Home">
+      <a href="/#top" className="flex items-center group" aria-label="Home">
         <svg
           className="h-8 sm:h-9 w-auto text-[#F5F4F1] hover:opacity-80 transition-opacity"
           viewBox="0 0 459 161"
@@ -60,7 +60,7 @@ export default function Navbar() {
       {/* Right side link */}
       <div className="flex items-center gap-4">
         <a
-          href="#contact"
+          href="/#contact"
           className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-medium"
         >
           Let&apos;s talk <span className="text-[#F14417]">↗</span>
@@ -111,7 +111,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/#contact"
               onClick={() => setMobileOpen(false)}
               className="text-2xl font-display font-medium text-[#F14417] mt-2"
             >

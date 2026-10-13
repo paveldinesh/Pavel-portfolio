@@ -1,18 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Projects() {
   const projects = [
     {
       num: "01",
-      title: "Cozicadamy",
-      category: "EdTech Platform",
+      title: "Tiny bits of love",
+      category: "Mobile App • Wellness",
       year: "2026",
       description:
-        "Responsive web platform design covering user flows, high-fidelity UI and a component system built for fast iteration between design and development.",
-      tags: ["Web App", "Design System", "UI/UX"],
-      link: "#",
+        "Mindful relationship wellness app designed around nurturing bonds through daily affirmations, shared streaks, and gamified growth.",
+      tags: ["Mobile App", "UI/UX", "Gamification", "Design System"],
+      image: "/images/projects/tiny-bits-of-love.jpg",
+      link: "/work/tiny-bits-of-love",
     },
     {
       num: "02",
@@ -74,9 +77,18 @@ export default function Projects() {
 
             <div className="flex flex-col gap-3">
               <span className="font-mono text-[18px] text-[#F14417] font-medium">{proj.category}</span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover:text-[#F14417] transition-colors">
-                {proj.title}
-              </h3>
+              {proj.link && proj.link !== "#" ? (
+                <Link href={proj.link} className="inline-flex items-baseline gap-2 group/title">
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover:text-[#F14417] transition-colors">
+                    {proj.title}
+                  </h3>
+                  <span className="text-[#F14417] text-xl opacity-0 group-hover/title:opacity-100 transition-opacity">↗</span>
+                </Link>
+              ) : (
+                <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover:text-[#F14417] transition-colors">
+                  {proj.title}
+                </h3>
+              )}
               <p className="text-[#A09D95] text-[18px] leading-relaxed max-w-[46ch]">
                 {proj.description}
               </p>
@@ -90,19 +102,82 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
+              {proj.link && proj.link !== "#" && (
+                <div className="mt-2">
+                  <Link
+                    href={proj.link}
+                    className="font-mono text-[16px] text-[#F14417] hover:underline inline-flex items-center gap-1.5"
+                  >
+                    <span>View case study</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              )}
             </div>
 
-            {/* Media Placeholder Tile */}
-            <div className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center p-6 text-center group-hover:border-[#F14417]/40 transition-colors">
-              <span className="absolute top-4 right-4 font-mono text-[18px] text-[#F14417] bg-[#0B0B0A]/85 px-3 py-1 rounded-full border border-white/10">
-                {proj.year}
-              </span>
-              <span className="font-display font-bold text-7xl text-white/[0.06] group-hover:text-[#F14417]/20 transition-colors leading-none select-none">
-                {proj.num}
-              </span>
-              <span className="font-mono text-[18px] text-[#A09D95] mt-2">
-                {proj.title}
-              </span>
+            {/* Media Tile */}
+            <div className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center group-hover:border-[#F14417]/40 transition-colors">
+              {proj.link && proj.link !== "#" ? (
+                <Link href={proj.link} className="w-full h-full block relative" aria-label={`View ${proj.title} case study`}>
+                  {"image" in proj && proj.image ? (
+                    <div className="relative w-full h-full overflow-hidden">
+                      <Image
+                        src={proj.image}
+                        alt={proj.title}
+                        fill
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+                      <span className="absolute top-4 right-4 font-mono text-[14px] text-[#F14417] bg-[#0B0B0A]/85 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 z-10">
+                        {proj.year}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center p-6 text-center w-full h-full">
+                      <span className="absolute top-4 right-4 font-mono text-[18px] text-[#F14417] bg-[#0B0B0A]/85 px-3 py-1 rounded-full border border-white/10">
+                        {proj.year}
+                      </span>
+                      <span className="font-display font-bold text-7xl text-white/[0.06] group-hover:text-[#F14417]/20 transition-colors leading-none select-none">
+                        {proj.num}
+                      </span>
+                      <span className="font-mono text-[18px] text-[#A09D95] mt-2">
+                        {proj.title}
+                      </span>
+                    </div>
+                  )}
+                </Link>
+              ) : (
+                <>
+                  {"image" in proj && proj.image ? (
+                    <div className="relative w-full h-full overflow-hidden">
+                      <Image
+                        src={proj.image}
+                        alt={proj.title}
+                        fill
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+                      <span className="absolute top-4 right-4 font-mono text-[14px] text-[#F14417] bg-[#0B0B0A]/85 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 z-10">
+                        {proj.year}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center p-6 text-center w-full h-full">
+                      <span className="absolute top-4 right-4 font-mono text-[18px] text-[#F14417] bg-[#0B0B0A]/85 px-3 py-1 rounded-full border border-white/10">
+                        {proj.year}
+                      </span>
+                      <span className="font-display font-bold text-7xl text-white/[0.06] group-hover:text-[#F14417]/20 transition-colors leading-none select-none">
+                        {proj.num}
+                      </span>
+                      <span className="font-mono text-[18px] text-[#A09D95] mt-2">
+                        {proj.title}
+                      </span>
+                    </div>
+                  )}
+                </>
+              )}
             </div>
           </motion.div>
         ))}
