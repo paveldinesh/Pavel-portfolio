@@ -689,6 +689,35 @@ export default function TinyBitsOfLoveCaseStudy() {
               </div>
             </motion.div>
           </div>
+
+          {/* 3D Duo Mockup Spotlight */}
+          <motion.div
+            {...fadeIn}
+            className="rounded-xl bg-[#121211] border border-white/[0.08] p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 mt-4 overflow-hidden"
+          >
+            <div className="flex flex-col gap-4 max-w-[500px]">
+              <span className="font-mono text-sm text-[#F14417]">BRAND IDENTITY IN SITU</span>
+              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+                Unified Identity from Splash to Canopy
+              </h3>
+              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+                From the moment of initial launch, the visual system establishes a gentle, grounding tone. The heart-leaf emblem and warm cream splash screen flow seamlessly into the living canopy, welcoming users without sensory overload.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-[#7A7873] pt-2">
+                <span>Splash Screen Persona</span> • <span>Living Canopy</span> • <span>Cohesive Metaphors</span>
+              </div>
+            </div>
+
+            <div className="relative w-full max-w-[320px] sm:max-w-[340px] aspect-[597/843] shrink-0 drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)]">
+              <Image
+                src="/images/projects/tiny-bits/duo-mockup.png"
+                alt="Tiny Bits of Love 3D Duo Mockup showing brand splash screen and living canopy"
+                fill
+                sizes="(max-width: 768px) 100vw, 360px"
+                className="object-contain"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -730,7 +759,7 @@ export default function TinyBitsOfLoveCaseStudy() {
       {/* 12. SUPPORTING PRODUCT ECOSYSTEM */}
       {/* ========================================================= */}
       <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <motion.div {...fadeIn} className="flex flex-col gap-3 mb-12">
+        <motion.div {...fadeIn} className="flex flex-col gap-3 mb-10">
           <span className="font-mono text-[18px] text-[#F14417]">/ecosystem</span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[#F5F4F1]">
             Extending Beyond The Smartphone Viewport
@@ -738,6 +767,20 @@ export default function TinyBitsOfLoveCaseStudy() {
           <p className="text-[#A09D95] text-lg max-w-[45ch]">
             The visual vernacular scales coherently into editorial touchpoints, guidance materials, and brand storytelling.
           </p>
+        </motion.div>
+
+        {/* Brand Campaign Landscape Artwork */}
+        <motion.div
+          {...fadeIn}
+          className="w-full relative aspect-[1024/500] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl mb-12"
+        >
+          <Image
+            src="/images/projects/tiny-bits/brand-banner.png"
+            alt="Tiny Bits of Love - Grow your Love, One tiny leaf at a time campaign banner"
+            fill
+            sizes="(max-width: 1260px) 100vw, 1260px"
+            className="object-contain sm:object-cover object-center"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
