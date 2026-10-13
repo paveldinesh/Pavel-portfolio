@@ -22,7 +22,7 @@ const IMG = {
   createProcedure: "/images/projects/descartes/create-procedure.png",
   workflows: "/images/projects/descartes/workflow-library.png",
   insightsPredictive: "/images/projects/descartes/insights-predictive.png",
-  insightsComparative: "/images/projects/descartes/insights-ai.png",
+  insightsComparative: "/images/projects/descartes/insights-comparative.png",
   designSystem: "/images/projects/descartes/brand-logo.png",
   brandLogo: "/images/projects/descartes/brand-logo.png",
   duoMonitors: "/images/projects/descartes/duo-monitors.png",
