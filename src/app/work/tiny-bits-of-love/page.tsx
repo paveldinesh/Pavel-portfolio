@@ -32,31 +32,32 @@ function DeviceMockup({
 }) {
   return (
     <div className={`flex flex-col items-center justify-center w-full ${className}`}>
-      {/* Outer Phone Frame */}
+      {/* Outer Phone Shell - Precision Bezel & Chamfer */}
       <div
-        className={`relative w-full ${maxWidth} aspect-[9/19.2] rounded-[48px] sm:rounded-[54px] p-[10px] sm:p-[12px] bg-gradient-to-b from-[#2e2e34] via-[#1a1a1d] to-[#121214] ring-1 ring-white/15 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.06),0_0_40px_rgba(241,68,23,0.06)] transition-transform duration-500 hover:scale-[1.01]`}
+        className={`relative w-full ${maxWidth} rounded-[46px] p-[8px] sm:p-[10px] bg-gradient-to-b from-[#383840] via-[#1e1e22] to-[#131315] ring-1 ring-white/20 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.08),0_0_50px_rgba(241,68,23,0.06)]`}
       >
-        {/* Hardware buttons on chassis */}
-        <div className="absolute -left-[3px] top-24 w-[3px] h-8 bg-[#3e3e44] rounded-l" />
-        <div className="absolute -left-[3px] top-36 w-[3px] h-8 bg-[#3e3e44] rounded-l" />
-        <div className="absolute -right-[3px] top-28 w-[3px] h-12 bg-[#3e3e44] rounded-r" />
+        {/* Hardware side buttons */}
+        <div className="absolute -left-[3px] top-24 w-[3px] h-8 bg-[#44444c] rounded-l" />
+        <div className="absolute -left-[3px] top-36 w-[3px] h-8 bg-[#44444c] rounded-l" />
+        <div className="absolute -right-[3px] top-28 w-[3px] h-12 bg-[#44444c] rounded-r" />
 
-        {/* Inner Phone Screen Frame */}
-        <div className="relative w-full h-full rounded-[38px] sm:rounded-[44px] overflow-hidden bg-black ring-1 ring-white/10 shadow-inner">
+        {/* Inner Phone Screen Frame - Exact 393/852 iPhone Aspect Ratio, Zero Cutoff */}
+        <div className="relative w-full aspect-[393/852] rounded-[32px] overflow-hidden bg-[#0A0A0A] ring-1 ring-white/10 shadow-inner flex items-center justify-center">
           <Image
             src={src}
             alt={alt}
             fill
             sizes="(max-width: 768px) 100vw, 420px"
-            className="object-cover object-top"
+            className="object-contain object-center"
+            priority={false}
           />
-          {/* Subtle Glass Sheen */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none z-10" />
+          {/* Subtle Screen Bevel Glass Sheen */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.025] to-transparent pointer-events-none z-10" />
         </div>
       </div>
 
       {caption && (
-        <span className="font-mono text-sm text-[#7A7873] mt-5 text-center max-w-[40ch]">
+        <span className="font-mono text-sm text-[#7A7873] mt-5 text-center max-w-[42ch]">
           {caption}
         </span>
       )}
