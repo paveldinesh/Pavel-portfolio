@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
-import { ArrowLeft, ArrowRight, Heart } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Globe, Heart } from "lucide-react";
 
 function DeviceMockup({
   src,
@@ -145,13 +145,59 @@ export default function TinyBitsOfLoveCaseStudy() {
             { k: "Role", v: "UI/UX Designer" },
             { k: "Scope", v: "Concept, UX, UI, brand identity" },
             { k: "Platform", v: "Mobile app (iOS & Android)" },
-            { k: "Status", v: "2026 • Product concept with prototype" },
+            { k: "Status", v: "Live on App Store & Play Store" },
           ].map((m) => (
             <div key={m.k}>
               <span className="font-mono text-sm text-[#7A7873] block mb-1">{m.k}</span>
-              <span className="text-[18px] text-[#F5F4F1] font-medium">{m.v}</span>
+              <span className={`text-[18px] font-medium ${m.k === "Status" ? "text-[#34d399] flex items-center gap-1.5" : "text-[#F5F4F1]"}`}>
+                {m.k === "Status" && <span className="w-2 h-2 rounded-full bg-[#34d399] animate-pulse inline-block" />}
+                {m.v}
+              </span>
             </div>
           ))}
+        </motion.div>
+
+        {/* Live Links Action Bar */}
+        <motion.div
+          {...fadeIn}
+          className="flex flex-wrap items-center gap-3 pt-6"
+        >
+          <a
+            href="https://apps.apple.com/us/app/tiny-bits-of-love/id6757837595"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-[#F5F4F1] border border-white/10 hover:border-white/25 text-[15px] font-medium transition-all group backdrop-blur-sm"
+          >
+            <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.42c.67-.82 1.13-1.96 1.01-3.1-.97.04-2.15.65-2.85 1.46-.61.71-1.15 1.87-1.01 2.98 1.09.08 2.19-.53 2.85-1.34z"/>
+            </svg>
+            <span>App Store</span>
+            <ArrowUpRight className="w-4 h-4 text-[#A09D95] group-hover:text-white transition-colors" />
+          </a>
+
+          <a
+            href="https://play.google.com/store/apps/details?id=com.tinybits"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/[0.06] hover:bg-white/[0.12] text-[#F5F4F1] border border-white/10 hover:border-white/25 text-[15px] font-medium transition-all group backdrop-blur-sm"
+          >
+            <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+              <path d="M3.609 1.814L13.792 12 3.61 22.186a2.008 2.008 0 0 1-.61-.933V2.747c.18-.358.39-.68.61-.933zm11.242 11.245l2.452 2.452-11.83 6.84c-.31.18-.62.24-.9.21l10.278-9.502zm0-2.118L4.573 1.439c.28-.03.59.03.9.21l11.83 6.84-2.452 2.452zm1.488 1.059l3.524 2.037c.817.472.817 1.242 0 1.714l-3.524 2.037-2.355-2.355 2.355-3.433z"/>
+            </svg>
+            <span>Google Play</span>
+            <ArrowUpRight className="w-4 h-4 text-[#A09D95] group-hover:text-white transition-colors" />
+          </a>
+
+          <a
+            href="https://tinybits.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#F14417]/10 hover:bg-[#F14417]/20 text-[#F14417] border border-[#F14417]/30 hover:border-[#F14417]/60 text-[15px] font-medium transition-all group"
+          >
+            <Globe className="w-4 h-4 transition-transform group-hover:rotate-12" />
+            <span>tinybits.app</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
         </motion.div>
 
         <motion.div
@@ -809,6 +855,58 @@ export default function TinyBitsOfLoveCaseStudy() {
         >
           &ldquo;Tiny Bits of Love turns relationship maintenance from an invisible responsibility into a simple, visual and meaningful daily practice.&rdquo;
         </motion.blockquote>
+
+        {/* Download & Live Links CTA */}
+        <motion.div
+          {...fadeIn}
+          className="mt-16 w-full p-8 sm:p-12 rounded-2xl bg-[#121211] border border-white/[0.08] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 text-left"
+        >
+          <div>
+            <span className="font-mono text-[14px] text-[#F14417] tracking-wider block mb-2">/live-product</span>
+            <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-[#F5F4F1]">Experience Tiny Bits of Love</h3>
+            <p className="text-[#A09D95] text-[16px] sm:text-[18px] mt-2 max-w-[50ch] leading-relaxed">
+              Download the mobile app today on iOS and Android or visit the official website to explore daily mindful relationship care.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://apps.apple.com/us/app/tiny-bits-of-love/id6757837595"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-white/[0.08] hover:bg-white/[0.14] text-[#F5F4F1] border border-white/10 hover:border-white/30 text-[15px] font-medium transition-all group backdrop-blur-sm"
+            >
+              <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.42c.67-.82 1.13-1.96 1.01-3.1-.97.04-2.15.65-2.85 1.46-.61.71-1.15 1.87-1.01 2.98 1.09.08 2.19-.53 2.85-1.34z"/>
+              </svg>
+              <span>App Store</span>
+              <ArrowUpRight className="w-4 h-4 text-[#A09D95] group-hover:text-white transition-colors" />
+            </a>
+
+            <a
+              href="https://play.google.com/store/apps/details?id=com.tinybits"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-white/[0.08] hover:bg-white/[0.14] text-[#F5F4F1] border border-white/10 hover:border-white/30 text-[15px] font-medium transition-all group backdrop-blur-sm"
+            >
+              <svg className="w-4 h-4 fill-current transition-transform group-hover:scale-110" viewBox="0 0 24 24">
+                <path d="M3.609 1.814L13.792 12 3.61 22.186a2.008 2.008 0 0 1-.61-.933V2.747c.18-.358.39-.68.61-.933zm11.242 11.245l2.452 2.452-11.83 6.84c-.31.18-.62.24-.9.21l10.278-9.502zm0-2.118L4.573 1.439c.28-.03.59.03.9.21l11.83 6.84-2.452 2.452zm1.488 1.059l3.524 2.037c.817.472.817 1.242 0 1.714l-3.524 2.037-2.355-2.355 2.355-3.433z"/>
+              </svg>
+              <span>Google Play</span>
+              <ArrowUpRight className="w-4 h-4 text-[#A09D95] group-hover:text-white transition-colors" />
+            </a>
+
+            <a
+              href="https://tinybits.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-5 py-3 rounded-full bg-[#F14417] hover:bg-[#d63a12] text-white text-[15px] font-medium transition-all group shadow-lg shadow-[#F14417]/20"
+            >
+              <Globe className="w-4 h-4 transition-transform group-hover:rotate-12" />
+              <span>Visit tinybits.app</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+          </div>
+        </motion.div>
       </section>
 
       {/* ========================================================= */}
