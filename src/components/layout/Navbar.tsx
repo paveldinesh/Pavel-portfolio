@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 py-6 backdrop-blur-md bg-[#0B0B0A]/80 border-b border-white/[0.04]">
       {/* Custom Vector SVG Logo */}
-      <a href="/#top" className="flex items-center group" aria-label="Home">
+      <Link href="/#top" className="flex items-center group" aria-label="Home">
         <svg
           className="h-8 sm:h-9 w-auto text-[#F5F4F1] hover:opacity-80 transition-opacity"
           viewBox="0 0 459 161"
@@ -37,29 +38,29 @@ export default function Navbar() {
           <path d="M330.551 121.28C338.651 111.921 352.632 109.931 362.662 118.051C369.191 123.331 372.141 131.931 371.191 140.401L336.171 140.49C337.101 146.06 341.101 148.83 344.971 149.78C350.181 151.05 355.061 150.14 359.681 145.66V145.651C362.321 147.161 364.761 148.921 366.951 152.051C358.041 161.491 342.891 162.62 332.622 153.971C322.942 145.821 322.451 130.64 330.551 121.28ZM360.078 131.391C357.736 123.63 352.109 122.451 346.831 122.711C341.821 122.951 337.181 126.481 336.051 131.971L360.078 131.391C360.079 131.394 360.08 131.397 360.081 131.401V131.391H360.078Z" fill="currentColor"/>
           <path d="M368.522 38.2096C376.642 35.6796 384.962 37.1696 390.992 42.7496C396.442 47.7896 399.642 55.6802 397.882 64.0602L363.132 64.2496C363.892 69.6796 368.202 72.3798 371.662 73.3698C383.792 76.8295 386.583 63.9404 394.573 75.9303C386.963 83.1002 374.843 85.8693 364.613 80.8395C355.883 76.5495 351.762 67.1799 352.552 57.9899C353.342 48.8 359.502 41.0196 368.522 38.2096ZM387.342 55.61C385.712 48.2902 380.492 46.0299 374.792 46.3297C369.782 46.5897 365.122 50.0899 363.262 55.6598L387.342 55.61Z" fill="currentColor"/>
         </svg>
-      </a>
+      </Link>
 
       {/* Centered Navigation */}
       <nav className="hidden md:flex items-center gap-12 lg:gap-16 absolute left-1/2 -translate-x-1/2">
         {links.map((link) => (
-          <a
+          <Link
             key={link.name}
             href={link.href}
             className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-body font-normal"
           >
             {link.name}
-          </a>
+          </Link>
         ))}
       </nav>
 
       {/* Right side link */}
       <div className="flex items-center gap-4">
-        <a
+        <Link
           href="/#contact"
           className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-medium"
         >
           Let&apos;s talk <span className="text-[#F14417]">↗</span>
-        </a>
+        </Link>
 
         {/* Mobile toggle button */}
         <button
@@ -96,22 +97,22 @@ export default function Navbar() {
             className="md:hidden fixed inset-x-0 top-full bg-[#0B0B0A]/95 backdrop-blur-xl border-b border-white/[0.08] px-6 py-8 flex flex-col gap-6"
           >
             {links.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className="text-2xl font-display font-medium text-[#F5F4F1]"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <a
+            <Link
               href="/#contact"
               onClick={() => setMobileOpen(false)}
               className="text-2xl font-display font-medium text-[#F14417] mt-2"
             >
               Let&apos;s talk ↗
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
