@@ -31,6 +31,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: portfolioData.profile.name }],
   creator: portfolioData.profile.name,
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
