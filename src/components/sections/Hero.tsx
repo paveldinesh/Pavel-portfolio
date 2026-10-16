@@ -75,7 +75,7 @@ export default function Hero() {
   ];
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-0 w-full overflow-hidden bg-[#0B0B0A]">
+    <section id="top" ref={sectionRef} className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-0 w-full overflow-hidden bg-[#0B0B0A]">
       {/* Background Hero Image - Desktop / Tablet */}
       <div
         ref={bgRef}

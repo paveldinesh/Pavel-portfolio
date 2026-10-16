@@ -13,9 +13,24 @@ interface SmoothScrollProviderProps {
 
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   useEffect(() => {
+    // Ensure the browser does not restore previous scroll position on reload
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
     // Skip smooth scrolling for users who prefer reduced motion
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isReducedMotion) return;
+    if (isReducedMotion) {
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
+    }
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -29,6 +44,9 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
       anchors: true, // keeps /#work, /#about style links working smoothly
     });
 
+    // Reset Lenis scroll position to top immediately on load
+    lenis.scrollTo(0, { immediate: true });
+
     // Keep GSAP ScrollTrigger in sync with Lenis (prevents jitter)
     lenis.on("scroll", ScrollTrigger.update);
     const tick = (time: number) => lenis.raf(time * 1000);
@@ -36,6 +54,7 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
       gsap.ticker.remove(tick);
       lenis.destroy();
     };
