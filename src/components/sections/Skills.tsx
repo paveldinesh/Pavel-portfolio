@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function Skills() {
   const groups = [
@@ -66,7 +65,9 @@ export default function Skills() {
         <div className="flex items-baseline gap-4">
           <span className="font-mono text-[18px] text-[#F14417]">/toolkit</span>
           <div className="flex items-baseline">
-            <AnimatedTitle text="Skills & tools" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]" />
+            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
+              Skills & tools
+            </h2>
             <span className="font-mono text-[18px] text-[#F14417] ml-2">®</span>
           </div>
         </div>
@@ -89,7 +90,7 @@ export default function Skills() {
               {group.items.map((item) => (
                 <li
                   key={item}
-                  className="text-[18px] text-[#A09D95] hover:text-[#F5F4F1] hover:translate-x-1 transition-all"
+                  className="text-[18px] text-[#A09D95]"
                 >
                   {item}
                 </li>

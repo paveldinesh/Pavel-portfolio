@@ -1,14 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function Contact() {
   const socials = [
-    { name: "LinkedIn", url: "https://www.linkedin.com" },
-    { name: "Behance", url: "https://www.behance.net" },
-    { name: "Dribbble", url: "https://dribbble.com" },
-    { name: "GitHub", url: "https://github.com" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/pavel-dinesh-9a727b238" },
   ];
 
   return (
@@ -21,10 +17,9 @@ export default function Contact() {
         className="flex flex-col items-center gap-6"
       >
         <span className="font-mono text-[18px] text-[#F14417]">/contact</span>
-        <AnimatedTitle
-          text="Let’s build something worth shipping."
-          className="font-display font-bold text-4xl sm:text-6xl md:text-7xl tracking-[-0.04em] text-[#F5F4F1] max-w-[16ch] leading-[1.05]"
-        />
+        <h2 className="font-display font-bold text-4xl sm:text-6xl md:text-7xl tracking-[-0.04em] text-[#F5F4F1] max-w-[16ch] leading-[1.05]">
+          Let’s build something worth shipping.
+        </h2>
 
         <a
           href="mailto:paveldinesh111@gmail.com"

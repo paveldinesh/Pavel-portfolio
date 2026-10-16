@@ -95,8 +95,10 @@ export default function Hero() {
               <span className="block whitespace-nowrap text-right">I&apos;m Pavel Dinesh,</span>
             </div>
 
-            {/* Line 2: a Digital Product Designer */}
-            <span className="block whitespace-nowrap text-left">a Digital Product Designer</span>
+            {/* Line 2: a UI/UX Designer & Frontend UI Developer */}
+            <span className="block text-left">
+              a UI/UX Designer &amp; Frontend UI Developer
+            </span>
 
             {/* Line 3: based in India. */}
             <span className="block whitespace-nowrap text-left">based in India.</span>

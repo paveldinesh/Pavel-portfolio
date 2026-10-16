@@ -18,8 +18,10 @@ export default function Navbar() {
 
   const links = [
     { name: "Home", href: "/#top" },
-    { name: "About", href: "/#about" },
     { name: "Work", href: "/#work" },
+    { name: "About", href: "/#about" },
+    { name: "Experience", href: "/#experience" },
+    { name: "Skills", href: "/#skills" },
   ];
 
   return (

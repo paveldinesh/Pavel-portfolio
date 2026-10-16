@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function Experience() {
   const experiences = [
@@ -40,7 +39,9 @@ export default function Experience() {
         <div className="flex items-baseline gap-4">
           <span className="font-mono text-[18px] text-[#F14417]">/experience</span>
           <div className="flex items-baseline">
-            <AnimatedTitle text="Work history" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]" />
+            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
+              Work history
+            </h2>
             <span className="font-mono text-[18px] text-[#F14417] ml-2">#</span>
           </div>
         </div>
@@ -56,12 +57,12 @@ export default function Experience() {
             transition={{ duration: 0.5, delay: idx * 0.08 }}
             className="grid grid-cols-1 md:grid-cols-[80px_1fr] gap-6 md:gap-10 py-12 border-b border-white/[0.08] group"
           >
-            <span className="font-mono text-[18px] text-[#A09D95] group-hover:text-[#F14417] transition-colors">{exp.num}</span>
+            <span className="font-mono text-[18px] text-[#A09D95]">{exp.num}</span>
 
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap items-baseline justify-between gap-4">
                 <div>
-                  <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-[#F5F4F1] group-hover:text-[#F14417] transition-colors">
+                  <h3 className="font-display font-bold text-2xl sm:text-3xl tracking-tight text-[#F5F4F1]">
                     {exp.company}
                   </h3>
                   <span className="text-[18px] font-medium text-[#F5F4F1] mt-1 block">

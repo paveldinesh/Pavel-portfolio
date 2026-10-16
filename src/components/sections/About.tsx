@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function About() {
   const stats = [
@@ -16,9 +15,9 @@ export default function About() {
       detail: "Armia Systems, Stratagile and AppCake.",
     },
     {
-      value: "5",
-      label: "Concurrent projects",
-      detail: "Balanced at once across active client work.",
+      value: "2",
+      label: "Live websites shipped",
+      detail: "Retail Fulfilment Show and Prima Baguz.",
     },
   ];
 
@@ -35,7 +34,9 @@ export default function About() {
         >
           <span className="font-mono text-[18px] text-[#F14417]">/about</span>
           <div className="flex items-baseline mb-2">
-            <AnimatedTitle text="About" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]" />
+            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
+              About
+            </h2>
             <span className="font-mono text-[18px] text-[#F14417] ml-2">*</span>
           </div>
           <p className="text-[#A09D95] text-[18px] sm:text-[20px] leading-relaxed max-w-[50ch]">
@@ -54,7 +55,7 @@ export default function About() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="py-7 border-b border-white/[0.08] flex items-baseline gap-6 group"
             >
-              <span className="font-display font-bold text-4xl sm:text-5xl text-[#F5F4F1] group-hover:text-[#F14417] transition-colors tracking-tight min-w-[100px]">
+              <span className="font-display font-bold text-4xl sm:text-5xl text-[#F5F4F1] tracking-tight min-w-[100px]">
                 {stat.value}
               </span>
               <div className="flex flex-col gap-1.5">
