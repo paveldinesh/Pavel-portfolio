@@ -8,7 +8,7 @@ export default function Contact() {
   ];
 
   return (
-    <footer id="contact" className="pt-24 sm:pt-36 pb-12 px-6 sm:px-12 max-w-[1260px] mx-auto relative z-10 border-t border-white/[0.08] text-center">
+    <footer id="contact" className="pt-24 sm:pt-36 pb-12 px-6 sm:px-12 md:px-16 max-w-[1440px] mx-auto relative z-10 border-t border-white/[0.08] text-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

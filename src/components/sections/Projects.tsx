@@ -86,7 +86,7 @@ export default function Projects() {
   ];
 
   return (
-    <section id="work" className="py-24 sm:py-36 px-6 sm:px-12 max-w-[1260px] mx-auto relative z-10 border-t border-white/[0.08]">
+    <section id="work" className="py-24 sm:py-36 px-6 sm:px-12 md:px-16 max-w-[1440px] mx-auto relative z-10 border-t border-white/[0.08]">
       {/* Section Header */}
       <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
         <div className="flex items-baseline gap-4">

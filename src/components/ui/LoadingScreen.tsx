@@ -25,17 +25,17 @@ export default function LoadingScreen() {
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
-    // Slightly longer duration (500ms) with 0.2s crossfade so every script renders bright & clear
+    // Ultra-snappy pacing (160ms)
     const wordInterval = setInterval(() => {
       setIndex((prev) => {
         if (prev < loadingWords.length - 1) {
           return prev + 1;
         }
         clearInterval(wordInterval);
-        setTimeout(() => setIsComplete(true), 550);
+        setTimeout(() => setIsComplete(true), 200);
         return prev;
       });
-    }, 500);
+    }, 160);
 
     return () => {
       clearInterval(wordInterval);
@@ -65,7 +65,7 @@ export default function LoadingScreen() {
                 initial={{ y: 16, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -16, opacity: 0 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                transition={{ duration: 0.1, ease: "easeOut" }}
                 className="font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-[#FFFFFF] drop-shadow-[0_2px_12px_rgba(255,255,255,0.15)]"
                 style={{
                   fontFamily:
