@@ -14,11 +14,6 @@ export default function About() {
       label: "Companies",
       detail: "Armia Systems, Stratagile and AppCake.",
     },
-    {
-      value: "2",
-      label: "Live websites shipped",
-      detail: "Retail Fulfilment Show and Prima Baguz.",
-    },
   ];
 
   return (
