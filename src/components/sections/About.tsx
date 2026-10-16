@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function About() {
   const stats = [
@@ -33,9 +34,10 @@ export default function About() {
           className="flex flex-col gap-4"
         >
           <span className="font-mono text-[18px] text-[#F14417]">/about</span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1] mb-2">
-            About<span className="font-mono text-[18px] text-[#F14417] ml-2">*</span>
-          </h2>
+          <div className="flex items-baseline mb-2">
+            <AnimatedTitle text="About" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]" />
+            <span className="font-mono text-[18px] text-[#F14417] ml-2">*</span>
+          </div>
           <p className="text-[#A09D95] text-[18px] sm:text-[20px] leading-relaxed max-w-[50ch]">
             I&apos;m a UI/UX designer with 3+ years designing web, dashboard and mobile products for international clients — and a growing focus on shipping the frontend myself. My work usually starts before a single screen exists: moodboards, typography and brand direction that get stakeholders aligned early, so the high-fidelity design and build that follows has far less rework.
           </p>

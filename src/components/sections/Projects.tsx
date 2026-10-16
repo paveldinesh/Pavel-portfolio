@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
+import TiltCard from "@/components/ui/TiltCard";
+import RollText from "@/components/ui/RollText";
 
 export default function Projects() {
   const projects = [
@@ -61,9 +64,10 @@ export default function Projects() {
       <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
         <div className="flex items-baseline gap-4">
           <span className="font-mono text-[18px] text-[#F14417]">/work</span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
-            Selected work<span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
-          </h2>
+          <div className="flex items-baseline">
+            <AnimatedTitle text="Selected work" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]" />
+            <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
+          </div>
         </div>
         <span className="font-mono text-[18px] text-[#A09D95]">[ 04 projects ]</span>
       </div>
@@ -112,9 +116,9 @@ export default function Projects() {
                 {proj.link && proj.link !== "#" && (
                   <Link
                     href={proj.link}
-                    className="font-mono text-[16px] text-[#F14417] hover:underline inline-flex items-center gap-1.5"
+                    className="group/roll font-mono text-[16px] text-[#F14417] inline-flex items-center gap-1.5"
                   >
-                    <span>View case study</span>
+                    <RollText>View case study</RollText>
                     <span>→</span>
                   </Link>
                 )}
@@ -151,7 +155,7 @@ export default function Projects() {
             </div>
 
             {/* Media Tile */}
-            <div className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center group-hover:border-[#F14417]/40 transition-colors">
+            <TiltCard className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center group-hover:border-[#F14417]/40 transition-colors">
               {proj.link && proj.link !== "#" ? (
                 <Link href={proj.link} className="w-full h-full block relative" aria-label={`View ${proj.title} case study`}>
                   {"image" in proj && proj.image ? (
@@ -213,7 +217,7 @@ export default function Projects() {
                   )}
                 </>
               )}
-            </div>
+            </TiltCard>
           </motion.div>
         ))}
       </div>

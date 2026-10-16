@@ -1,8 +1,51 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import RollText from "@/components/ui/RollText";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+
+  // Scroll effect from the template: the hero image starts full-bleed and
+  // is cut into an angled, rounded shape as you scroll away from it.
+  useEffect(() => {
+    const section = sectionRef.current;
+    const bg = bgRef.current;
+    if (!section || !bg) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        bg,
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          borderRadius: "0 0 0 0",
+          yPercent: 0,
+        },
+        {
+          clipPath: "polygon(14% 0%, 86% 0%, 100% 88%, 0% 96%)",
+          borderRadius: "0 0 40% 10%",
+          yPercent: 8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   const items = [
     "UI/UX Design",
     "Design Systems",
@@ -23,10 +66,11 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-0 px-6 sm:px-12 md:px-16 w-full overflow-hidden bg-[#0B0B0A]">
+    <section ref={sectionRef} className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-0 px-6 sm:px-12 md:px-16 w-full overflow-hidden bg-[#0B0B0A]">
       {/* Background Hero Image (Shadows.png) */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center md:bg-[center_top_30%] bg-no-repeat opacity-90 pointer-events-none"
+        ref={bgRef}
+        className="absolute inset-0 z-0 bg-cover bg-center md:bg-[center_top_30%] bg-no-repeat opacity-90 pointer-events-none will-change-transform"
         style={{ backgroundImage: `url('/images/Shadows.png')` }}
       />
       {/* Subtle atmospheric vignette and gradient for text readability */}
@@ -81,9 +125,9 @@ export default function Hero() {
 
         <a
           href="#contact"
-          className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#F14417]/50 bg-[#F14417]/10 backdrop-blur-md text-[18px] font-mono tracking-wider text-[#F5F4F1] hover:border-[#F14417] hover:bg-[#F14417] hover:text-white transition-all shadow-[0_0_25px_rgba(241,68,23,0.25)]"
+          className="group/roll inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-[#F14417]/50 bg-[#F14417]/10 backdrop-blur-md text-[18px] font-mono tracking-wider text-[#F5F4F1] hover:border-[#F14417] hover:bg-[#F14417] hover:text-white transition-all shadow-[0_0_25px_rgba(241,68,23,0.25)]"
         >
-          <span>START THE PROJECT</span>
+          <RollText>START THE PROJECT</RollText>
           <span className="text-[18px]">↗</span>
         </a>
       </motion.div>

@@ -2,6 +2,10 @@
 
 import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
@@ -9,7 +13,7 @@ interface SmoothScrollProviderProps {
 
 export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   useEffect(() => {
-    // Only enable Lenis in browser and non-reduced-motion environments
+    // Skip smooth scrolling for users who prefer reduced motion
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isReducedMotion) return;
 
@@ -22,19 +26,17 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
       infinite: false,
+      anchors: true, // keeps /#work, /#about style links working smoothly
     });
 
-    let rafId: number;
-
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-
-    rafId = requestAnimationFrame(raf);
+    // Keep GSAP ScrollTrigger in sync with Lenis (prevents jitter)
+    lenis.on("scroll", ScrollTrigger.update);
+    const tick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(tick);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      gsap.ticker.remove(tick);
       lenis.destroy();
     };
   }, []);

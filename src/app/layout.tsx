@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { portfolioData } from "@/data/portfolioData";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -45,7 +48,11 @@ export default function RootLayout({
         className="bg-[#0B0B0A] text-[#F5F4F1] antialiased selection:bg-[#F5F4F1] selection:text-[#0B0B0A] min-h-screen relative font-body"
         suppressHydrationWarning
       >
-        <div className="relative z-10">{children}</div>
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          <CustomCursor />
+          <div className="relative z-10">{children}</div>
+        </SmoothScrollProvider>
       </body>
     </html>
   );

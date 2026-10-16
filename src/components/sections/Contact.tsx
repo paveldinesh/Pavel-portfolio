@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function Contact() {
   const socials = [
@@ -20,9 +21,10 @@ export default function Contact() {
         className="flex flex-col items-center gap-6"
       >
         <span className="font-mono text-[18px] text-[#F14417]">/contact</span>
-        <h2 className="font-display font-bold text-4xl sm:text-6xl md:text-7xl tracking-[-0.04em] text-[#F5F4F1] max-w-[16ch] leading-[1.05]">
-          Let&apos;s build something worth shipping.
-        </h2>
+        <AnimatedTitle
+          text="Let’s build something worth shipping."
+          className="font-display font-bold text-4xl sm:text-6xl md:text-7xl tracking-[-0.04em] text-[#F5F4F1] max-w-[16ch] leading-[1.05]"
+        />
 
         <a
           href="mailto:paveldinesh111@gmail.com"

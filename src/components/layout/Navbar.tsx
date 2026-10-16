@@ -1,11 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import RollText from "@/components/ui/RollText";
 import Link from "next/link";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  // Hide on scroll down, show on scroll up (never hide while the menu is open)
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    setHidden(latest > prev && latest > 120 && !mobileOpen);
+  });
 
   const links = [
     { name: "Home", href: "/#top" },
@@ -14,7 +23,10 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 py-6 backdrop-blur-md bg-[#0B0B0A]/80 border-b border-white/[0.04]">
+    <motion.header
+      animate={{ y: hidden ? "-100%" : "0%" }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-12 md:px-16 py-6 backdrop-blur-md bg-[#0B0B0A]/80 border-b border-white/[0.04]">
       {/* Custom Vector SVG Logo */}
       <Link href="/#top" className="flex items-center group" aria-label="Home">
         <svg
@@ -46,9 +58,9 @@ export default function Navbar() {
           <Link
             key={link.name}
             href={link.href}
-            className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-body font-normal"
+            className="group/roll text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-body font-normal"
           >
-            {link.name}
+            <RollText>{link.name}</RollText>
           </Link>
         ))}
       </nav>
@@ -57,9 +69,9 @@ export default function Navbar() {
       <div className="flex items-center gap-4">
         <Link
           href="/#contact"
-          className="text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-medium"
+          className="group/roll inline-flex items-center gap-1 text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors font-medium"
         >
-          Let&apos;s talk <span className="text-[#F14417]">↗</span>
+          <RollText>Let’s talk</RollText> <span className="text-[#F14417]">↗</span>
         </Link>
 
         {/* Mobile toggle button */}
@@ -116,6 +128,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }

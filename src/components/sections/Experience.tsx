@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import AnimatedTitle from "@/components/ui/AnimatedTitle";
 
 export default function Experience() {
   const experiences = [
@@ -38,9 +39,10 @@ export default function Experience() {
       <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
         <div className="flex items-baseline gap-4">
           <span className="font-mono text-[18px] text-[#F14417]">/experience</span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
-            Work history<span className="font-mono text-[18px] text-[#F14417] ml-2">#</span>
-          </h2>
+          <div className="flex items-baseline">
+            <AnimatedTitle text="Work history" className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]" />
+            <span className="font-mono text-[18px] text-[#F14417] ml-2">#</span>
+          </div>
         </div>
       </div>
 
