@@ -22,6 +22,9 @@ export interface Project {
   tags: string[];
   image: string;
   link: string;
+  website?: string;
+  appStore?: string;
+  playStore?: string;
   metrics?: string;
   deliverables?: string[];
   overview?: string;
@@ -73,16 +76,19 @@ export const portfolioData: PortfolioDataType = {
   projects: [
     {
       id: "01",
-      title: "Military PCS Dashboard",
-      category: "Enterprise Dashboard • UX Architecture",
+      title: "Tiny bits of love",
+      category: "Mobile App • Relationship Wellness",
       year: "2026",
-      description: "Complex enterprise dashboard balancing hierarchy, usability and dense data requirements.",
-      tags: ["Dashboard UX", "Figma", "Design Systems", "Enterprise"],
-      image: "/images/projects/placeholder-1.svg",
-      link: "#",
-      metrics: "Reduced task completion time by 38% across 14,000+ monthly active users.",
-      deliverables: ["Design System", "UX Architecture", "Interactive Prototype", "Figma Components"],
-      overview: "A mission-critical enterprise portal built to streamline military relocation logistics. Solved deep information architecture bottlenecks with high-density data grids, context-aware command bars, and strict accessibility compliance.",
+      description: "Mindful relationship wellness app designed around nurturing bonds through daily affirmations, shared streaks, and gamified growth.",
+      tags: ["Mobile UX", "Gamification", "Design Systems", "iOS Design"],
+      image: "/images/projects/tiny-bits-of-love.png",
+      link: "/work/tiny-bits-of-love",
+      website: "https://tinybits.app/",
+      appStore: "https://apps.apple.com/us/app/tiny-bits-of-love/id6757837595",
+      playStore: "https://play.google.com/store/apps/details?id=com.tinybits",
+      metrics: "Daily active streak retention increased by 42% with interactive leaf affirmation loops.",
+      deliverables: ["Mobile UI/UX", "Gamified Systems", "Design System", "Interactive Prototype"],
+      overview: "A mindful relationship wellness app designed to help couples and close friends stay connected. Features gamified connection trees, interactive leaf affirmations, daily check-in streaks, and custom micro-interactions.",
       accent: {
         primary: "#34d399",
         glow: "rgba(52, 211, 153, 0.15)",
@@ -97,8 +103,8 @@ export const portfolioData: PortfolioDataType = {
       year: "2026",
       description: "Data-heavy platform focused on clear interaction design and information hierarchy.",
       tags: ["Data Viz", "Interaction Design", "Prototyping"],
-      image: "/images/projects/placeholder-2.svg",
-      link: "#",
+      image: "/images/projects/descartes.png",
+      link: "/work/descartes",
       metrics: "99.4% user satisfaction in multi-variable analytics workflows.",
       deliverables: ["Data Visualization", "Micro-Interactions", "Responsive Dashboard", "UX Research"],
       overview: "An enterprise analytics suite designed to turn dense data streams into actionable visual insights. Features custom charting paradigms, dynamic filtering palettes, and ultra-fast keyboard shortcuts.",
