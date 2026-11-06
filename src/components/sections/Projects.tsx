@@ -39,6 +39,18 @@ export default function Projects() {
     },
     {
       num: "03",
+      title: "MilitaryPCS",
+      category: "Web Application • Relocation Platform",
+      year: "2026",
+      description:
+        "A military-first relocation platform that brings housing, local services, planning tools and community insights into one map-first PCS experience.",
+      tags: ["UX Research", "Information Architecture", "UI Design"],
+      image: "/images/projects/military-pcs/main-screen.jpg",
+      link: "/work/military-pcs",
+      isExternal: false,
+    },
+    {
+      num: "04",
       title: "uCollabit",
       category: "Product Experience • Social Network",
       year: "2026",
@@ -54,7 +66,7 @@ export default function Projects() {
       },
     },
     {
-      num: "04",
+      num: "05",
       title: "Prima Baguz",
       category: "Brand Website • E-Commerce",
       year: "2025",
@@ -65,7 +77,7 @@ export default function Projects() {
       isExternal: true,
     },
     {
-      num: "05",
+      num: "06",
       title: "WebHosters",
       category: "Website • Directory",
       year: "2026",
@@ -91,7 +103,7 @@ export default function Projects() {
             <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
           </div>
         </div>
-        <span className="font-mono text-[18px] text-[#A09D95]">[ 05 projects ]</span>
+        <span className="font-mono text-[18px] text-[#A09D95]">[ 06 projects ]</span>
       </div>
 
       {/* Numbered Rows List */}
