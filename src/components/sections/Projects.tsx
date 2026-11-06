@@ -67,17 +67,6 @@ export default function Projects() {
     },
     {
       num: "05",
-      title: "Prima Baguz",
-      category: "Brand Website • E-Commerce",
-      year: "2025",
-      description:
-        "Modern, mobile-first website for a global halal frozen food brand, prioritising accessibility, readability and product discoverability.",
-      tags: ["Website", "Mobile-first", "Accessibility"],
-      link: "https://www.primabaguz.com/",
-      isExternal: true,
-    },
-    {
-      num: "06",
       title: "WebHosters",
       category: "Website • Directory",
       year: "2026",
@@ -103,7 +92,7 @@ export default function Projects() {
             <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
           </div>
         </div>
-        <span className="font-mono text-[18px] text-[#A09D95]">[ 06 projects ]</span>
+        <span className="font-mono text-[18px] text-[#A09D95]">[ 05 projects ]</span>
       </div>
 
       {/* Numbered Rows List */}
