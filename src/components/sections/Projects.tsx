@@ -57,7 +57,7 @@ export default function Projects() {
       description:
         "Creative connections that lead to more than a like. An independent UX case study exploring how uCollabit brings portfolios, professional journeys, and intentional collaboration into one creative community.",
       tags: ["Mobile App", "UX Case Study", "Product Design", "Social Platform"],
-      image: "/images/projects/ucollabit.svg",
+      image: "/images/projects/ucollabit.png",
       link: "/work/ucollabit",
       isExternal: false,
       liveLinks: {
