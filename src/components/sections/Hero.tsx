@@ -85,16 +85,16 @@ export default function Hero() {
 
       {/* Background Hero Image - Mobile View */}
       <div
-        className="block md:hidden absolute inset-0 z-0 bg-cover bg-[center_20%] bg-no-repeat opacity-60 pointer-events-none will-change-transform"
+        className="block md:hidden absolute inset-0 z-0 bg-cover bg-[center_15%] sm:bg-[center_20%] bg-no-repeat opacity-90 pointer-events-none will-change-transform"
         style={{ backgroundImage: `url('/images/hero-portrait-mobile.jpg')` }}
       />
 
-      {/* Mobile-specific blur & contrast fade scrim for maximum headline readability */}
-      <div className="block md:hidden absolute inset-0 z-[1] backdrop-blur-[2px] bg-gradient-to-b from-[#0B0B0A]/85 via-[#0B0B0A]/75 to-[#0B0B0A] pointer-events-none" />
+      {/* Mobile-specific contrast fade: subtle top tint, clear portrait visibility in center, smooth blend at bottom */}
+      <div className="block md:hidden absolute inset-0 z-[1] bg-gradient-to-b from-[#0B0B0A]/40 via-transparent to-[#0B0B0A]/85 pointer-events-none" />
 
       {/* Atmospheric vignette and gradient for desktop text readability */}
       <div className="hidden md:block absolute inset-0 z-[1] bg-gradient-to-r from-[#0B0B0A]/90 via-[#0B0B0A]/60 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(11,11,10,0.4)_50%,#0B0B0A_100%)] pointer-events-none" />
+      <div className="hidden md:block absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_top,transparent_0%,rgba(11,11,10,0.4)_50%,#0B0B0A_100%)] pointer-events-none" />
 
       {/* Main Content Area constrained to shared container */}
       <div className="relative z-10 flex-1 flex flex-col justify-between w-full max-w-[1440px] mx-auto px-6 sm:px-12 md:px-16">
@@ -107,7 +107,7 @@ export default function Hero() {
             className="flex flex-col items-start max-w-4xl"
           >
             {/* Editorial Headline */}
-            <h1 className="font-body font-normal text-[26px] xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[72px] 2xl:text-[80px] leading-[1.15] tracking-[-0.035em] text-white flex flex-col w-full max-w-full">
+            <h1 className="font-body font-normal text-[26px] xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[72px] 2xl:text-[80px] leading-[1.15] tracking-[-0.035em] text-white flex flex-col w-full max-w-full drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] md:drop-shadow-none">
               {/* Line 1: (About me) on left, I'm Pavel Dinesh right-aligned on desktop, close inline on mobile */}
               <motion.div style={{ x: line1X }} className="flex flex-wrap sm:flex-nowrap items-baseline gap-2.5 sm:gap-4 sm:justify-between w-full">
                 <span className="font-body text-base sm:text-2xl md:text-3xl font-normal text-[#A09D95] tracking-tight whitespace-nowrap select-none">
