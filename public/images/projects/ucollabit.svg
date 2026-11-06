@@ -1,0 +1,176 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="55%" r="60%">
+      <stop offset="0%" stop-color="#2D3E33" stop-opacity="0.8"/>
+      <stop offset="45%" stop-color="#141B16" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0B0C0B" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="orangeGlow" cx="80%" cy="20%" r="35%">
+      <stop offset="0%" stop-color="#F14417" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#F14417" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="greenGlow" cx="20%" cy="80%" r="40%">
+      <stop offset="0%" stop-color="#51684E" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#51684E" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Phone Drop Shadows -->
+    <filter id="shadowLeft" x="140" y="140" width="460" height="740" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="-15" dy="30" stdDeviation="35" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    <filter id="shadowRight" x="520" y="120" width="480" height="740" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="20" dy="35" stdDeviation="40" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+
+    <linearGradient id="phoneBorder" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3D453E"/>
+      <stop offset="50%" stop-color="#272F29"/>
+      <stop offset="100%" stop-color="#1B221D"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E2EAD9"/>
+      <stop offset="100%" stop-color="#B0C9A1"/>
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E6D0B6"/>
+      <stop offset="100%" stop-color="#C4DAC6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="900" fill="#0B0C0B"/>
+  <rect width="1200" height="900" fill="url(#bgGlow)"/>
+  <rect width="1200" height="900" fill="url(#orangeGlow)"/>
+  <rect width="1200" height="900" fill="url(#greenGlow)"/>
+
+  <!-- Subtle Asterisk Watermarks -->
+  <text x="80" y="240" fill="#51684E" fill-opacity="0.16" font-family="Georgia, serif" font-size="220" font-weight="bold">✳</text>
+  <text x="1000" y="780" fill="#51684E" fill-opacity="0.12" font-family="Georgia, serif" font-size="200" font-weight="bold">✳</text>
+
+  <!-- Top Info Badge -->
+  <g transform="translate(60, 60)">
+    <rect width="210" height="34" rx="17" fill="#131614" stroke="#252D26" stroke-width="1.5"/>
+    <circle cx="20" cy="17" r="5" fill="#F14417"/>
+    <text x="36" y="22" fill="#E4E3DC" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" letter-spacing="1">UX CASE STUDY // 2026</text>
+  </g>
+
+  <!-- Left Phone Mockup (Angled slightly) -->
+  <g transform="translate(240, 200) rotate(-5)" filter="url(#shadowLeft)">
+    <!-- Outer Shell -->
+    <rect width="320" height="620" rx="46" fill="#18201A" stroke="url(#phoneBorder)" stroke-width="6"/>
+    <!-- Speaker / Dynamic island -->
+    <rect x="120" y="14" width="80" height="12" rx="6" fill="#0E1310"/>
+    
+    <!-- Screen Area -->
+    <g transform="translate(14, 34)">
+      <rect width="292" height="572" rx="34" fill="#F7F6EE"/>
+      
+      <!-- Screen Header -->
+      <text x="22" y="38" fill="#1A281E" font-family="system-ui, sans-serif" font-size="16" font-weight="800">uCollabit</text>
+      <circle cx="266" cy="32" r="14" fill="#D8B087"/>
+      <text x="261" y="37" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="13">✦</text>
+
+      <!-- Pill Tag -->
+      <rect x="22" y="58" width="124" height="24" rx="12" fill="#DAE8D7"/>
+      <text x="34" y="74" fill="#3D5F45" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Your creative world</text>
+
+      <!-- Screen Title -->
+      <text x="22" y="118" fill="#1B3324" font-family="Georgia, serif" font-size="30" font-weight="bold" line-height="1.1">Make more</text>
+      <text x="22" y="152" fill="#1B3324" font-family="Georgia, serif" font-size="30" font-weight="bold">together.</text>
+
+      <!-- Visual Card Area -->
+      <rect x="22" y="180" width="248" height="170" rx="16" fill="url(#cardGrad)"/>
+      <text x="146" y="275" fill="#3D5F45" font-size="64" text-anchor="middle">🎨</text>
+      <rect x="36" y="318" width="96" height="20" rx="6" fill="#F7F9EE"/>
+      <text x="44" y="332" fill="#203324" font-family="system-ui, sans-serif" font-size="9" font-weight="800" letter-spacing="1">CREATIVE DNA</text>
+
+      <!-- Profile Row 1 -->
+      <g transform="translate(22, 370)">
+        <rect width="248" height="52" rx="12" fill="#FFFFFF" stroke="#E5E8DF" stroke-width="1"/>
+        <rect x="12" y="11" width="30" height="30" rx="8" fill="#A1C4A7"/>
+        <text x="21" y="32" font-size="16">✏️</text>
+        <rect x="54" y="16" width="110" height="8" rx="4" fill="#9FB5A2"/>
+        <rect x="54" y="30" width="65" height="7" rx="3.5" fill="#CAD3C6"/>
+      </g>
+
+      <!-- Profile Row 2 -->
+      <g transform="translate(22, 434)">
+        <rect width="248" height="52" rx="12" fill="#FFFFFF" stroke="#E5E8DF" stroke-width="1"/>
+        <rect x="12" y="11" width="30" height="30" rx="8" fill="#DDBB97"/>
+        <text x="21" y="32" font-size="16">📷</text>
+        <rect x="54" y="16" width="130" height="8" rx="4" fill="#9FB5A2"/>
+        <rect x="54" y="30" width="80" height="7" rx="3.5" fill="#CAD3C6"/>
+      </g>
+
+      <!-- Bottom Home Bar -->
+      <rect x="100" y="556" width="92" height="4" rx="2" fill="#1A281E" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Right Phone Mockup (Angled oppositely, overlapping) -->
+  <g transform="translate(610, 160) rotate(5)" filter="url(#shadowRight)">
+    <!-- Outer Shell -->
+    <rect width="320" height="630" rx="46" fill="#18201A" stroke="url(#phoneBorder)" stroke-width="6"/>
+    <!-- Speaker / Notch -->
+    <rect x="120" y="14" width="80" height="12" rx="6" fill="#0E1310"/>
+
+    <!-- Screen Area -->
+    <g transform="translate(14, 34)">
+      <rect width="292" height="582" rx="34" fill="#F7F6EE"/>
+
+      <!-- Header -->
+      <text x="22" y="36" fill="#1A281E" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Creative DNA</text>
+      <text x="250" y="34" fill="#1A281E" font-family="system-ui, sans-serif" font-size="16" font-weight="bold">•••</text>
+
+      <!-- Cover Art Card -->
+      <rect x="22" y="54" width="248" height="130" rx="16" fill="url(#cardGrad2)"/>
+      <text x="146" y="130" font-size="48" text-anchor="middle">🌿</text>
+
+      <!-- Headings -->
+      <text x="22" y="214" fill="#1A281E" font-family="Georgia, serif" font-size="24" font-weight="bold">Your story.</text>
+      <text x="22" y="242" fill="#1A281E" font-family="Georgia, serif" font-size="24" font-weight="bold">Your work.</text>
+
+      <!-- Creator Bio Card -->
+      <g transform="translate(22, 260)">
+        <rect width="248" height="106" rx="12" fill="#FFFFFF" stroke="#E5E8DF" stroke-width="1"/>
+        <text x="14" y="24" fill="#1A281E" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Visual storyteller</text>
+        <text x="14" y="42" fill="#6B786E" font-family="system-ui, sans-serif" font-size="11">Photography · Art direction · Film</text>
+
+        <!-- Mini Tags -->
+        <rect x="14" y="60" width="62" height="20" rx="6" fill="#E8EFE2"/>
+        <text x="23" y="74" fill="#3D5F45" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Portfolio</text>
+
+        <rect x="82" y="60" width="76" height="20" rx="6" fill="#E8EFE2"/>
+        <text x="91" y="74" fill="#3D5F45" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Milestones</text>
+
+        <rect x="164" y="60" width="58" height="20" rx="6" fill="#E8EFE2"/>
+        <text x="173" y="74" fill="#3D5F45" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Resume</text>
+      </g>
+
+      <!-- Open to Collaborate Badge Card -->
+      <g transform="translate(22, 380)">
+        <rect width="248" height="66" rx="12" fill="#19231C" stroke="#2B3A2F" stroke-width="1"/>
+        <circle cx="28" cy="33" r="6" fill="#F14417"/>
+        <text x="44" y="28" fill="#F5F4F1" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Open to collaborate</text>
+        <text x="44" y="46" fill="#A8CAAA" font-family="system-ui, sans-serif" font-size="10">5 ways to contribute · Zero likes</text>
+      </g>
+
+      <!-- Mini Action Row -->
+      <g transform="translate(22, 460)">
+        <rect width="248" height="42" rx="21" fill="#35533C"/>
+        <text x="124" y="26" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Connect with Creator →</text>
+      </g>
+
+      <!-- Bottom Home Bar -->
+      <rect x="100" y="566" width="92" height="4" rx="2" fill="#1A281E" opacity="0.3"/>
+    </g>
+  </g>
+
+  <!-- Bottom Brand Title Watermark -->
+  <g transform="translate(60, 840)">
+    <text x="0" y="0" fill="#F5F4F1" font-family="system-ui, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5">uCollabit<tspan fill="#F14417">.</tspan></text>
+    <text x="160" y="-4" fill="#A09D95" font-family="system-ui, sans-serif" font-size="14">Creative connections that lead to more than a like</text>
+  </g>
+</svg>

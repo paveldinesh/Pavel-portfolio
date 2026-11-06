@@ -39,14 +39,19 @@ export default function Projects() {
     },
     {
       num: "03",
-      title: "Retail Fulfilment Show",
-      category: "Responsive Website • Event",
-      year: "2025",
+      title: "uCollabit",
+      category: "Product Experience • Social Network",
+      year: "2026",
       description:
-        "Responsive exhibition website for an international retail event, focused on clarity, content hierarchy and mobile usability.",
-      tags: ["Website", "Responsive", "UI/UX"],
-      link: "https://retailfulfilmentshow.com/",
-      isExternal: true,
+        "Creative connections that lead to more than a like. An independent UX case study exploring how uCollabit brings portfolios, professional journeys, and intentional collaboration into one creative community.",
+      tags: ["Mobile App", "UX Case Study", "Product Design", "Social Platform"],
+      image: "/images/projects/ucollabit.svg",
+      link: "/work/ucollabit",
+      isExternal: false,
+      liveLinks: {
+        website: "https://www.ucollabit.com/",
+        playStore: "https://play.google.com/store/apps/details?id=com.ucollabit",
+      },
     },
     {
       num: "04",
@@ -61,27 +66,15 @@ export default function Projects() {
     },
     {
       num: "05",
-      title: "Mazeflower",
-      category: "Product Website",
+      title: "WebHosters",
+      category: "Website • Directory",
       year: "2026",
       description:
-        "Brand direction, landing page and product UI, taken from moodboard and typography exploration through to stakeholder-ready high-fidelity screens.",
-      tags: ["Branding", "Landing Page", "UI Design"],
-      link: "#",
+        "An online directory simplifying the search for web hosting providers through structured taxonomy, clear comparison, and verified customer reviews.",
+      tags: ["Website Design", "UI/UX", "Responsive"],
+      image: "/images/projects/webhosters/home-hero.jpg",
+      link: "/work/webhosters",
       isExternal: false,
-      comingSoon: true,
-    },
-    {
-      num: "06",
-      title: "Military PCS Dashboard",
-      category: "Internal Dashboard",
-      year: "2026",
-      description:
-        "Data-dense dashboard interface for managing relocation workflows, designed for clarity and speed of use across large, structured data sets.",
-      tags: ["Dashboard", "UX Research", "Data UI"],
-      link: "#",
-      isExternal: false,
-      comingSoon: true,
     },
   ];
 
@@ -98,7 +91,7 @@ export default function Projects() {
             <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
           </div>
         </div>
-        <span className="font-mono text-[18px] text-[#A09D95]">[ 06 projects ]</span>
+        <span className="font-mono text-[18px] text-[#A09D95]">[ 05 projects ]</span>
       </div>
 
       {/* Numbered Rows List */}
@@ -122,7 +115,7 @@ export default function Projects() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="font-mono text-[18px] text-[#F14417] font-medium">{proj.category}</span>
-                  {proj.comingSoon && (
+                  {"comingSoon" in proj && Boolean(proj.comingSoon) && (
                     <span className="font-mono text-[13px] text-[#7A7873] border border-white/10 px-2.5 py-0.5 rounded-full">
                       Case study coming soon
                     </span>

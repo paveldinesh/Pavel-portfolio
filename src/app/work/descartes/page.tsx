@@ -836,11 +836,11 @@ export default function DescartesCaseStudy() {
       <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
           <Link
-            href="/#work"
+            href="/work/tiny-bits-of-love"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span>Previous: Military PCS Dashboard</span>
+            <span>Previous: Tiny Bits of Love</span>
           </Link>
 
           <Link
@@ -851,10 +851,10 @@ export default function DescartesCaseStudy() {
           </Link>
 
           <Link
-            href="/work/tiny-bits-of-love"
+            href="/work/ucollabit"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
-            <span>Next: Tiny Bits of Love</span>
+            <span>Next: uCollabit</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
