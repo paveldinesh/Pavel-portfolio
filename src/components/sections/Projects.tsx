@@ -72,7 +72,7 @@ export default function Projects() {
       description:
         "An online directory simplifying the search for web hosting providers through structured taxonomy, clear comparison, and verified customer reviews.",
       tags: ["Website Design", "UI/UX", "Responsive"],
-      image: "/images/projects/webhosters/home-hero.jpg",
+      image: "/images/projects/webhosters/main-screen.jpg",
       link: "/work/webhosters",
       isExternal: false,
     },

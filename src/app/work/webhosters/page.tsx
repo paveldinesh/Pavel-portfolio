@@ -13,7 +13,8 @@ import { ArrowLeft, ArrowRight, Compass, Layers, ShieldCheck, Search, Filter, St
  * Graceful fallback with dashed placeholder if any file is missing.
  */
 const IMG = {
-  hero: "/images/projects/webhosters/home-hero.jpg",
+  hero: "/images/projects/webhosters/main-screen.jpg",
+  homeHero: "/images/projects/webhosters/home-hero.jpg",
   homeDirectory: "/images/projects/webhosters/home-directory.jpg",
   homeWhy: "/images/projects/webhosters/home-why.jpg",
   homeResources: "/images/projects/webhosters/home-resources.jpg",
@@ -177,9 +178,9 @@ export default function WebHostersCaseStudy() {
         <motion.div {...fadeIn} className="mt-12">
           <Screen
             src={IMG.hero}
-            alt="WebHosters homepage hero: Find the Perfect Web Hosting for Your Needs"
-            caption="WebHosters: Homepage hero with prominent search and category discovery"
-            ratio="aspect-[16/9]"
+            alt="WebHosters main screen displayed in desktop environment"
+            caption="WebHosters: Desktop experience showcasing hero discovery and popular hosting directory"
+            ratio="aspect-[16/10]"
             priority
           />
         </motion.div>
@@ -389,7 +390,7 @@ export default function WebHostersCaseStudy() {
           <div className="flex flex-col gap-12 mt-4">
             <motion.div {...fadeIn}>
               <Screen
-                src={IMG.hero}
+                src={IMG.homeHero}
                 alt="WebHosters homepage hero with prominent search"
                 caption="Approach 01: Prominent search experience and visual ecosystem illustration for immediate discovery"
                 ratio="aspect-[16/9]"
