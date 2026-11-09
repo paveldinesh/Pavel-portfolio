@@ -148,11 +148,11 @@ export default function PullQuote() {
           prefersReduced
             ? { x: "0vw", opacity: 0.95 }
             : {
-                x: leftXDesktop,
-                rotate: leftRotateDesktop,
-                scale: imagesScaleDesktop,
-                opacity: imagesOpacityDesktop,
-              }
+              x: leftXDesktop,
+              rotate: leftRotateDesktop,
+              scale: imagesScaleDesktop,
+              opacity: imagesOpacityDesktop,
+            }
         }
         className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[38vw] lg:w-[35vw] xl:w-[33vw] max-w-[560px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] select-none will-change-transform origin-center"
       >
@@ -173,9 +173,9 @@ export default function PullQuote() {
           prefersReduced
             ? { x: "0vw", opacity: 0.4 }
             : {
-                x: leftXMobile,
-                opacity: imagesOpacityMobile,
-              }
+              x: leftXMobile,
+              opacity: imagesOpacityMobile,
+            }
         }
         className="md:hidden absolute -left-6 -top-2 w-[75vw] max-w-[340px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] select-none will-change-transform"
       >
@@ -196,11 +196,11 @@ export default function PullQuote() {
           prefersReduced
             ? { x: "0vw", opacity: 0.95 }
             : {
-                x: rightXDesktop,
-                rotate: rightRotateDesktop,
-                scale: imagesScaleDesktop,
-                opacity: imagesOpacityDesktop,
-              }
+              x: rightXDesktop,
+              rotate: rightRotateDesktop,
+              scale: imagesScaleDesktop,
+              opacity: imagesOpacityDesktop,
+            }
         }
         className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[38vw] lg:w-[35vw] xl:w-[33vw] max-w-[560px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] select-none will-change-transform origin-center"
       >
@@ -221,9 +221,9 @@ export default function PullQuote() {
           prefersReduced
             ? { x: "0vw", opacity: 0.4 }
             : {
-                x: rightXMobile,
-                opacity: imagesOpacityMobile,
-              }
+              x: rightXMobile,
+              opacity: imagesOpacityMobile,
+            }
         }
         className="md:hidden absolute -right-6 -bottom-2 w-[75vw] max-w-[340px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] select-none will-change-transform"
       >
