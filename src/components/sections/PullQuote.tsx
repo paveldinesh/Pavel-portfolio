@@ -146,7 +146,7 @@ export default function PullQuote() {
         aria-hidden="true"
         style={
           prefersReduced
-            ? { x: "0vw", opacity: 0.9 }
+            ? { x: "0vw", opacity: 0.95 }
             : {
                 x: leftXDesktop,
                 rotate: leftRotateDesktop,
@@ -154,14 +154,14 @@ export default function PullQuote() {
                 opacity: imagesOpacityDesktop,
               }
         }
-        className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[28vw] lg:w-[26vw] max-w-[420px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] select-none will-change-transform origin-center"
+        className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[38vw] lg:w-[35vw] xl:w-[33vw] max-w-[560px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] select-none will-change-transform origin-center"
       >
         <Image
           src="/images/philosophy-left.png"
           alt=""
           width={912}
           height={895}
-          sizes="(max-width: 768px) 65vw, 28vw"
+          sizes="(max-width: 768px) 75vw, 38vw"
           className="w-full h-auto object-contain pointer-events-none"
         />
       </motion.div>
@@ -171,20 +171,20 @@ export default function PullQuote() {
         aria-hidden="true"
         style={
           prefersReduced
-            ? { x: "0vw", opacity: 0.35 }
+            ? { x: "0vw", opacity: 0.4 }
             : {
                 x: leftXMobile,
                 opacity: imagesOpacityMobile,
               }
         }
-        className="md:hidden absolute -left-6 -top-2 w-[65vw] max-w-[280px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] select-none will-change-transform"
+        className="md:hidden absolute -left-6 -top-2 w-[75vw] max-w-[340px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] select-none will-change-transform"
       >
         <Image
           src="/images/philosophy-left.png"
           alt=""
           width={912}
           height={895}
-          sizes="(max-width: 768px) 65vw, 28vw"
+          sizes="(max-width: 768px) 75vw, 38vw"
           className="w-full h-auto object-contain pointer-events-none"
         />
       </motion.div>
@@ -194,7 +194,7 @@ export default function PullQuote() {
         aria-hidden="true"
         style={
           prefersReduced
-            ? { x: "0vw", opacity: 0.9 }
+            ? { x: "0vw", opacity: 0.95 }
             : {
                 x: rightXDesktop,
                 rotate: rightRotateDesktop,
@@ -202,14 +202,14 @@ export default function PullQuote() {
                 opacity: imagesOpacityDesktop,
               }
         }
-        className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[28vw] lg:w-[26vw] max-w-[420px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] select-none will-change-transform origin-center"
+        className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[38vw] lg:w-[35vw] xl:w-[33vw] max-w-[560px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] select-none will-change-transform origin-center"
       >
         <Image
           src="/images/philosophy-right.png"
           alt=""
           width={912}
           height={895}
-          sizes="(max-width: 768px) 65vw, 28vw"
+          sizes="(max-width: 768px) 75vw, 38vw"
           className="w-full h-auto object-contain pointer-events-none"
         />
       </motion.div>
@@ -219,20 +219,20 @@ export default function PullQuote() {
         aria-hidden="true"
         style={
           prefersReduced
-            ? { x: "0vw", opacity: 0.35 }
+            ? { x: "0vw", opacity: 0.4 }
             : {
                 x: rightXMobile,
                 opacity: imagesOpacityMobile,
               }
         }
-        className="md:hidden absolute -right-6 -bottom-2 w-[65vw] max-w-[280px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_45%,rgba(0,0,0,0)_100%)] select-none will-change-transform"
+        className="md:hidden absolute -right-6 -bottom-2 w-[75vw] max-w-[340px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] select-none will-change-transform"
       >
         <Image
           src="/images/philosophy-right.png"
           alt=""
           width={912}
           height={895}
-          sizes="(max-width: 768px) 65vw, 28vw"
+          sizes="(max-width: 768px) 75vw, 38vw"
           className="w-full h-auto object-contain pointer-events-none"
         />
       </motion.div>
@@ -242,7 +242,7 @@ export default function PullQuote() {
         {/* Soft radial contrast shield to ensure crisp legibility */}
         <div
           aria-hidden="true"
-          className="absolute -inset-x-12 -inset-y-10 bg-[#0B0B0A]/75 blur-3xl rounded-full pointer-events-none -z-10"
+          className="absolute -inset-x-16 -inset-y-12 bg-[#0B0B0A]/85 blur-3xl rounded-full pointer-events-none -z-10"
         />
         <div className="flex flex-col gap-5 w-fit items-center text-center">
           <span className="font-mono text-[18px] text-[#F14417] tracking-wider text-left self-start select-none">
