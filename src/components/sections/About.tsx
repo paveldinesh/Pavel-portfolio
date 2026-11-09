@@ -5,14 +5,14 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const DOMAINS = [
-  "Social Platforms",
-  "Fintech",
-  "Gaming",
-  "EdTech",
-  "SaaS",
-  "E-Commerce",
-  "Healthcare",
-  "Real Estate",
+  "HealthTech & AI",
+  "Social & Creator Networks",
+  "PropTech & Relocation",
+  "Wellness Tech",
+  "Enterprise SaaS",
+  "Complex Dashboards",
+  "Directories & Marketplaces",
+  "Design Systems",
 ];
 
 const VALUES = [
