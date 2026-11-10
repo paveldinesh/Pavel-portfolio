@@ -158,7 +158,7 @@ export default function MilitaryPCSCaseStudy() {
           <motion.div {...fadeIn} className="flex items-center gap-3">
             <span className="font-mono text-[18px] text-[#F14417]">/case-study</span>
             <span className="font-mono text-[16px] text-[#A09D95] border border-white/10 rounded-full px-3 py-0.5">
-              Case 03
+              Case 04
             </span>
           </motion.div>
 

@@ -1,15 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import TiltCard from "@/components/ui/TiltCard";
-import RollText from "@/components/ui/RollText";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+  useReducedMotion,
+} from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
+  const prefersReduced = useReducedMotion();
+
   const projects = [
     {
       num: "01",
+      title: "Descartes",
+      category: "Internal Dashboard • Surgical AI",
+      year: "2026",
+      description:
+        "End-to-end surgical activity dashboard, procedural workflows, and AI predictive analytics platform designed for clinical efficiency and real-time OR insights.",
+      tags: ["Dashboard", "Surgical AI", "Complex Data", "Design System"],
+      image: "/images/projects/descartes/hero.png",
+      link: "/work/descartes",
+      isExternal: false,
+    },
+    {
+      num: "02",
       title: "Tiny bits of love",
       category: "Mobile App • Wellness",
       year: "2026",
@@ -26,19 +46,20 @@ export default function Projects() {
       },
     },
     {
-      num: "02",
-      title: "Descartes Dashboard",
-      category: "Internal Dashboard • Surgical AI",
+      num: "03",
+      title: "Mazeflower",
+      category: "Product Website",
       year: "2026",
       description:
-        "End-to-end surgical activity dashboard, procedural workflows, and AI predictive analytics platform designed for clinical efficiency and real-time OR insights.",
-      tags: ["Dashboard", "Surgical AI", "Complex Data", "Design System"],
-      image: "/images/projects/descartes.png",
-      link: "/work/descartes",
+        "Brand direction, landing page and product UI, taken from moodboard and typography exploration through to stakeholder-ready high-fidelity screens.",
+      tags: ["Branding", "Landing Page", "UI Design"],
+      image: "",
+      link: "#",
       isExternal: false,
+      comingSoon: true,
     },
     {
-      num: "03",
+      num: "04",
       title: "MilitaryPCS",
       category: "Web Application • Relocation Platform",
       year: "2026",
@@ -49,200 +70,359 @@ export default function Projects() {
       link: "/work/military-pcs",
       isExternal: false,
     },
-    {
-      num: "04",
-      title: "uCollabit",
-      category: "Product Experience • Social Network",
-      year: "2026",
-      description:
-        "Creative connections that lead to more than a like. An independent UX case study exploring how uCollabit brings portfolios, professional journeys, and intentional collaboration into one creative community.",
-      tags: ["Mobile App", "UX Case Study", "Product Design", "Social Platform"],
-      image: "/images/projects/ucollabit.png",
-      link: "/work/ucollabit",
-      isExternal: false,
-      liveLinks: {
-        website: "https://www.ucollabit.com/",
-        playStore: "https://play.google.com/store/apps/details?id=com.ucollabit",
-      },
-    },
-    {
-      num: "05",
-      title: "WebHosters",
-      category: "Website • Directory",
-      year: "2026",
-      description:
-        "An online directory simplifying the search for web hosting providers through structured taxonomy, clear comparison, and verified customer reviews.",
-      tags: ["Website Design", "UI/UX", "Responsive"],
-      image: "/images/projects/webhosters/main-screen.jpg",
-      link: "/work/webhosters",
-      isExternal: false,
-    },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const count = projects.length;
+    const idx = Math.min(Math.floor(latest * count), count - 1);
+    setActiveIndex(idx);
+  });
+
+  // Sync index on initial load / reload
+  useEffect(() => {
+    const current = scrollYProgress.get();
+    const count = projects.length;
+    setActiveIndex(Math.min(Math.floor(current * count), count - 1));
+  }, [scrollYProgress, projects.length]);
+
+  const currentProject = projects[activeIndex];
+
   return (
-    <section id="work" className="py-24 sm:py-36 px-6 sm:px-12 md:px-16 max-w-[1440px] mx-auto relative z-10 border-t border-white/[0.08]">
-      {/* Section Header */}
-      <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
-        <div className="flex items-baseline gap-4">
-          <span className="font-mono text-[18px] text-[#F14417]">/work</span>
-          <div className="flex items-baseline">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
-              Selected work
-            </h2>
-            <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
+    <section id="work" className="relative z-10 border-t border-white/[0.08] bg-[#0B0B0A]">
+      {/* ======================================================== */}
+      {/* 1. DESKTOP PINNED SCROLL EXPERIENCE (lg and up)           */}
+      {/* ======================================================== */}
+      <div
+        ref={wrapperRef}
+        style={{ height: `${projects.length * 100}vh` }}
+        className="hidden lg:block relative"
+      >
+        <div className="sticky top-0 h-screen w-full flex flex-col justify-between pt-24 pb-12 px-6 sm:px-12 md:px-16 max-w-[1440px] mx-auto overflow-hidden">
+          {/* Section Header */}
+          <div className="flex items-baseline justify-between gap-4 flex-wrap mb-6 shrink-0">
+            <div className="flex items-baseline gap-4">
+              <span className="font-mono text-[18px] text-[#F14417]">/work</span>
+              <div className="flex items-baseline">
+                <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl tracking-[-0.04em] text-[#F5F4F1]">
+                  Selected work
+                </h2>
+                <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
+              </div>
+            </div>
+            <span className="font-mono text-[18px] text-[#A09D95]">
+              [ 0{projects.length} projects ]
+            </span>
+          </div>
+
+          {/* Two-Column Pinned Workspace */}
+          <div className="flex-1 flex items-center justify-center my-auto w-full">
+            <div className="grid grid-cols-[1.15fr_0.85fr] xl:grid-cols-[1.2fr_1fr] gap-12 xl:gap-16 items-center w-full">
+              {/* LEFT: Pinned Browser Frame (Always still, image crossfades) */}
+              <div className="w-full rounded-xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)] flex flex-col">
+                {/* Window Chrome Header */}
+                <div className="flex items-center justify-between px-4 h-9 border-b border-white/[0.08] bg-[#17171a] shrink-0 select-none">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+                  </div>
+                  <span className="font-mono text-[11px] text-[#7A7873] tracking-wider truncate max-w-[240px]">
+                    {currentProject.link !== "#"
+                      ? `pavel.design${currentProject.link}`
+                      : "pavel.design/preview"}
+                  </span>
+                  <div className="w-10" />
+                </div>
+
+                {/* Viewport Aspect Container */}
+                <div className="relative w-full aspect-[16/10] bg-[#0A0A0A] overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentProject.num}
+                      initial={prefersReduced ? { opacity: 1 } : { opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={prefersReduced ? { opacity: 0 } : { opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      {currentProject.image ? (
+                        currentProject.link !== "#" ? (
+                          <Link
+                            href={currentProject.link}
+                            className="block relative w-full h-full group/frame cursor-pointer"
+                            tabIndex={-1}
+                          >
+                            <Image
+                              src={currentProject.image}
+                              alt={`${currentProject.title} project preview`}
+                              fill
+                              sizes="(max-width: 1024px) 100vw, 55vw"
+                              priority
+                              className="object-cover object-top transition-transform duration-500 group-hover/frame:scale-[1.02]"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover/frame:bg-black/25 transition-colors flex items-center justify-center">
+                              <span className="font-mono text-xs uppercase tracking-wider text-white bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 opacity-0 group-hover/frame:opacity-100 transition-opacity">
+                                View Case Study ↗
+                              </span>
+                            </div>
+                          </Link>
+                        ) : (
+                          <Image
+                            src={currentProject.image}
+                            alt={`${currentProject.title} project preview`}
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 55vw"
+                            priority
+                            className="object-cover object-top"
+                          />
+                        )
+                      ) : (
+                        /* Tasteful Placeholder for unreleased projects */
+                        <div className="absolute inset-0 bg-[#0E0F0E] border-2 border-dashed border-white/[0.08] m-3 rounded-lg flex flex-col items-center justify-center gap-3 p-8 text-center select-none">
+                          <span className="font-mono text-xs text-[#F14417] tracking-widest uppercase">
+                            [ {currentProject.num} {"//"} PREVIEW ]
+                          </span>
+                          <h4 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+                            {currentProject.title}
+                          </h4>
+                          <span className="font-mono text-xs text-[#7A7873] border border-white/10 rounded-full px-3 py-1">
+                            Case study coming soon
+                          </span>
+                        </div>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* RIGHT: Dynamic Details Column */}
+              <div className="flex flex-col justify-center">
+                {/* Progress Indicator */}
+                <div className="flex items-center gap-4 mb-6 select-none">
+                  <span className="font-mono text-[14px] text-[#F14417] font-semibold tracking-wider">
+                    {currentProject.num} / 0{projects.length}
+                  </span>
+                  <div className="flex items-center gap-1.5 flex-1 max-w-[140px]">
+                    {projects.map((_, i) => (
+                      <div
+                        key={i}
+                        className={`h-1 flex-1 rounded-full transition-all duration-300 ${
+                          i === activeIndex
+                            ? "bg-[#F14417]"
+                            : i < activeIndex
+                            ? "bg-white/40"
+                            : "bg-white/10"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Animated Details */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentProject.num}
+                    initial={
+                      prefersReduced
+                        ? { opacity: 1 }
+                        : { opacity: 0, y: 12 }
+                    }
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={
+                      prefersReduced
+                        ? { opacity: 0 }
+                        : { opacity: 0, y: -12 }
+                    }
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="flex flex-col gap-5"
+                  >
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="font-mono text-[15px] text-[#F14417] font-medium">
+                        {currentProject.category}
+                      </span>
+                      <span className="font-mono text-xs text-[#7A7873]">•</span>
+                      <span className="font-mono text-xs text-[#7A7873]">
+                        {currentProject.year}
+                      </span>
+                      {currentProject.comingSoon && (
+                        <span className="font-mono text-[12px] text-[#7A7873] border border-white/10 px-2.5 py-0.5 rounded-full">
+                          Case study coming soon
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] leading-[1.08]">
+                      {currentProject.title}
+                    </h3>
+
+                    <p className="text-[#A09D95] text-[16px] sm:text-[17px] leading-relaxed max-w-[48ch]">
+                      {currentProject.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {currentProject.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[12px] sm:text-[13px] px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] text-[#A09D95]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action link */}
+                    <div className="pt-3">
+                      {currentProject.link !== "#" ? (
+                        <Link
+                          href={currentProject.link}
+                          className="inline-flex items-center gap-2.5 font-mono text-[14px] uppercase tracking-wider text-[#F14417] hover:text-white transition-colors group/btn py-2"
+                        >
+                          <span>View case study</span>
+                          <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                        </Link>
+                      ) : (
+                        <span className="font-mono text-[13px] text-[#7A7873] border border-white/10 px-3.5 py-1.5 rounded-full inline-block">
+                          Case study coming soon
+                        </span>
+                      )}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
           </div>
         </div>
-        <span className="font-mono text-[18px] text-[#A09D95]">[ 05 projects ]</span>
       </div>
 
-      {/* Numbered Rows List */}
-      <div className="flex flex-col border-t border-white/[0.08]">
-        {projects.map((proj, idx) => {
-          const hasImage = "image" in proj && Boolean(proj.image);
+      {/* ======================================================== */}
+      {/* 2. MOBILE & TABLET STACKED LIST (below lg)                */}
+      {/* ======================================================== */}
+      <div className="lg:hidden py-20 px-6 sm:px-12 max-w-[1440px] mx-auto">
+        {/* Section Header */}
+        <div className="flex items-baseline justify-between gap-4 flex-wrap mb-12 sm:mb-16">
+          <div className="flex items-baseline gap-4">
+            <span className="font-mono text-[18px] text-[#F14417]">/work</span>
+            <div className="flex items-baseline">
+              <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-[-0.04em] text-[#F5F4F1]">
+                Selected work
+              </h2>
+              <span className="font-mono text-[18px] text-[#F14417] ml-2">{"//"}</span>
+            </div>
+          </div>
+          <span className="font-mono text-[18px] text-[#A09D95]">
+            [ 0{projects.length} projects ]
+          </span>
+        </div>
 
-          return (
-            <motion.div
-              key={proj.num}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: idx * 0.08 }}
-              className={`grid grid-cols-1 ${
-                hasImage ? "md:grid-cols-[100px_1fr_1.1fr]" : "md:grid-cols-[100px_1fr]"
-              } gap-6 md:gap-12 items-center py-10 md:py-12 border-b border-white/[0.08] group`}
-            >
-              <span className="font-mono text-[18px] text-[#A09D95]">{proj.num}</span>
-
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <span className="font-mono text-[18px] text-[#F14417] font-medium">{proj.category}</span>
-                  {"comingSoon" in proj && Boolean(proj.comingSoon) && (
-                    <span className="font-mono text-[13px] text-[#7A7873] border border-white/10 px-2.5 py-0.5 rounded-full">
-                      Case study coming soon
-                    </span>
-                  )}
+        {/* Stacked Projects */}
+        <div className="flex flex-col gap-16">
+          {projects.map((proj) => (
+            <div key={proj.num} className="flex flex-col gap-6">
+              {/* Frame */}
+              <div className="w-full rounded-xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-xl">
+                <div className="flex items-center gap-2 px-4 h-8 border-b border-white/[0.08] bg-[#17171a]">
+                  <span className="w-2 h-2 rounded-full bg-white/15" />
+                  <span className="w-2 h-2 rounded-full bg-white/15" />
+                  <span className="w-2 h-2 rounded-full bg-white/15" />
                 </div>
-
-                {proj.link && proj.link !== "#" ? (
-                  proj.isExternal ? (
-                    <a
-                      href={proj.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-baseline gap-2 group/title"
-                    >
-                      <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover/title:text-[#F14417] transition-colors">
-                        {proj.title}
-                      </h3>
-                      <span className="text-[#F14417] text-xl opacity-0 group-hover/title:opacity-100 transition-opacity">↗</span>
-                    </a>
-                  ) : (
-                    <Link href={proj.link} className="inline-flex items-baseline gap-2 group/title">
-                      <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1] group-hover/title:text-[#F14417] transition-colors">
-                        {proj.title}
-                      </h3>
-                      <span className="text-[#F14417] text-xl opacity-0 group-hover/title:opacity-100 transition-opacity">↗</span>
-                    </Link>
-                  )
-                ) : (
-                  <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight text-[#F5F4F1]">
-                    {proj.title}
-                  </h3>
-                )}
-
-                <p className="text-[#A09D95] text-[18px] leading-relaxed max-w-[54ch]">
-                  {proj.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2.5 mt-2">
-                  {proj.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="font-mono text-[16px] text-[#A09D95] border border-white/10 rounded-full px-4 py-0.5"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-2 flex items-center gap-3.5 flex-wrap">
-                  {proj.link && proj.link !== "#" && (
-                    proj.isExternal ? (
-                      <a
-                        href={proj.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/roll font-mono text-[16px] text-[#F14417] inline-flex items-center gap-1.5 hover:underline"
-                      >
-                        <RollText>Visit live website</RollText>
-                        <span>↗</span>
-                      </a>
-                    ) : (
-                      <Link
-                        href={proj.link}
-                        className="group/roll font-mono text-[16px] text-[#F14417] inline-flex items-center gap-1.5"
-                      >
-                        <RollText>View case study</RollText>
-                        <span>→</span>
+                <div className="relative w-full aspect-[16/10] bg-[#0A0A0A]">
+                  {proj.image ? (
+                    proj.link !== "#" ? (
+                      <Link href={proj.link} className="block relative w-full h-full">
+                        <Image
+                          src={proj.image}
+                          alt={proj.title}
+                          fill
+                          sizes="100vw"
+                          className="object-cover object-top"
+                        />
                       </Link>
+                    ) : (
+                      <Image
+                        src={proj.image}
+                        alt={proj.title}
+                        fill
+                        sizes="100vw"
+                        className="object-cover object-top"
+                      />
                     )
-                  )}
-
-                  {"liveLinks" in proj && proj.liveLinks && (
-                    <div className="flex items-center gap-3">
-                      <span className="text-white/20 select-none">/</span>
-                      <a
-                        href={proj.liveLinks.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-[14px] text-[#A09D95] hover:text-[#F14417] transition-colors"
-                      >
-                        Website ↗
-                      </a>
-                      <a
-                        href={proj.liveLinks.appStore}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-[14px] text-[#A09D95] hover:text-[#F14417] transition-colors"
-                      >
-                        App Store ↗
-                      </a>
-                      <a
-                        href={proj.liveLinks.playStore}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono text-[14px] text-[#A09D95] hover:text-[#F14417] transition-colors"
-                      >
-                        Play Store ↗
-                      </a>
+                  ) : (
+                    <div className="absolute inset-0 bg-[#0E0F0E] border border-dashed border-white/10 m-2 rounded flex flex-col items-center justify-center gap-2 p-6 text-center select-none">
+                      <span className="font-mono text-xs text-[#F14417]">
+                        [ {proj.num} {"//"} PREVIEW ]
+                      </span>
+                      <span className="font-display font-bold text-xl text-[#F5F4F1]">
+                        {proj.title}
+                      </span>
+                      <span className="font-mono text-xs text-[#7A7873]">
+                        Case study coming soon
+                      </span>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Media Tile - ONLY rendered if project has an image */}
-              {hasImage && proj.image && (
-                <TiltCard className="relative aspect-[4/3] rounded-md overflow-hidden border border-white/10 bg-[#121211] flex flex-col items-center justify-center group-hover:border-[#F14417]/40 transition-colors">
-                  <Link href={proj.link} className="w-full h-full block relative" aria-label={`View ${proj.title} case study`}>
-                    <div className="relative w-full h-full overflow-hidden">
-                      <Image
-                        src={proj.image}
-                        alt={proj.title}
-                        fill
-                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
-                      <span className="absolute top-4 right-4 font-mono text-[14px] text-[#F14417] bg-[#0B0B0A]/85 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10 z-10">
-                        {proj.year}
-                      </span>
-                    </div>
-                  </Link>
-                </TiltCard>
-              )}
-            </motion.div>
-          );
-        })}
+              {/* Details */}
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="font-mono text-sm text-[#F14417] font-semibold">
+                    {proj.num}
+                  </span>
+                  <span className="font-mono text-xs text-[#7A7873]">•</span>
+                  <span className="font-mono text-sm text-[#F14417]">
+                    {proj.category}
+                  </span>
+                  <span className="font-mono text-xs text-[#7A7873]">•</span>
+                  <span className="font-mono text-xs text-[#7A7873]">{proj.year}</span>
+                </div>
+
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+                  {proj.title}
+                </h3>
+
+                <p className="text-[#A09D95] text-[15px] sm:text-[16px] leading-relaxed">
+                  {proj.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {proj.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-xs px-2.5 py-1 rounded-full border border-white/10 text-[#A09D95]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-2">
+                  {proj.link !== "#" ? (
+                    <Link
+                      href={proj.link}
+                      className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider text-[#F14417] hover:text-white transition-colors"
+                    >
+                      <span>View case study</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  ) : (
+                    <span className="font-mono text-xs text-[#7A7873] border border-white/10 px-3 py-1 rounded-full inline-block">
+                      Case study coming soon
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

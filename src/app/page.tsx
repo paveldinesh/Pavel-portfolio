@@ -39,9 +39,7 @@ export default function Home() {
       />
 
       {/* Projects */}
-      <SectionReveal>
-        <Projects />
-      </SectionReveal>
+      <Projects />
 
       {/* 3. Work → About */}
       <KineticBand

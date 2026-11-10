@@ -118,7 +118,7 @@ export default function TinyBitsOfLoveCaseStudy() {
           <motion.div {...fadeIn} className="flex items-center gap-3">
             <span className="font-mono text-[18px] text-[#F14417]">/case-study</span>
             <span className="font-mono text-[16px] text-[#A09D95] border border-white/10 rounded-full px-3 py-0.5">
-              Case 01
+              Case 02
             </span>
           </motion.div>
 
@@ -915,11 +915,11 @@ export default function TinyBitsOfLoveCaseStudy() {
       <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
           <Link
-            href="/work/ucollabit"
+            href="/work/descartes"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span>Previous: uCollabit</span>
+            <span>Previous: Descartes</span>
           </Link>
 
           <Link
@@ -930,10 +930,10 @@ export default function TinyBitsOfLoveCaseStudy() {
           </Link>
 
           <Link
-            href="/work/descartes"
+            href="/#work"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
-            <span>Next: Descartes Dashboard</span>
+            <span>Next: Mazeflower</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
