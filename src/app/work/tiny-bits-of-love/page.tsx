@@ -930,10 +930,10 @@ export default function TinyBitsOfLoveCaseStudy() {
           </Link>
 
           <Link
-            href="/#work"
+            href="/work/mazeflower"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
-            <span>Next: Mazeflower</span>
+            <span>Next: MazeFlower</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

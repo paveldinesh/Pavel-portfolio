@@ -12,10 +12,28 @@ import {
 } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
+interface ProjectItem {
+  num: string;
+  title: string;
+  category: string;
+  year: string;
+  description: string;
+  tags: string[];
+  image: string;
+  link: string;
+  isExternal: boolean;
+  comingSoon?: boolean;
+  liveLinks?: {
+    website?: string;
+    appStore?: string;
+    playStore?: string;
+  };
+}
+
 export default function Projects() {
   const prefersReduced = useReducedMotion();
 
-  const projects = [
+  const projects: ProjectItem[] = [
     {
       num: "01",
       title: "Descartes",
@@ -47,16 +65,15 @@ export default function Projects() {
     },
     {
       num: "03",
-      title: "Mazeflower",
-      category: "Product Website",
+      title: "MazeFlower",
+      category: "Mobile & Web App • Music",
       year: "2026",
       description:
-        "Brand direction, landing page and product UI, taken from moodboard and typography exploration through to stakeholder-ready high-fidelity screens.",
-      tags: ["Branding", "Landing Page", "UI Design"],
-      image: "",
-      link: "#",
+        "A music-centered social platform connecting fans, artists and merchandise vendors through shared listening, personalised discovery and song-linked commerce.",
+      tags: ["UI/UX", "Interaction Design", "Prototyping", "Design System"],
+      image: "/images/projects/mazeflower/hero.png",
+      link: "/work/mazeflower",
       isExternal: false,
-      comingSoon: true,
     },
     {
       num: "04",
@@ -166,7 +183,7 @@ export default function Projects() {
                               fill
                               sizes="(max-width: 1024px) 100vw, 55vw"
                               priority
-                              className="object-cover object-top transition-transform duration-500 group-hover/frame:scale-[1.02]"
+                              className="object-cover object-center transition-transform duration-500 group-hover/frame:scale-[1.02]"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover/frame:bg-black/25 transition-colors flex items-center justify-center">
                               <span className="font-mono text-xs uppercase tracking-wider text-white bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 opacity-0 group-hover/frame:opacity-100 transition-opacity">
@@ -181,7 +198,7 @@ export default function Projects() {
                             fill
                             sizes="(max-width: 1024px) 100vw, 55vw"
                             priority
-                            className="object-cover object-top"
+                            className="object-cover object-center"
                           />
                         )
                       ) : (
@@ -343,7 +360,7 @@ export default function Projects() {
                           alt={proj.title}
                           fill
                           sizes="100vw"
-                          className="object-cover object-top"
+                          className="object-cover object-center"
                         />
                       </Link>
                     ) : (
@@ -352,7 +369,7 @@ export default function Projects() {
                         alt={proj.title}
                         fill
                         sizes="100vw"
-                        className="object-cover object-top"
+                        className="object-cover object-center"
                       />
                     )
                   ) : (
