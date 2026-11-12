@@ -82,7 +82,7 @@ export default function Home() {
       <KineticBand
         lines={[
           { text: "Let’s talk", direction: -1, variant: "accent" },
-          { text: "Say hello", direction: 1, variant: "outline" },
+          { text: "Let’s talk", direction: 1, variant: "outline" },
         ]}
       />
 

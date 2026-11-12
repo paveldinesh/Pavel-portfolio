@@ -21,8 +21,8 @@ export function Screen({
   ratio = "aspect-[16/9]",
   priority = false,
   hideIfMissing = false,
-  fit = "cover",
-  position = "object-top",
+  fit = "contain",
+  position = "object-center",
 }: ScreenProps) {
   const [missing, setMissing] = useState(false);
   const fileName = src.split("/").pop();

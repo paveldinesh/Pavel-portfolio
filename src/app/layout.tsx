@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { portfolioData } from "@/data/portfolioData";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import ScrollReset from "@/components/ScrollReset";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import CustomCursor from "@/components/ui/CustomCursor";
 
@@ -54,6 +55,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <SmoothScrollProvider>
+          <ScrollReset />
           <ScrollProgress />
           <CustomCursor />
           <div className="relative z-10">{children}</div>

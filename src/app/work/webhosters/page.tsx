@@ -30,6 +30,8 @@ function Screen({
   ratio = "aspect-[16/9]",
   priority = false,
   hideIfMissing = false,
+  fit = "contain",
+  position = "object-center",
 }: {
   src: string;
   alt: string;
@@ -37,6 +39,8 @@ function Screen({
   ratio?: string;
   priority?: boolean;
   hideIfMissing?: boolean;
+  fit?: "cover" | "contain";
+  position?: string;
 }) {
   const [missing, setMissing] = useState(false);
   const fileName = src.split("/").pop();
@@ -66,7 +70,7 @@ function Screen({
               fill
               priority={priority}
               sizes="(max-width: 1260px) 100vw, 1260px"
-              className="object-cover object-top"
+              className={`${fit === "contain" ? "object-contain" : "object-cover"} ${position}`}
               onError={() => setMissing(true)}
             />
           )}
@@ -180,7 +184,8 @@ export default function WebHostersCaseStudy() {
             src={IMG.hero}
             alt="WebHosters main screen displayed in desktop environment"
             caption="WebHosters: Desktop experience showcasing hero discovery and popular hosting directory"
-            ratio="aspect-[16/10]"
+            ratio="aspect-[1800/1424]"
+            fit="contain"
             priority
           />
         </motion.div>
@@ -393,7 +398,8 @@ export default function WebHostersCaseStudy() {
                 src={IMG.homeHero}
                 alt="WebHosters homepage hero with prominent search"
                 caption="Approach 01: Prominent search experience and visual ecosystem illustration for immediate discovery"
-                ratio="aspect-[16/9]"
+                ratio="aspect-[1800/947]"
+                fit="contain"
               />
             </motion.div>
 
@@ -402,7 +408,8 @@ export default function WebHostersCaseStudy() {
                 src={IMG.homeDirectory}
                 alt="Browse popular hosting providers with category browsing"
                 caption="Approach 02: Category-based browsing (Shared, Cloud, WordPress, Dedicated) with standardized provider listings"
-                ratio="aspect-[16/10]"
+                ratio="aspect-[1800/1200]"
+                fit="contain"
               />
             </motion.div>
           </div>
@@ -470,7 +477,8 @@ export default function WebHostersCaseStudy() {
                 src={IMG.companies}
                 alt="WebHosters Companies Directory listing page"
                 caption="Solution 01: Comprehensive companies catalog with category tabs, search input, top-rated sorting, standardized provider cards, and pagination"
-                ratio="aspect-[16/11]"
+                ratio="aspect-[1800/2320]"
+                fit="contain"
               />
             </motion.div>
 
@@ -479,7 +487,8 @@ export default function WebHostersCaseStudy() {
                 src={IMG.profile}
                 alt="1984 Hosting company profile page"
                 caption="Solution 02: Company profile page (1984 Hosting) with verified customer reviews, rating breakdown, company background, and direct contact details"
-                ratio="aspect-[16/12]"
+                ratio="aspect-[1800/1829]"
+                fit="contain"
               />
             </motion.div>
           </div>
@@ -502,7 +511,8 @@ export default function WebHostersCaseStudy() {
                   src={IMG.homeWhy}
                   alt="Why Choose WebHosters section"
                   caption="Solution 03: Four core trust pillars highlighting the curated directory, detailed profiles, reviews, and hosting types"
-                  ratio="aspect-[16/10]"
+                  ratio="aspect-[1800/984]"
+                  fit="contain"
                 />
               </motion.div>
 
@@ -511,7 +521,8 @@ export default function WebHostersCaseStudy() {
                   src={IMG.homeResources}
                   alt="Frequently Asked Questions and Hosting Resources"
                   caption="Solution 04: FAQ accordion and hosting guides supporting visitor research with actionable knowledge"
-                  ratio="aspect-[16/10]"
+                  ratio="aspect-[1800/1331]"
+                  fit="contain"
                 />
               </motion.div>
             </div>

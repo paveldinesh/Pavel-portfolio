@@ -10,7 +10,7 @@ export default function Experience() {
       role: "UI/UX Designer & Frontend UI Developer",
       period: "Mar 2026 — Present",
       description:
-        "Leading visual and UI direction for new projects from discovery through handoff — moodboards, typography systems, brand colour and initial screens that lock in direction before high-fidelity work begins. Designed responsive interfaces across Cozicadamy, Mazeflower, BCMCH, and two internal dashboards, and built the Armia company landing page using an AI-assisted, prompt-driven design-to-code workflow.",
+        "Leading visual and UI direction for new projects from discovery through handoff — moodboards, typography systems, brand colour and initial screens that lock in direction before high-fidelity work begins. Designed responsive interfaces across Cozicadamy, MazeFlower, BCMCH, and two internal dashboards, and built the Armia company landing page using an AI-assisted, prompt-driven design-to-code workflow.",
       tags: ["Design Direction", "Design Systems", "Frontend UI", "Stakeholder Presentations"],
     },
     {

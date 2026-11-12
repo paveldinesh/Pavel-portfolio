@@ -434,7 +434,7 @@ export default function MazeFlowerCaseStudy() {
             <motion.div {...fadeIn} className="mt-4">
               <DecisionNote
                 decision="Anchor real-time shared playback heads and live reaction indicators directly inside the player UI."
-                why="Reinforces immediate co-presence without needing disruptive video calls or separate messaging threads."
+                why="Designed to make shared listening feel present without extra messaging or disruptive video calls."
                 tradeoff="Demanded tight synchronization state handling and minimal UI clutter over the track waveform."
               />
             </motion.div>
@@ -701,7 +701,7 @@ export default function MazeFlowerCaseStudy() {
               },
               {
                 title: "Discovery-to-Playback",
-                desc: "Zero-latency seamless transition between Campfire exploration and the immersive playback environment.",
+                desc: "A smooth transition from Campfire exploration into the immersive playback environment.",
               },
             ].map((concept, i) => (
               <motion.div
@@ -750,13 +750,13 @@ export default function MazeFlowerCaseStudy() {
 
           <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
-              The design establishes a cohesive experience across music discovery, social listening, artist engagement, and merchandise commerce.
+              Delivered the end-to-end UX/UI for the fan mobile application (Campfire discovery, planetary navigation, RideAlong synchronized listening, and Mixtapes), the web interfaces for artists and merchandise vendors, and a shared cross-platform design system.
             </motion.p>
             <motion.p {...fadeIn}>
-              By giving individual features a shared visual language and clear interaction patterns, MazeFlower brings together multiple types of user journeys within one recognizable ecosystem.
+              By giving individual features a shared visual language and clear interaction patterns, MazeFlower brings together discovery, social listening, and song-linked commerce within one unified ecosystem.
             </motion.p>
             <motion.p {...fadeIn}>
-              The result is a design foundation for a platform where music is not simply something people play. It becomes something they explore, share, and connect through.
+              The result is a design foundation for a platform where music is not simply something people play, but something they explore, share, and connect through.
             </motion.p>
           </div>
 

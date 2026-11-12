@@ -44,6 +44,10 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
       anchors: true, // keeps /#work, /#about style links working smoothly
     });
 
+    // Expose lenis instance globally for ScrollReset and other utilities
+    (window as unknown as { __lenis?: Lenis; lenis?: Lenis }).__lenis = lenis;
+    (window as unknown as { __lenis?: Lenis; lenis?: Lenis }).lenis = lenis;
+
     // Reset Lenis scroll position to top immediately on load
     lenis.scrollTo(0, { immediate: true });
 
@@ -54,6 +58,8 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
+      delete (window as unknown as { lenis?: Lenis }).lenis;
       window.removeEventListener("beforeunload", handleBeforeUnload);
       gsap.ticker.remove(tick);
       lenis.destroy();

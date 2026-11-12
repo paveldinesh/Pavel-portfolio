@@ -48,14 +48,17 @@ function Screen({
   ratio = "aspect-[16/9]",
   priority = false,
   hideIfMissing = false,
+  fit = "contain",
+  position = "object-center",
 }: {
   src: string;
   alt: string;
   caption?: string;
   ratio?: string;
   priority?: boolean;
-  /** Render nothing (instead of a placeholder) until the image file exists. */
   hideIfMissing?: boolean;
+  fit?: "cover" | "contain";
+  position?: string;
 }) {
   const [missing, setMissing] = useState(false);
   const fileName = src.split("/").pop();
@@ -85,7 +88,7 @@ function Screen({
               fill
               priority={priority}
               sizes="(max-width: 1260px) 100vw, 1260px"
-              className="object-cover object-top"
+              className={`${fit === "contain" ? "object-contain" : "object-cover"} ${position}`}
               onError={() => setMissing(true)}
             />
           )}
@@ -184,7 +187,7 @@ export default function MilitaryPCSCaseStudy() {
           {[
             { k: "Category", v: "Military Relocation • PropTech" },
             { k: "Platform", v: "Web Application" },
-            { k: "Design Focus", v: "UX Research, IA, User Flows, UI Design" },
+            { k: "Design Focus", v: "UX Strategy, IA, User Flows, UI Design" },
             { k: "Role", v: "UI/UX Designer" },
           ].map((m) => (
             <div key={m.k}>
@@ -199,7 +202,8 @@ export default function MilitaryPCSCaseStudy() {
             src={IMG.hero}
             alt="MilitaryPCS command center displayed in desktop environment"
             caption="MilitaryPCS: Desktop experience showcasing the centralized relocation command center and housing exploration"
-            ratio="aspect-[16/10]"
+            ratio="aspect-[4/3]"
+            fit="contain"
             priority
           />
         </motion.div>
@@ -213,7 +217,7 @@ export default function MilitaryPCSCaseStudy() {
           <motion.div {...fadeIn} className="flex flex-col gap-2">
             <span className="font-mono text-[18px] text-[#F14417]">/summary</span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[#F5F4F1]">
-              The idea in short<span className="font-mono text-[18px] text-[#F14417] ml-2">*</span>
+              The idea in short
             </h2>
           </motion.div>
 
@@ -249,14 +253,6 @@ export default function MilitaryPCSCaseStudy() {
                   <p className="text-[#A09D95] text-[15px] leading-relaxed">{c.d}</p>
                 </div>
               ))}
-            </div>
-
-            <div className="p-6 rounded-xl bg-[#121211] border border-white/[0.08] relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-[#F14417]" />
-              <span className="font-mono text-xs text-[#F14417] block mb-2">ONE-LINE PROMISE</span>
-              <p className="text-[#F5F4F1] text-lg leading-relaxed">
-                Making military relocation simpler, more connected, and less overwhelming.
-              </p>
             </div>
           </motion.div>
         </div>
@@ -349,12 +345,12 @@ export default function MilitaryPCSCaseStudy() {
             {
               n: "01",
               t: "Reduce cognitive load",
-              d: "Present structured, phased information rather than overwhelming data walls. By organizing information by relocation timeline, families only deal with immediate requirements rather than 50 tasks at once.",
+              d: "Present structured, phased information rather than overwhelming data walls. By organizing information by relocation timeline, families only deal with immediate requirements rather than many simultaneous tasks at once.",
             },
             {
               n: "02",
               t: "Establish deep trust",
-              d: "Highlight verified military-affiliated professionals, veteran-owned businesses, and military-spouse service providers. Clear verification badges protect families from predatory vendors.",
+              d: "Highlight military-affiliated professionals, veteran-owned businesses, and military-spouse service providers. Verification badges are designed to help families identify trusted providers and avoid unreliable vendors.",
             },
             {
               n: "03",
@@ -628,7 +624,8 @@ export default function MilitaryPCSCaseStudy() {
                 src={IMG.baseExplorer}
                 alt="MilitaryPCS Base Explorer interactive map"
                 caption="Base Explorer: Spatial installation mapping showing base boundaries, gate routes, schools, and neighborhood clusters"
-                ratio="aspect-[16/10]"
+                ratio="aspect-[1800/1013]"
+                fit="contain"
               />
             </motion.div>
 
@@ -660,7 +657,8 @@ export default function MilitaryPCSCaseStudy() {
                 src={IMG.housing}
                 alt="MilitaryPCS Housing Discovery interface"
                 caption="Housing Discovery: Verified property listings paired with community sentiment, BAH price matching, and property details"
-                ratio="aspect-[16/10]"
+                ratio="aspect-[1800/1055]"
+                fit="contain"
               />
             </motion.div>
           </div>
@@ -684,15 +682,16 @@ export default function MilitaryPCSCaseStudy() {
                 src={IMG.planner}
                 alt="MilitaryPCS PCS Journey and timeline planner"
                 caption="PCS Planner: Stage-gated milestone roadmap automatically generated from the service member's report date"
-                ratio="aspect-[16/10]"
+                ratio="aspect-[1800/1450]"
+                fit="contain"
               />
             </motion.div>
 
             <motion.div {...fadeIn}>
               <DecisionNote
                 decision="Structure the PCS planner by chronological relocation milestones (Before Orders, 60 Days Out, Moving Week, In-Processing) rather than an unorganized generic to-do list."
-                why="A permanent change of station contains over 50 logistical deadlines. Showing all tasks simultaneously causes severe anxiety; grouping by stage ensures families focus strictly on current priorities."
-                tradeoff="Hiding future milestones requires extra clicks to preview later phases, but successfully eliminates decision fatigue during early preparation."
+                why="A permanent change of station involves many deadlines and responsibilities. Showing all tasks simultaneously causes decision fatigue; grouping by stage ensures families focus strictly on current priorities."
+                tradeoff="Hiding future milestones requires extra clicks to preview later phases, but helps eliminate decision fatigue during early preparation."
               />
             </motion.div>
           </div>
@@ -716,15 +715,16 @@ export default function MilitaryPCSCaseStudy() {
                 src={IMG.directory}
                 alt="MilitaryPCS Verified Professional Directory"
                 caption="Verified Directory: Curated directory of military-affiliated realtors, lenders, and community services with authentic peer reviews"
-                ratio="aspect-[16/10]"
+                ratio="aspect-[1800/1054]"
+                fit="contain"
               />
             </motion.div>
 
             <motion.div {...fadeIn}>
               <DecisionNote
-                decision="Require strict verification badges for military affiliation (veteran-owned, military spouse-operated, or military relocation certified) before granting directory placement."
-                why="Relocating military personnel are prime targets for predatory rental schemes and inexperienced lenders. Explicit badges build immediate trust and promote community mutual support."
-                tradeoff="Verification gating reduces the total directory volume compared to open commercial platforms, but elevates the quality and integrity of every recommendation."
+                decision="Incorporate verification badges for military affiliation (veteran-owned, military spouse-operated, or military relocation certified) across directory listings."
+                why="Verification badges are designed to help families identify trusted providers and connect with verified military-affiliated professionals."
+                tradeoff="Verification gating limits total directory size compared to unvetted commercial listings, but prioritizes trust and relevance."
               />
             </motion.div>
           </div>
@@ -748,8 +748,17 @@ export default function MilitaryPCSCaseStudy() {
                 src={IMG.financial}
                 alt="MilitaryPCS Financial Guidance"
                 caption="Financial Guidance: Comprehensive calculations for DITY/PPM moves, VA loan pre-qualifications, and moving allowance planning"
-                ratio="aspect-[16/10]"
+                ratio="aspect-[1800/1380]"
+                fit="contain"
                 hideIfMissing
+              />
+            </motion.div>
+
+            <motion.div {...fadeIn}>
+              <DecisionNote
+                decision="Centralize moving expense estimators and DITY/PPM calculations directly alongside housing discovery."
+                why="Financial considerations heavily dictate housing choices during a relocation, so keeping cost estimations within the primary flow prevents disjointed budgeting."
+                tradeoff="Adds data inputs to what is typically a browsing experience, requiring sensible default values for speed."
               />
             </motion.div>
           </div>
@@ -775,6 +784,14 @@ export default function MilitaryPCSCaseStudy() {
                 caption="AI Battle Buddy: Conversational assistant tailored to installation-specific questions and PCS entitlements"
                 ratio="aspect-[16/10]"
                 hideIfMissing
+              />
+            </motion.div>
+
+            <motion.div {...fadeIn}>
+              <DecisionNote
+                decision="Provide a contextual conversational assistant grounded in base regulations and entitlements."
+                why="Installation rules and allowance policies vary widely; a guided assistant helps clarify specifics without forcing users to search through lengthy administrative docs."
+                tradeoff="Conversational responses must stay strictly bounded to administrative facts and clearly refer service members to official command channels for formal orders."
               />
             </motion.div>
           </div>
@@ -907,10 +924,10 @@ export default function MilitaryPCSCaseStudy() {
 
           <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
-              MilitaryPCS establishes a unified digital command center that replaces fragmented paperwork and scattered websites with a calm, purposeful relocation journey.
+              MilitaryPCS establishes a unified digital platform that brings housing discovery, financial planning, base navigation, and local support resources into one stage-based experience.
             </motion.p>
             <motion.p {...fadeIn}>
-              By pairing interactive geospatial exploration with military-verified professional support and stage-by-stage planning, the platform transforms one of the most stressful recurring events in military life into a confident, community-supported transition.
+              By pairing interactive geospatial exploration with military-verified professional support and stage-by-stage planning, the platform is designed to make military relocation clearer, more organized, and less stressful for service members and their families.
             </motion.p>
           </div>
 
@@ -977,7 +994,7 @@ export default function MilitaryPCSCaseStudy() {
             href="/work/descartes"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
-            <span>Next: Descartes Dashboard</span>
+            <span>Next: Descartes</span>
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

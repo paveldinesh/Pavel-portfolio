@@ -103,9 +103,8 @@ export default function About() {
           </h2>
 
           <p className="text-[#A09D95] text-[18px] sm:text-[20px] leading-relaxed max-w-[52ch]">
-            As a Product Designer and Developer, I create innovative solutions
-            that blend aesthetics and functionality, delivering exceptional user
-            experiences across various platforms.
+            Product Designer and Frontend Developer focusing on clear information hierarchy,
+            scalable design systems, and responsive web and mobile interfaces.
           </p>
 
           {/* Industry / Domain Pills */}

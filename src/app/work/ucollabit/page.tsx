@@ -33,10 +33,10 @@ import {
  */
 const IMG = {
   hero: "/images/projects/ucollabit/hero.png",
-  creativeDna: "/images/projects/ucollabit/creative-dna.png",
-  discovery: "/images/projects/ucollabit/discovery.png",
-  interactions: "/images/projects/ucollabit/interactions.png",
-  journey: "/images/projects/ucollabit/journey.png",
+  creativeDna: "/images/projects/ucollabit/iPhone 16 Plus Dark.png",
+  discovery: "/images/projects/ucollabit/iPhone 16 Plus Dark-1.png",
+  interactions: "/images/projects/ucollabit/iPhone 16 Plus Dark-2.png",
+  journey: "/images/projects/ucollabit/iPhone 16 Plus Dark-3.png",
 };
 
 /** Mobile device frame with graceful fallback when a user image isn't added yet */
@@ -76,7 +76,7 @@ function MobileSlot({
                 alt={alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 360px"
-                className="object-cover object-top"
+                className="object-contain object-top"
                 onError={() => setMissing(true)}
               />
             </div>
@@ -243,12 +243,24 @@ export default function UCollabitCaseStudy() {
             ✳
           </span>
 
+          {/* Hero Banner Showcase */}
+          <div className="w-full max-w-[960px] relative aspect-[1134/850] rounded-xl overflow-hidden mb-12 shadow-2xl border border-white/10">
+            <Image
+              src={IMG.hero}
+              alt="uCollabit ecosystem preview"
+              fill
+              priority
+              sizes="(max-width: 1260px) 100vw, 960px"
+              className="object-contain object-center"
+            />
+          </div>
+
           {/* Dual Phone Row */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 relative z-10 w-full py-6">
             {/* Phone 1: Welcome & Creative Community */}
             <div className="sm:-rotate-3 hover:rotate-0 transition-transform duration-500 w-full max-w-[320px]">
               <MobileSlot
-                src={IMG.hero}
+                src={IMG.discovery}
                 alt="uCollabit creative world screen mockup"
                 caption="uCollabit Welcome Feed — Creative Discovery"
               >

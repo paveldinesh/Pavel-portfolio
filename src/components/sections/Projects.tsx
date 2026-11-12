@@ -40,7 +40,7 @@ export default function Projects() {
       category: "Internal Dashboard • Surgical AI",
       year: "2026",
       description:
-        "End-to-end surgical activity dashboard, procedural workflows, and AI predictive analytics platform designed for clinical efficiency and real-time OR insights.",
+        "Surgical activity dashboard, procedural workflow tracking, and comparative analytics platform designed for operating room consistency and clinical planning.",
       tags: ["Dashboard", "Surgical AI", "Complex Data", "Design System"],
       image: "/images/projects/descartes/hero.png",
       link: "/work/descartes",
@@ -48,7 +48,7 @@ export default function Projects() {
     },
     {
       num: "02",
-      title: "Tiny bits of love",
+      title: "Tiny Bits of Love",
       category: "Mobile App • Wellness",
       year: "2026",
       description:
@@ -82,7 +82,7 @@ export default function Projects() {
       year: "2026",
       description:
         "A military-first relocation platform that brings housing, local services, planning tools and community insights into one map-first PCS experience.",
-      tags: ["UX Research", "Information Architecture", "UI Design"],
+      tags: ["UX Strategy", "Information Architecture", "UI Design"],
       image: "/images/projects/military-pcs/main-screen.jpg",
       link: "/work/military-pcs",
       isExternal: false,
@@ -99,7 +99,7 @@ export default function Projects() {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const count = projects.length;
-    const idx = Math.min(Math.floor(latest * count), count - 1);
+    const idx = Math.max(0, Math.min(Math.floor(latest * count), count - 1));
     setActiveIndex(idx);
   });
 
@@ -107,7 +107,7 @@ export default function Projects() {
   useEffect(() => {
     const current = scrollYProgress.get();
     const count = projects.length;
-    setActiveIndex(Math.min(Math.floor(current * count), count - 1));
+    setActiveIndex(Math.max(0, Math.min(Math.floor(current * count), count - 1)));
   }, [scrollYProgress, projects.length]);
 
   const currentProject = projects[activeIndex];
@@ -183,7 +183,7 @@ export default function Projects() {
                               fill
                               sizes="(max-width: 1024px) 100vw, 55vw"
                               priority
-                              className="object-cover object-center transition-transform duration-500 group-hover/frame:scale-[1.02]"
+                              className="object-contain object-center transition-transform duration-500 group-hover/frame:scale-[1.02]"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover/frame:bg-black/25 transition-colors flex items-center justify-center">
                               <span className="font-mono text-xs uppercase tracking-wider text-white bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 opacity-0 group-hover/frame:opacity-100 transition-opacity">
@@ -198,7 +198,7 @@ export default function Projects() {
                             fill
                             sizes="(max-width: 1024px) 100vw, 55vw"
                             priority
-                            className="object-cover object-center"
+                            className="object-contain object-center"
                           />
                         )
                       ) : (
@@ -360,7 +360,7 @@ export default function Projects() {
                           alt={proj.title}
                           fill
                           sizes="100vw"
-                          className="object-cover object-center"
+                          className="object-contain object-center"
                         />
                       </Link>
                     ) : (
@@ -369,7 +369,7 @@ export default function Projects() {
                         alt={proj.title}
                         fill
                         sizes="100vw"
-                        className="object-cover object-center"
+                        className="object-contain object-center"
                       />
                     )
                   ) : (

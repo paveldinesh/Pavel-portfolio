@@ -202,7 +202,7 @@ export default function TinyBitsOfLoveCaseStudy() {
 
         <motion.div
           {...fadeIn}
-          className="mt-12 relative w-full h-[320px] sm:h-[440px] md:h-[546px] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
+          className="mt-12 relative w-full aspect-[16/9] rounded-xl overflow-hidden border border-white/[0.08] bg-[#121211] shadow-2xl"
         >
           <Image
             src="/images/projects/tiny-bits/hero-trio.jpg"
@@ -210,7 +210,7 @@ export default function TinyBitsOfLoveCaseStudy() {
             fill
             priority
             sizes="(max-width: 1260px) 100vw, 1260px"
-            className="object-cover object-center"
+            className="object-contain sm:object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
         </motion.div>
@@ -224,7 +224,7 @@ export default function TinyBitsOfLoveCaseStudy() {
           <motion.div {...fadeIn} className="flex flex-col gap-2">
             <span className="font-mono text-[18px] text-[#F14417]">/summary</span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[#F5F4F1]">
-              The idea in short<span className="font-mono text-[18px] text-[#F14417] ml-2">*</span>
+              The idea in short
             </h2>
           </motion.div>
 
@@ -332,7 +332,7 @@ export default function TinyBitsOfLoveCaseStudy() {
             {
               n: "01",
               t: "Glanceable",
-              d: "Relationship health should be understood in about three seconds, without opening a single thread.",
+              d: "Designed so relationship health can be understood at a glance, without opening individual conversation threads.",
             },
             {
               n: "02",
@@ -428,16 +428,16 @@ export default function TinyBitsOfLoveCaseStudy() {
               ))}
 
               <div className="rounded-lg bg-[#121211] border border-white/[0.08] p-4 overflow-hidden">
-                <div className="relative w-full aspect-[4/3] rounded overflow-hidden">
+                <div className="relative w-full aspect-[486/996] max-w-[340px] mx-auto rounded overflow-hidden">
                   <Image
                     src="/images/projects/tiny-bits/thriving-grid.png"
                     alt="Thriving Relations Grid Screen"
                     fill
                     sizes="(max-width: 768px) 100vw, 360px"
-                    className="object-cover object-top"
+                    className="object-contain object-top"
                   />
                 </div>
-                <span className="font-mono text-xs text-[#7A7873] block mt-3">
+                <span className="font-mono text-xs text-[#7A7873] block mt-3 text-center">
                   Fig 02 — Thriving directory with leaf badges
                 </span>
               </div>
@@ -521,8 +521,8 @@ export default function TinyBitsOfLoveCaseStudy() {
               className="rounded-xl bg-[#121211] border border-white/[0.08] p-6 sm:p-10 flex items-center justify-center"
             >
               <DeviceMockup
-                src="/images/projects/tiny-bits/tree-home.png"
-                alt="Main home view with living botanical canopy"
+                src="/images/projects/tiny-bits/tree-decision-crop.png"
+                alt="Main home view focused on branch arrangement and status markers"
                 caption="Fig 03 — Home: emotional overview and quick-action trigger"
               />
             </motion.div>
@@ -608,8 +608,8 @@ export default function TinyBitsOfLoveCaseStudy() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {[
               { label: "Daily Streak", val: "12 Days", sub: "Active rhythm" },
-              { label: "Leaves Grown", val: "74", sub: "Total blooms" },
-              { label: "Affirmations", val: "74 Sent", sub: "Warm touches" },
+              { label: "Leaves Grown", val: "48", sub: "Total blooms" },
+              { label: "Affirmations", val: "32 Sent", sub: "Warm touches" },
               { label: "Leaves Lost", val: "0", sub: "Gentle guardrail" },
               { label: "Last Watered", val: "Today", sub: "Up to date" },
             ].map((metric, idx) => (
@@ -629,7 +629,7 @@ export default function TinyBitsOfLoveCaseStudy() {
               </motion.div>
             ))}
           </div>
-          <span className="font-mono text-xs text-[#7A7873] -mt-6">Sample prototype data</span>
+          <span className="font-mono text-xs text-[#7A7873] -mt-6">Illustrative prototype data</span>
 
           <motion.div {...fadeIn} className="max-w-[760px]">
             <DecisionNote
@@ -739,8 +739,8 @@ export default function TinyBitsOfLoveCaseStudy() {
               Seasonal tree themes, Enchanted Forest, Winter Wonderland and Sakura Blossom, let each person make the space their own. The aim is for checking in on friends to feel like self-care, not like clearing an inbox.
             </p>
             <div className="p-4 rounded-lg bg-[#121211] border border-white/[0.08] text-[16px] text-[#A09D95] leading-relaxed">
-              <span className="font-mono text-xs text-[#F14417] block mb-1">THE FEELING TARGET</span>
-              Walking into a sunlit greenhouse, never facing an unread-email backlog.
+              <span className="font-mono text-xs text-[#F14417] block mb-1">DESIGN GOAL</span>
+              A feeling inspired by the calm of a sunlit greenhouse, avoiding the pressure of an unread backlog.
             </div>
           </motion.div>
 
@@ -787,7 +787,7 @@ export default function TinyBitsOfLoveCaseStudy() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { title: "Connection guides", desc: "Short illustrated essays on adult friendship and low-pressure contact rhythms." },
-            { title: "Launch & store visuals", desc: "Campaign art positioning the living tree as an antidote to screen-time burnout." },
+            { title: "Launch & store visuals", desc: "Campaign art positioning the living tree as a calmer alternative to messaging overload." },
             { title: "Founder story", desc: "Long-form editorial on the personal motivation behind intentional relationship health." },
             { title: "Shareable milestones", desc: "Seasonal postcards friends can send outside the app to celebrate shared years." },
           ].map((item, idx) => (
@@ -822,6 +822,7 @@ export default function TinyBitsOfLoveCaseStudy() {
           <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
             <span className="font-mono text-sm text-[#F14417] block mb-4">DELIVERED</span>
             <ul className="flex flex-col gap-3 text-[#A09D95] text-[16px] leading-relaxed">
+              <li>• Shipped mobile app live on iOS (App Store) and Android (Google Play)</li>
               <li>• End-to-end mobile UX and UI across home, roster, affirmations, progress and themes</li>
               <li>• A cohesive design system and botanical brand identity</li>
               <li>• An interactive prototype of the core loop</li>

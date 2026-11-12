@@ -34,14 +34,17 @@ function Screen({
   ratio = "aspect-[16/9]",
   priority = false,
   hideIfMissing = false,
+  fit = "contain",
+  position = "object-center",
 }: {
   src: string;
   alt: string;
   caption?: string;
   ratio?: string;
   priority?: boolean;
-  /** Render nothing (instead of a placeholder) until the image file exists. */
   hideIfMissing?: boolean;
+  fit?: "cover" | "contain";
+  position?: string;
 }) {
   const [missing, setMissing] = useState(false);
   const fileName = src.split("/").pop();
@@ -71,7 +74,7 @@ function Screen({
               fill
               priority={priority}
               sizes="(max-width: 1260px) 100vw, 1260px"
-              className="object-cover object-center"
+              className={`${fit === "contain" ? "object-contain" : "object-cover"} ${position}`}
               onError={() => setMissing(true)}
             />
           )}
@@ -185,7 +188,8 @@ export default function DescartesCaseStudy() {
             src={IMG.hero}
             alt="Descartes dashboard and Live Monitor screens"
             caption="Descartes: the dashboard overview and the Live Monitor"
-            ratio="aspect-[16/9]"
+            ratio="aspect-[1024/766]"
+            fit="contain"
             priority
           />
         </motion.div>
@@ -199,7 +203,7 @@ export default function DescartesCaseStudy() {
           <motion.div {...fadeIn} className="flex flex-col gap-2">
             <span className="font-mono text-[18px] text-[#F14417]">/summary</span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[#F5F4F1]">
-              The idea in short<span className="font-mono text-[18px] text-[#F14417] ml-2">*</span>
+              The idea in short
             </h2>
           </motion.div>
 
@@ -212,7 +216,7 @@ export default function DescartesCaseStudy() {
               {[
                 { n: "01", t: "The problem", d: "Static checklists, hands-busy surgeons and little visibility into how the workflow was actually followed." },
                 { n: "02", t: "The approach", d: "Monitor the planned workflow live, capture progress by voice, and analyse it before and after." },
-                { n: "03", t: "The result", d: "A web platform covering the day overview, workflows, a live monitor and insights." },
+                { n: "03", t: "The result", d: "Delivered interface screens for the daily dashboard, procedures list, multi-step creation flow, workflow library, Live Monitor, and predictive/comparative insights." },
               ].map((c) => (
                 <div key={c.n} className="p-5 rounded-lg bg-[#121211] border border-white/[0.08]">
                   <span className="font-mono text-xs text-[#F14417] block mb-2">{c.n}</span>
@@ -250,7 +254,7 @@ export default function DescartesCaseStudy() {
           </motion.h2>
 
           <motion.p {...fadeIn} className="text-[#A09D95] text-lg sm:text-xl max-w-[60ch] leading-relaxed">
-            Preventable errors and adverse events are a persistent risk in surgery, and the tools meant to reduce them rarely fit how a procedure actually unfolds.
+            Surgical workflows demand high consistency, yet the tools meant to support procedural adherence rarely match how a case unfolds in practice.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
@@ -317,7 +321,7 @@ export default function DescartesCaseStudy() {
             {
               n: "02",
               t: "Glanceable under real conditions",
-              d: "Strong hierarchy and high readability, especially in the Live Monitor, designed for OR lighting and for users in their 40s and 50s and beyond.",
+              d: "Strong hierarchy and high readability, especially in the Live Monitor, designed for readability at a distance under OR lighting.",
             },
             {
               n: "03",
@@ -433,7 +437,7 @@ export default function DescartesCaseStudy() {
               Completed required steps ÷ total required steps × 100
             </p>
             <p className="text-[#A09D95] text-[16px] leading-relaxed mt-3">
-              A single, transparent number that appears on the dashboard, in case summaries and in comparative analytics.
+              Calculated as completed required steps divided by total required steps, displayed in the dashboard Weekly Overview KPI card.
             </p>
           </motion.div>
 
@@ -503,7 +507,7 @@ export default function DescartesCaseStudy() {
           <motion.div {...fadeIn}>
             <DecisionNote
               decision="Make the dashboard an operational overview with one dominant action, not an analytics wall."
-              why="Clinical teams arrive between cases with little time. The most important thing, whether a case is live, should never need to be found."
+              why="Teams transition rapidly between cases. Critical operational status—such as whether a case is actively live—needs to be immediately apparent without searching."
               tradeoff="Deeper analysis is pushed to Insights & AI, so the dashboard shows a snapshot rather than the full picture."
             />
           </motion.div>
@@ -549,9 +553,9 @@ export default function DescartesCaseStudy() {
 
             <motion.div {...fadeIn} className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]">
               <span className="font-mono text-xs text-[#F14417] block mb-2">GATING</span>
-              <h4 className="font-display font-bold text-xl text-[#F5F4F1] mb-2">Required steps stay required</h4>
+              <h4 className="font-display font-bold text-xl text-[#F5F4F1] mb-2">Workflow-defined steps</h4>
               <p className="text-[#A09D95] text-[15px] leading-relaxed">
-                All critical steps are required. The workflow can&apos;t advance until the current step is completed or explicitly removed, and step-level alerts must be resolved first.
+                Required steps come directly from the surgical team&apos;s own workflow template. A step can be completed or explicitly removed with confirmation before advancing.
               </p>
             </motion.div>
 
@@ -652,7 +656,8 @@ export default function DescartesCaseStudy() {
                 src={IMG.insightsComparative}
                 alt="Post-operative comparative analytics"
                 caption="Post-operative comparative analytics"
-                ratio="aspect-[1920/1720]"
+                ratio="aspect-[1024/951]"
+                fit="contain"
                 hideIfMissing
               />
             </div>
@@ -662,7 +667,7 @@ export default function DescartesCaseStudy() {
             <DecisionNote
               decision="Pair every predicted figure with benchmarks, and rank improvement opportunities by expected impact."
               why="A single number is hard to judge on its own. Comparing against the top 5%, the hospital and the national figure gives the surgical team context to prepare with."
-              tradeoff="Ranked opportunities sit close to clinical advice, so their wording needs the most care. The platform's role is to inform the team's planning, not to decide for them."
+              tradeoff="Opportunities are presented as analysis for the team's planning, with wording reviewed carefully to inform rather than replace clinical decision-making."
             />
           </motion.div>
         </div>
@@ -704,10 +709,10 @@ export default function DescartesCaseStudy() {
               <span className="font-mono text-sm text-[#F14417]">02 / TYPE</span>
               <h3 className="font-display font-bold text-2xl text-[#F5F4F1]">Hierarchy you can read at a glance</h3>
               <p className="text-[#A09D95] text-[16px] leading-relaxed">
-                Geist or Inter, with bold and semibold reserved for critical information and regular weight for everything secondary.
+                Geist, with bold and semibold reserved for critical information and regular weight for everything secondary.
               </p>
               <div className="flex flex-wrap gap-2 mt-auto pt-4">
-                {["Geist / Inter", "Strong hierarchy", "High readability"].map((t) => (
+                {["Geist", "Strong hierarchy", "High readability"].map((t) => (
                   <span key={t} className="px-3 py-1 rounded-full border border-white/10 font-mono text-xs text-[#A09D95]">
                     {t}
                   </span>
@@ -719,7 +724,7 @@ export default function DescartesCaseStudy() {
               <span className="font-mono text-sm text-[#F14417]">03 / LIVE MONITOR</span>
               <h3 className="font-display font-bold text-2xl text-[#F5F4F1]">A theme built for the OR</h3>
               <p className="text-[#A09D95] text-[16px] leading-relaxed">
-                Dark and high-contrast, tuned for OR lighting and for readability at a distance by users in their 40s and 50s and beyond.
+                Dark and high-contrast, tuned for readability at a distance under OR lighting.
               </p>
               <div className="flex flex-wrap gap-2 mt-auto pt-4">
                 {["Dark theme", "High contrast", "Glanceable"].map((t) => (
@@ -836,11 +841,11 @@ export default function DescartesCaseStudy() {
       <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
           <Link
-            href="/#work"
+            href="/work/military-pcs"
             className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span>Previous: Selected work</span>
+            <span>Previous: MilitaryPCS</span>
           </Link>
 
           <Link
