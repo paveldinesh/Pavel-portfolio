@@ -16,7 +16,7 @@ import {
   Layers,
   CheckCircle2,
 } from "lucide-react";
-import { Screen, DeviceMockup, DecisionNote } from "@/components/case-study";
+import { Screen, DeviceMockup, DecisionNote, MetaRow, ProjectNav } from "@/components/case-study";
 
 const IMG = {
   hero: "/images/projects/mazeflower/hero.webp",
@@ -42,74 +42,66 @@ export default function MazeFlowerCaseStudy() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0B0B0A] text-[#F5F4F1] relative selection:bg-[#00F5D4] selection:text-[#050811] pb-24">
+    <main className="min-h-screen bg-[#0B0B0A] text-[#F5F4F1] relative selection:bg-[#00F5D4] selection:text-[#050811] pb-[max(3rem,env(safe-area-inset-bottom))] overflow-x-hidden">
       <Navbar />
 
       {/* ========================================================= */}
       {/* 1. PROJECT HERO */}
       {/* ========================================================= */}
-      <section className="pt-36 sm:pt-44 pb-16 px-6 sm:px-12 max-w-[1260px] mx-auto relative z-10">
+      <section className="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-20 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto relative z-10">
         {/* Subtle Cyan / Teal Atmospheric Aura */}
         <div
           aria-hidden="true"
-          className="absolute top-20 left-1/2 -translate-x-1/2 w-[600px] h-[360px] bg-gradient-to-b from-[#00F5D4]/[0.07] via-[#0077B6]/[0.04] to-transparent rounded-full blur-3xl pointer-events-none -z-10"
+          className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[360px] bg-gradient-to-b from-[#00F5D4]/[0.07] via-[#0077B6]/[0.04] to-transparent rounded-full blur-3xl pointer-events-none -z-10 overflow-hidden"
         />
 
-        <motion.div {...fadeIn} className="mb-8">
+        <motion.div {...fadeIn} className="mb-6 sm:mb-8">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 font-mono text-[16px] text-[#A09D95] hover:text-[#00F5D4] transition-colors group"
+            className="inline-flex items-center gap-2 font-mono text-[15px] sm:text-[16px] text-[#A09D95] hover:text-[#00F5D4] transition-colors group min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Selected work</span>
           </Link>
         </motion.div>
 
-        <div className="flex flex-col gap-6 max-w-[960px]">
+        <div className="flex flex-col gap-4 sm:gap-6 max-w-[960px]">
           <motion.div {...fadeIn} className="flex items-center gap-3">
-            <span className="font-mono text-[18px] text-[#00F5D4]">/case-study</span>
-            <span className="font-mono text-[16px] text-[#A09D95] border border-white/10 rounded-full px-3 py-0.5">
+            <span className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">/case-study</span>
+            <span className="font-mono text-xs sm:text-[16px] text-[#A09D95] border border-white/10 rounded-full px-3 py-0.5">
               Case 03
             </span>
           </motion.div>
 
           <motion.h1
             {...fadeIn}
-            className="font-display font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.04em] text-[#F5F4F1] leading-[1.02]"
+            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] text-[#F5F4F1] leading-[1.05] break-words"
           >
             MazeFlower
           </motion.h1>
 
           <motion.p
             {...fadeIn}
-            className="text-xl sm:text-2xl md:text-3xl text-[#A09D95] font-light leading-relaxed max-w-[42ch]"
+            className="text-lg sm:text-2xl md:text-3xl text-[#A09D95] font-light leading-relaxed max-w-[42ch]"
           >
             Redefining How We Discover, Share, and Experience Music
           </motion.p>
         </div>
 
         {/* Project Meta Information */}
-        <motion.div
-          {...fadeIn}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 mt-12 border-t border-b border-white/[0.08]"
-        >
-          {[
-            { k: "Platform", v: "Mobile Application · Web Application" },
-            { k: "Industry", v: "Music · Entertainment · Social Commerce" },
-            { k: "Design Scope", v: "UI/UX Design · Interaction Design · Prototyping · Design System" },
-            { k: "Role", v: "UI/UX Designer" },
-          ].map((m) => (
-            <div key={m.k}>
-              <span className="font-mono text-sm text-[#7A7873] block mb-1">{m.k}</span>
-              <span className="text-[16px] sm:text-[17px] font-medium text-[#F5F4F1] leading-snug block">
-                {m.v}
-              </span>
-            </div>
-          ))}
+        <motion.div {...fadeIn}>
+          <MetaRow
+            items={[
+              { label: "Platform", value: "Mobile Application · Web Application" },
+              { label: "Industry", value: "Music · Entertainment · Social Commerce" },
+              { label: "Design Scope", value: "UI/UX Design · Interaction Design · Prototyping · Design System" },
+              { label: "Role", value: "UI/UX Designer" },
+            ]}
+          />
         </motion.div>
 
         {/* Hero Screen Showcase */}
-        <motion.div {...fadeIn} className="mt-12">
+        <motion.div {...fadeIn} className="mt-8 sm:mt-12">
           <Screen
             src={IMG.hero}
             alt="MazeFlower Planetary System overview"
@@ -124,20 +116,20 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 2. OVERVIEW */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
             /overview
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             Making music a shared experience again.
           </motion.h2>
 
-          <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <div className="flex flex-col gap-4 sm:gap-6 text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
               MazeFlower is a music-centered social platform designed to bring people closer through the songs they love.
             </motion.p>
@@ -147,7 +139,7 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* Three Connected Audiences */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-2 sm:mt-4">
             {[
               {
                 icon: <Users2 className="w-5 h-5 text-[#00F5D4]" />,
@@ -174,7 +166,7 @@ export default function MazeFlowerCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col justify-between"
+                className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -183,7 +175,7 @@ export default function MazeFlowerCaseStudy() {
                     </span>
                     {aud.icon}
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-[#F5F4F1] mb-3">
+                  <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F4F1] mb-2 sm:mb-3">
                     {aud.title}
                   </h3>
                   <p className="text-[#A09D95] text-[15px] leading-relaxed">{aud.desc}</p>
@@ -197,20 +189,20 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 3. THE CHALLENGE */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
             /challenge
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             Music is everywhere. Connection is missing.
           </motion.h2>
 
-          <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <div className="flex flex-col gap-4 sm:gap-6 text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
               Traditional streaming platforms make music accessible, but listening often remains an individual experience.
             </motion.p>
@@ -222,15 +214,15 @@ export default function MazeFlowerCaseStudy() {
           {/* Central Design Question Block */}
           <motion.div
             {...fadeIn}
-            className="p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-[#121211] via-[#0d1624] to-[#0A1128] border border-white/[0.1] relative overflow-hidden my-4"
+            className="p-5 sm:p-8 lg:p-12 rounded-2xl bg-gradient-to-br from-[#121211] via-[#0d1624] to-[#0A1128] border border-white/[0.1] relative overflow-hidden my-2 sm:my-4"
           >
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-3 sm:mb-4">
               <span className="w-2 h-2 rounded-full bg-[#00F5D4]" />
               <span className="font-mono text-xs text-[#00F5D4] tracking-widest uppercase">
                 THE CENTRAL DESIGN CHALLENGE
               </span>
             </div>
-            <p className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-[#F5F4F1] leading-snug max-w-[34ch]">
+            <p className="font-display font-bold text-xl sm:text-3xl md:text-4xl text-[#F5F4F1] leading-snug max-w-[34ch]">
               How do we make an ambitious, multidimensional platform feel intuitive, cohesive, and emotionally engaging?
             </p>
           </motion.div>
@@ -240,25 +232,25 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 4. OUR APPROACH */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
             /approach
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             Designing around people, not just playlists.
           </motion.h2>
 
-          <motion.p {...fadeIn} className="text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <motion.p {...fadeIn} className="text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             Our approach focused on transforming music consumption into an interactive journey. We established a visual and interaction framework that balances immersive discovery with straightforward navigation, allowing users to move naturally between listening, exploring, connecting, and shopping.
           </motion.p>
 
           {/* Three Principles */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-2 sm:mt-4">
             {[
               {
                 num: "01",
@@ -285,7 +277,7 @@ export default function MazeFlowerCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col justify-between"
+                className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -294,7 +286,7 @@ export default function MazeFlowerCaseStudy() {
                     </span>
                     {p.icon}
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-[#F5F4F1] mb-3">
+                  <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F4F1] mb-2 sm:mb-3">
                     {p.title}
                   </h3>
                   <p className="text-[#A09D95] text-[15px] leading-relaxed">{p.desc}</p>
@@ -308,30 +300,30 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 5. THE EXPERIENCE (Features + Mockups + DecisionNotes)   */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-20 sm:gap-28">
-          <div className="flex flex-col gap-6">
-            <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-14 sm:gap-20 lg:gap-28">
+          <div className="flex flex-col gap-4 sm:gap-6">
+            <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
               /experience
             </motion.span>
             <motion.h2
               {...fadeIn}
-              className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+              className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
             >
               The Experience
             </motion.h2>
           </div>
 
           {/* 1. Campfire */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div {...fadeIn} className="flex flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+            <motion.div {...fadeIn} className="flex flex-col gap-4 sm:gap-6">
               <span className="font-mono text-xs text-[#00F5D4] tracking-widest uppercase">
                 FEATURE 01 // DISCOVERY HUB
               </span>
-              <h3 className="font-display font-bold text-3xl sm:text-4xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F4F1]">
                 Campfire, where every journey begins
               </h3>
-              <p className="text-[#A09D95] text-lg leading-relaxed">
+              <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                 The central discovery hub, bringing together recently explored music, search, recommendations, and activity from like-minded listeners. Rather than overwhelming users with content, the experience creates an inviting starting point where they can revisit favorites or discover something unexpected.
               </p>
             </motion.div>
@@ -345,8 +337,8 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* 2. Planetary View (with Kindreds) + DecisionNote */}
-          <div className="flex flex-col gap-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="flex flex-col gap-8 sm:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
               <motion.div {...fadeIn} className="order-2 lg:order-1">
                 <DeviceMockup
                   src={IMG.planetaryView}
@@ -354,22 +346,22 @@ export default function MazeFlowerCaseStudy() {
                   caption="Planetary View: Interactive representation of individual taste and kindred discovery"
                 />
               </motion.div>
-              <motion.div {...fadeIn} className="order-1 lg:order-2 flex flex-col gap-6">
+              <motion.div {...fadeIn} className="order-1 lg:order-2 flex flex-col gap-4 sm:gap-6">
                 <span className="font-mono text-xs text-[#00F5D4] tracking-widest uppercase">
                   FEATURE 02 // PERSONAL UNIVERSE
                 </span>
-                <h3 className="font-display font-bold text-3xl sm:text-4xl text-[#F5F4F1]">
+                <h3 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F4F1]">
                   Planetary View, your taste, your universe
                 </h3>
-                <p className="text-[#A09D95] text-lg leading-relaxed">
+                <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                   An interactive representation of each user&apos;s musical identity. Favorite songs, albums, artists, and saved items become part of a personalized visual world. Users can explore their own planet or discover other listeners, known as Kindreds, who share similar musical interests.
                 </p>
-                <p className="text-[#A09D95] text-lg leading-relaxed">
+                <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                   The experience turns a conventional music profile into a more expressive and exploratory environment.
                 </p>
               </motion.div>
             </div>
-            <motion.div {...fadeIn} className="mt-4">
+            <motion.div {...fadeIn} className="mt-2 sm:mt-4">
               <DecisionNote
                 decision="Transform conventional static profile pages into an interactive celestial planet with orbiting kindred nodes."
                 why="Turns abstract listening history into an exploratory, visual space that sparks curiosity and spontaneous social connection."
@@ -379,15 +371,15 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* 3. Mixtapes & Anthologies (Side by Side) */}
-          <div className="flex flex-col gap-10">
-            <motion.div {...fadeIn} className="flex flex-col gap-6 max-w-[800px]">
+          <div className="flex flex-col gap-8 sm:gap-10">
+            <motion.div {...fadeIn} className="flex flex-col gap-4 sm:gap-6 max-w-[800px]">
               <span className="font-mono text-xs text-[#00F5D4] tracking-widest uppercase">
                 FEATURE 03 // DUAL CURATION FORMATS
               </span>
-              <h3 className="font-display font-bold text-3xl sm:text-4xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F4F1]">
                 Mixtapes &amp; Anthologies, beyond ordinary playlists
               </h3>
-              <p className="text-[#A09D95] text-lg leading-relaxed">
+              <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                 Mixtapes organize songs into mood-driven listening journeys, while Anthologies create deeper, narrative-led experiences that connect music through themes and stories. Clear visual hierarchy and consistent browsing patterns help users distinguish between these formats while keeping discovery engaging.
               </p>
             </motion.div>
@@ -410,16 +402,16 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* 4. RideAlong + DecisionNote */}
-          <div className="flex flex-col gap-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <motion.div {...fadeIn} className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8 sm:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+              <motion.div {...fadeIn} className="flex flex-col gap-4 sm:gap-6">
                 <span className="font-mono text-xs text-[#00F5D4] tracking-widest uppercase">
                   FEATURE 04 // SHARED PRESENCE
                 </span>
-                <h3 className="font-display font-bold text-3xl sm:text-4xl text-[#F5F4F1]">
+                <h3 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F4F1]">
                   RideAlong, listen together, wherever you are
                 </h3>
-                <p className="text-[#A09D95] text-lg leading-relaxed">
+                <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                   Synchronized listening experiences that allow people to enjoy music together, even when physically apart. The interaction design centers on shared playback, session participation, and the sense of presence that makes listening feel social rather than isolated.
                 </p>
               </motion.div>
@@ -431,7 +423,7 @@ export default function MazeFlowerCaseStudy() {
                 />
               </motion.div>
             </div>
-            <motion.div {...fadeIn} className="mt-4">
+            <motion.div {...fadeIn} className="mt-2 sm:mt-4">
               <DecisionNote
                 decision="Anchor real-time shared playback heads and live reaction indicators directly inside the player UI."
                 why="Designed to make shared listening feel present without extra messaging or disruptive video calls."
@@ -441,7 +433,7 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* 5. Music Meets Commerce */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             <motion.div {...fadeIn} className="order-2 lg:order-1">
               <DeviceMockup
                 src={IMG.merch}
@@ -449,17 +441,17 @@ export default function MazeFlowerCaseStudy() {
                 caption="Music Meets Commerce: Song-linked merchandise embedded directly into the listening experience"
               />
             </motion.div>
-            <motion.div {...fadeIn} className="order-1 lg:order-2 flex flex-col gap-6">
+            <motion.div {...fadeIn} className="order-1 lg:order-2 flex flex-col gap-4 sm:gap-6">
               <span className="font-mono text-xs text-[#00F5D4] tracking-widest uppercase">
                 FEATURE 05 // CONNECTED COMMERCE
               </span>
-              <h3 className="font-display font-bold text-3xl sm:text-4xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#F5F4F1]">
                 Music Meets Commerce
               </h3>
-              <p className="text-[#A09D95] text-lg leading-relaxed">
+              <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                 Song-linked merchandise extends the relationship between artists and fans. Fans can discover products connected to the music they enjoy, while artists and vendors can collaborate on merchandise offerings.
               </p>
-              <p className="text-[#A09D95] text-lg leading-relaxed">
+              <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
                 The purchasing experience is designed to feel like a natural extension of music discovery rather than a disconnected marketplace.
               </p>
             </motion.div>
@@ -470,38 +462,38 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 6. DESIGNING THE ECOSYSTEM (Three Audiences)              */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
             /ecosystem
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             Three audiences. One connected experience.
           </motion.h2>
 
-          <motion.p {...fadeIn} className="text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <motion.p {...fadeIn} className="text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             The platform extends beyond the fan-facing mobile application into dedicated artist and vendor interfaces.
           </motion.p>
 
           {/* Three Feature Columns */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-2 sm:mt-4">
             {/* Fan Column */}
             <motion.div
               initial={prefersReduced ? { opacity: 1 } : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col gap-6"
+              className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col gap-4 sm:gap-6"
             >
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#00F5D4]" />
-                <h3 className="font-display font-bold text-xl text-[#F5F4F1]">Fan Experience</h3>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#F5F4F1]">Fan Experience</h3>
               </div>
-              <ul className="flex flex-col gap-3 font-mono text-[14px] text-[#A09D95]">
+              <ul className="flex flex-col gap-2.5 sm:gap-3 font-mono text-[13px] sm:text-[14px] text-[#A09D95]">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#00F5D4] shrink-0 mt-0.5" />
                   <span>Discover music</span>
@@ -535,13 +527,13 @@ export default function MazeFlowerCaseStudy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.08 }}
-              className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col gap-6"
+              className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col gap-4 sm:gap-6"
             >
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#00B4D8]" />
-                <h3 className="font-display font-bold text-xl text-[#F5F4F1]">Artist Experience</h3>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#F5F4F1]">Artist Experience</h3>
               </div>
-              <ul className="flex flex-col gap-3 font-mono text-[14px] text-[#A09D95]">
+              <ul className="flex flex-col gap-2.5 sm:gap-3 font-mono text-[13px] sm:text-[14px] text-[#A09D95]">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#00B4D8] shrink-0 mt-0.5" />
                   <span>Manage releases</span>
@@ -571,13 +563,13 @@ export default function MazeFlowerCaseStudy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.16 }}
-              className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col gap-6"
+              className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col gap-4 sm:gap-6"
             >
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#0077B6]" />
-                <h3 className="font-display font-bold text-xl text-[#F5F4F1]">Vendor Experience</h3>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#F5F4F1]">Vendor Experience</h3>
               </div>
-              <ul className="flex flex-col gap-3 font-mono text-[14px] text-[#A09D95]">
+              <ul className="flex flex-col gap-2.5 sm:gap-3 font-mono text-[13px] sm:text-[14px] text-[#A09D95]">
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Manage products</span>
@@ -603,7 +595,7 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* Web Dashboards */}
-          <div className="flex flex-col gap-10 mt-6">
+          <div className="flex flex-col gap-8 sm:gap-10 mt-4 sm:mt-6">
             <motion.div {...fadeIn}>
               <Screen
                 src={IMG.artistDashboard}
@@ -626,7 +618,7 @@ export default function MazeFlowerCaseStudy() {
 
           <motion.p
             {...fadeIn}
-            className="font-mono text-sm sm:text-base text-[#7A7873] border-l-2 border-[#00F5D4] pl-4 mt-4"
+            className="font-mono text-xs sm:text-base text-[#7A7873] border-l-2 border-[#00F5D4] pl-4 mt-2 sm:mt-4"
           >
             Each interface follows the same product identity while adapting its information hierarchy and workflows to the needs of its audience.
           </motion.p>
@@ -636,20 +628,20 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 7. VISUAL DESIGN & INTERACTION                           */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
             /visual-design
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             An immersive identity with usability at its core.
           </motion.h2>
 
-          <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <div className="flex flex-col gap-4 sm:gap-6 text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
               MazeFlower&apos;s visual direction draws from the idea of a personal musical universe. Deep navy surfaces, expressive cyan and teal accents, dimensional elements, and music-focused imagery create a distinctive digital environment.
             </motion.p>
@@ -659,7 +651,7 @@ export default function MazeFlowerCaseStudy() {
           </div>
 
           {/* Color Palette Strip */}
-          <motion.div {...fadeIn} className="flex flex-col gap-3 mt-4">
+          <motion.div {...fadeIn} className="flex flex-col gap-3 mt-2 sm:mt-4">
             <span className="font-mono text-xs text-[#7A7873] tracking-widest uppercase">
               COLOR SYSTEM // DEEP NAVY SURFACES &amp; CYAN / TEAL ACCENTS
             </span>
@@ -673,10 +665,10 @@ export default function MazeFlowerCaseStudy() {
               ].map((c) => (
                 <div
                   key={c.hex}
-                  className="rounded-xl border border-white/[0.08] p-4 flex flex-col justify-between h-36 bg-[#121211]"
+                  className="rounded-xl border border-white/[0.08] p-4 flex flex-col justify-between h-32 sm:h-36 bg-[#121211]"
                 >
                   <div
-                    className="w-full h-12 rounded-lg border border-white/10"
+                    className="w-full h-10 sm:h-12 rounded-lg border border-white/10"
                     style={{ backgroundColor: c.hex }}
                   />
                   <div>
@@ -689,7 +681,7 @@ export default function MazeFlowerCaseStudy() {
           </motion.div>
 
           {/* Interactive Concepts Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-2 sm:mt-4">
             {[
               {
                 title: "Rotating Planetary View",
@@ -710,17 +702,17 @@ export default function MazeFlowerCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]"
+                className="p-5 sm:p-6 rounded-xl bg-[#121211] border border-white/[0.08]"
               >
                 <span className="font-mono text-xs text-[#00F5D4] block mb-2">INTERACTION CONCEPT</span>
-                <h3 className="font-display font-bold text-lg text-[#F5F4F1] mb-2">{concept.title}</h3>
+                <h3 className="font-display font-bold text-base sm:text-lg text-[#F5F4F1] mb-2">{concept.title}</h3>
                 <p className="text-[#A09D95] text-[14px] leading-relaxed">{concept.desc}</p>
               </motion.div>
             ))}
           </div>
 
           {/* Design System Web Screen */}
-          <motion.div {...fadeIn} className="mt-6">
+          <motion.div {...fadeIn} className="mt-4 sm:mt-6">
             <Screen
               src={IMG.designSystem}
               alt="MazeFlower Design System foundations"
@@ -735,20 +727,20 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 8. DESIGN OUTCOME */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#00F5D4]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#00F5D4]">
             /outcome
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             Turning a music platform into a connected digital world.
           </motion.h2>
 
-          <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <div className="flex flex-col gap-4 sm:gap-6 text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
               Delivered the end-to-end UX/UI for the fan mobile application (Campfire discovery, planetary navigation, RideAlong synchronized listening, and Mixtapes), the web interfaces for artists and merchandise vendors, and a shared cross-platform design system.
             </motion.p>
@@ -763,9 +755,9 @@ export default function MazeFlowerCaseStudy() {
           {/* 9. CLOSING STATEMENT */}
           <motion.blockquote
             {...fadeIn}
-            className="mt-12 p-8 sm:p-12 rounded-2xl bg-[#121211] border-l-4 border-[#00F5D4] max-w-[920px]"
+            className="mt-8 sm:mt-12 p-5 sm:p-8 lg:p-12 rounded-2xl bg-[#121211] border-l-4 border-[#00F5D4] max-w-[920px]"
           >
-            <p className="font-display font-bold text-2xl sm:text-4xl tracking-[-0.02em] text-[#F5F4F1] leading-snug">
+            <p className="font-display font-bold text-xl sm:text-3xl lg:text-4xl tracking-[-0.02em] text-[#F5F4F1] leading-snug">
               &ldquo;More than a playlist. More than a platform. A universe of shared music experiences.&rdquo;
             </p>
           </motion.blockquote>
@@ -775,32 +767,10 @@ export default function MazeFlowerCaseStudy() {
       {/* ========================================================= */}
       {/* 10. PROJECT NAVIGATION */}
       {/* ========================================================= */}
-      <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
-          <Link
-            href="/work/tiny-bits-of-love"
-            className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#00F5D4] transition-colors group"
-          >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span>Previous: Tiny Bits of Love</span>
-          </Link>
-
-          <Link
-            href="/#work"
-            className="font-mono text-[16px] text-[#7A7873] hover:text-[#F5F4F1] border border-white/10 hover:border-white/20 rounded-full px-5 py-2 transition-colors"
-          >
-            Back to Selected Projects
-          </Link>
-
-          <Link
-            href="/work/military-pcs"
-            className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#00F5D4] transition-colors group"
-          >
-            <span>Next: MilitaryPCS</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </section>
+      <ProjectNav
+        prev={{ title: "Tiny Bits of Love", href: "/work/tiny-bits-of-love" }}
+        next={{ title: "MilitaryPCS", href: "/work/military-pcs" }}
+      />
     </main>
   );
 }

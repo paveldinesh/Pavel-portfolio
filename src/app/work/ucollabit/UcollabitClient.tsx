@@ -24,6 +24,7 @@ import {
   ShieldCheck,
   CheckCircle2,
 } from "lucide-react";
+import { MetaRow, ProjectNav } from "@/components/case-study";
 
 /**
  * IMAGE SLOTS
@@ -45,7 +46,7 @@ function MobileSlot({
   alt,
   caption,
   className = "",
-  maxWidth = "max-w-[320px] sm:max-w-[340px]",
+  maxWidth = "max-w-[260px] sm:max-w-[320px]",
   children,
 }: {
   src: string;
@@ -60,15 +61,15 @@ function MobileSlot({
   return (
     <div className={`flex flex-col items-center justify-center w-full ${className}`}>
       <div
-        className={`relative w-full ${maxWidth} rounded-[44px] p-[8px] sm:p-[10px] bg-gradient-to-b from-[#333d36] via-[#1a231d] to-[#101411] ring-1 ring-white/20 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(53,83,60,0.25)]`}
+        className={`relative w-full ${maxWidth} rounded-[36px] sm:rounded-[44px] p-[6px] sm:p-[10px] bg-gradient-to-b from-[#333d36] via-[#1a231d] to-[#101411] ring-1 ring-white/20 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(53,83,60,0.25)]`}
       >
         {/* Dynamic Island / Hardware notch */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-[#0A0D0B] rounded-full z-20 flex items-center justify-center">
-          <div className="w-2.5 h-2.5 rounded-full bg-white/10" />
+        <div className="absolute top-3 sm:top-4 left-1/2 -translate-x-1/2 w-16 sm:w-20 h-3.5 sm:h-4 bg-[#0A0D0B] rounded-full z-20 flex items-center justify-center">
+          <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-white/10" />
         </div>
 
         {/* Inner Phone Screen Frame */}
-        <div className="relative w-full aspect-[9/19] rounded-[34px] overflow-hidden bg-[#F7F6EE] text-[#1A281E] ring-1 ring-black/10 flex flex-col justify-between">
+        <div className="relative w-full aspect-[9/19] rounded-[28px] sm:rounded-[34px] overflow-hidden bg-[#F7F6EE] text-[#1A281E] ring-1 ring-black/10 flex flex-col justify-between">
           {!missing && src ? (
             <div className="relative w-full h-full">
               <Image
@@ -81,9 +82,9 @@ function MobileSlot({
               />
             </div>
           ) : (
-            <div className="w-full h-full flex flex-col justify-between p-5 pt-8 select-none">
+            <div className="w-full h-full flex flex-col justify-between p-4 sm:p-5 pt-7 sm:pt-8 select-none">
               {children || (
-                <div className="flex-1 flex flex-col items-center justify-center text-center p-4 border border-dashed border-[#3D5F45]/30 rounded-2xl bg-white/60">
+                <div className="flex-1 flex flex-col items-center justify-center text-center p-3 sm:p-4 border border-dashed border-[#3D5F45]/30 rounded-2xl bg-white/60">
                   <span className="font-mono text-xs text-[#F14417] font-semibold tracking-wider">
                     IMAGE SLOT
                   </span>
@@ -98,7 +99,7 @@ function MobileSlot({
       </div>
 
       {caption && (
-        <span className="font-mono text-xs text-[#80887C] mt-4 text-center max-w-[38ch]">
+        <span className="font-mono text-xs text-[#80887C] mt-3 sm:mt-4 text-center max-w-[38ch]">
           {caption}
         </span>
       )}
@@ -115,18 +116,18 @@ export default function UCollabitCaseStudy() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0B0C0B] text-[#F1F0E9] relative selection:bg-[#F14417] selection:text-white pb-24">
+    <main className="min-h-screen bg-[#0B0C0B] text-[#F1F0E9] relative selection:bg-[#F14417] selection:text-white pb-[max(3rem,env(safe-area-inset-bottom))] overflow-x-hidden">
       <Navbar />
 
       {/* ========================================================= */}
       {/* 1. HERO SECTION */}
       {/* ========================================================= */}
-      <section className="pt-32 sm:pt-40 md:pt-44 pb-16 sm:pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+      <section className="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-20 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
         {/* Back Link */}
         <motion.div {...fadeIn}>
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 font-mono text-sm text-[#A09D95] hover:text-[#F14417] transition-colors mb-10 group"
+            className="inline-flex items-center gap-2 font-mono text-sm text-[#A09D95] hover:text-[#F14417] transition-colors mb-6 sm:mb-10 group min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Selected Work</span>
@@ -134,9 +135,9 @@ export default function UCollabitCaseStudy() {
         </motion.div>
 
         {/* Kicker */}
-        <motion.div {...fadeIn} className="flex items-center gap-3 mb-6 flex-wrap">
-          <span className="font-mono text-xs sm:text-sm text-[#F14417] uppercase tracking-[0.2em] font-bold">
-            03 // Product Experience &bull; Social Networking &bull; 2026
+        <motion.div {...fadeIn} className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6 flex-wrap">
+          <span className="font-mono text-xs sm:text-sm text-[#F14417] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold">
+            Product Experience &bull; Social Networking
           </span>
           <span className="text-white/20 select-none">&bull;</span>
           <span className="font-mono text-xs sm:text-sm text-[#A8CAAA] border border-[#A8CAAA]/20 bg-[#162118] px-2.5 py-0.5 rounded-full">
@@ -147,68 +148,46 @@ export default function UCollabitCaseStudy() {
         {/* Main Title & Tagline */}
         <motion.h1
           {...fadeIn}
-          className="font-display font-bold text-5xl sm:text-7xl md:text-8xl tracking-[-0.04em] text-[#F1F0E9] leading-[0.95] mb-6"
+          className="font-display font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.04em] text-[#F1F0E9] leading-[1] mb-4 sm:mb-6 break-words"
         >
           uCollabit<span className="text-[#F14417]">.</span>
         </motion.h1>
 
         <motion.p
           {...fadeIn}
-          className="text-xl sm:text-2xl md:text-3xl text-[#DCEBD8] font-medium tracking-tight max-w-[840px] mb-6"
+          className="text-lg sm:text-2xl md:text-3xl text-[#DCEBD8] font-medium tracking-tight max-w-[840px] mb-4 sm:mb-6"
         >
           Creative connections that lead to more than a like.
         </motion.p>
 
         <motion.p
           {...fadeIn}
-          className="text-[17px] sm:text-[19px] text-[#A09D95] leading-relaxed max-w-[740px] mb-12"
+          className="text-base sm:text-lg lg:text-[19px] text-[#A09D95] leading-relaxed max-w-[740px] mb-8 sm:mb-12"
         >
           A UX-focused product case study exploring how uCollabit brings portfolios, professional
           journeys, and intentional collaboration into one cohesive creative ecosystem.
         </motion.p>
 
         {/* Meta Grid */}
-        <motion.div
-          {...fadeIn}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/[0.08] mb-12"
-        >
-          <div>
-            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-1">
-              PRODUCT
-            </span>
-            <span className="font-mono text-sm text-[#F1F0E9] font-medium">uCollabit Mobile App</span>
-          </div>
-          <div>
-            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-1">
-              AUDIENCE
-            </span>
-            <span className="font-mono text-sm text-[#F1F0E9] font-medium">
-              Artists & Creative Pros
-            </span>
-          </div>
-          <div>
-            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-1">
-              PLATFORM
-            </span>
-            <span className="font-mono text-sm text-[#F1F0E9] font-medium">Mobile / Early Access</span>
-          </div>
-          <div>
-            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-1">
-              RESEARCH TYPE
-            </span>
-            <span className="font-mono text-sm text-[#F1F0E9] font-medium">
-              Independent UX Analysis
-            </span>
-          </div>
+        <motion.div {...fadeIn}>
+          <MetaRow
+            items={[
+              { label: "Product", value: "uCollabit Mobile App" },
+              { label: "Audience", value: "Artists & Creative Pros" },
+              { label: "Platform", value: "Mobile / Early Access" },
+              { label: "Research Type", value: "Independent UX Analysis" },
+            ]}
+            className="mb-8 sm:mb-12"
+          />
         </motion.div>
 
         {/* Action Links */}
-        <motion.div {...fadeIn} className="flex flex-wrap items-center gap-4">
+        <motion.div {...fadeIn} className="flex flex-col min-[420px]:flex-row items-stretch min-[420px]:items-center gap-3 sm:gap-4">
           <a
             href="https://www.ucollabit.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F14417] hover:bg-[#d63a12] text-white text-[15px] font-semibold transition-all shadow-lg shadow-[#F14417]/25"
+            className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full bg-[#F14417] hover:bg-[#d63a12] text-white text-sm sm:text-[15px] font-semibold transition-all shadow-lg shadow-[#F14417]/25 min-h-[44px]"
           >
             <span>Visit ucollabit.com</span>
             <ArrowUpRight className="w-4 h-4" />
@@ -217,7 +196,7 @@ export default function UCollabitCaseStudy() {
             href="https://play.google.com/store/apps/details?id=com.ucollabit"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#162118] hover:bg-[#203023] text-[#DCEBD8] border border-[#35533c] text-[15px] font-medium transition-all"
+            className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 rounded-full bg-[#162118] hover:bg-[#203023] text-[#DCEBD8] border border-[#35533c] text-sm sm:text-[15px] font-medium transition-all min-h-[44px]"
           >
             <span>Google Play Early Access</span>
             <ArrowUpRight className="w-4 h-4 text-[#A8CAAA]" />
@@ -228,23 +207,23 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 2. HERO SHOWCASE: CONCEPT SCREENS */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+      <section className="py-14 sm:py-20 lg:py-28 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
         <motion.div
           {...fadeIn}
-          className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#18241D] via-[#101511] to-[#0B0C0B] border border-white/[0.08] p-8 sm:p-14 flex flex-col items-center"
+          className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#18241D] via-[#101511] to-[#0B0C0B] border border-white/[0.08] p-5 sm:p-8 lg:p-14 flex flex-col items-center"
         >
           {/* Subtle Ambient Glow & Watermarks */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#35533C]/20 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#F14417]/10 rounded-full blur-[90px] pointer-events-none" />
-          <span className="absolute top-4 left-6 text-[140px] text-[#51684E]/10 font-serif select-none pointer-events-none leading-none">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 sm:w-80 h-48 sm:h-80 bg-[#35533C]/20 rounded-full blur-[80px] sm:blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 right-1/2 translate-x-1/2 sm:translate-x-0 sm:right-1/4 w-48 sm:w-72 h-48 sm:h-72 bg-[#F14417]/10 rounded-full blur-[80px] sm:blur-[90px] pointer-events-none" />
+          <span className="hidden sm:block absolute top-4 left-6 text-[140px] text-[#51684E]/10 font-serif select-none pointer-events-none leading-none">
             ✳
           </span>
-          <span className="absolute bottom-4 right-6 text-[140px] text-[#51684E]/10 font-serif select-none pointer-events-none leading-none">
+          <span className="hidden sm:block absolute bottom-4 right-6 text-[140px] text-[#51684E]/10 font-serif select-none pointer-events-none leading-none">
             ✳
           </span>
 
           {/* Hero Banner Showcase */}
-          <div className="w-full max-w-[960px] relative aspect-[1134/850] rounded-xl overflow-hidden mb-12 shadow-2xl border border-white/10">
+          <div className="w-full max-w-[960px] relative aspect-[1134/850] rounded-xl overflow-hidden mb-8 sm:mb-12 shadow-2xl border border-white/10">
             <Image
               src={IMG.hero}
               alt="uCollabit ecosystem preview"
@@ -256,9 +235,9 @@ export default function UCollabitCaseStudy() {
           </div>
 
           {/* Dual Phone Row */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 relative z-10 w-full py-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 relative z-10 w-full py-4 sm:py-6">
             {/* Phone 1: Welcome & Creative Community */}
-            <div className="sm:-rotate-3 hover:rotate-0 transition-transform duration-500 w-full max-w-[320px]">
+            <div className="sm:-rotate-3 hover:rotate-0 transition-transform duration-500 w-full max-w-[260px] sm:max-w-[320px]">
               <MobileSlot
                 src={IMG.discovery}
                 alt="uCollabit creative world screen mockup"
@@ -310,7 +289,7 @@ export default function UCollabitCaseStudy() {
             </div>
 
             {/* Phone 2: Creative DNA Profile */}
-            <div className="sm:rotate-3 hover:rotate-0 transition-transform duration-500 w-full max-w-[320px]">
+            <div className="sm:rotate-3 hover:rotate-0 transition-transform duration-500 w-full max-w-[260px] sm:max-w-[320px]">
               <MobileSlot
                 src={IMG.creativeDna}
                 alt="uCollabit Creative DNA screen mockup"
@@ -365,17 +344,17 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 3. THE CHALLENGE */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-14">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-14">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             01 // THE CHALLENGE
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-6">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-4 sm:mb-6">
             Creative work is visible.
             <br />
             Creative opportunity is fragmented.
           </h2>
-          <p className="text-lg sm:text-xl text-[#A09D95] max-w-[760px] leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-[#A09D95] max-w-[760px] leading-relaxed">
             Creators need more than a place to post finished work. They need ways to present their
             evolving skills, find complementary talent, and turn passive discovery into purposeful
             collaboration.
@@ -383,7 +362,7 @@ export default function UCollabitCaseStudy() {
         </motion.div>
 
         {/* 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {[
             {
               num: "01",
@@ -405,13 +384,13 @@ export default function UCollabitCaseStudy() {
               key={card.num}
               {...fadeIn}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
+              className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
             >
               <div>
-                <span className="font-mono text-sm text-[#F14417] font-semibold block mb-4">
+                <span className="font-mono text-xs sm:text-sm text-[#F14417] font-semibold block mb-3 sm:mb-4">
                   {card.num}
                 </span>
-                <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">{card.title}</h3>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">{card.title}</h3>
                 <p className="text-[#A09D95] text-sm leading-relaxed">{card.text}</p>
               </div>
             </motion.div>
@@ -421,13 +400,13 @@ export default function UCollabitCaseStudy() {
         {/* Framing Quote */}
         <motion.div
           {...fadeIn}
-          className="p-8 sm:p-10 rounded-xl bg-[#131512] border-l-4 border-[#F14417] max-w-[920px]"
+          className="p-5 sm:p-8 lg:p-10 rounded-xl bg-[#131512] border-l-4 border-[#F14417] max-w-[920px]"
         >
-          <p className="text-xl sm:text-2xl text-[#F0EEE7] font-medium leading-snug mb-3">
+          <p className="text-lg sm:text-xl lg:text-2xl text-[#F0EEE7] font-medium leading-snug mb-2 sm:mb-3">
             &ldquo;How might we help creative people show who they are, discover the right people, and
             move from admiration to action?&rdquo;
           </p>
-          <cite className="font-mono text-xs text-[#80887C] not-italic">
+          <cite className="font-mono text-[11px] sm:text-xs text-[#80887C] not-italic">
             Design framing derived from uCollabit&apos;s stated product mission; not a quoted company research question.
           </cite>
         </motion.div>
@@ -436,29 +415,29 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 4. PRODUCT DIRECTION */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-12">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-12">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             02 // PRODUCT DIRECTION
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-3 sm:mb-4">
             From another social feed to a creative ecosystem.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <motion.div
             {...fadeIn}
-            className="p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
+            className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
           >
             <div>
-              <span className="font-mono text-xs text-[#F14417] font-semibold uppercase tracking-wider block mb-4">
+              <span className="font-mono text-xs text-[#F14417] font-semibold uppercase tracking-wider block mb-3 sm:mb-4">
                 DESIGN INTENT // 01
               </span>
-              <h3 className="font-display font-bold text-2xl text-[#F1F0E9] mb-3">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F1F0E9] mb-2 sm:mb-3">
                 Make a creator&apos;s journey visible.
               </h3>
-              <p className="text-[#A09D95] text-[15px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[15px] leading-relaxed">
                 A profile should reflect not only polished deliverables, but also creative milestones,
                 experimental sketches, tools utilized, and the authentic path behind their work.
               </p>
@@ -467,16 +446,16 @@ export default function UCollabitCaseStudy() {
 
           <motion.div
             {...fadeIn}
-            className="p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
+            className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
           >
             <div>
-              <span className="font-mono text-xs text-[#F14417] font-semibold uppercase tracking-wider block mb-4">
+              <span className="font-mono text-xs text-[#F14417] font-semibold uppercase tracking-wider block mb-3 sm:mb-4">
                 DESIGN INTENT // 02
               </span>
-              <h3 className="font-display font-bold text-2xl text-[#F1F0E9] mb-3">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F1F0E9] mb-2 sm:mb-3">
                 Make engagement actionable.
               </h3>
-              <p className="text-[#A09D95] text-[15px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[15px] leading-relaxed">
                 Reimagine social interactions as active contributions: exchanging feedback, offering
                 ideas, barter skills, volunteering time, or initiating paid engagements.
               </p>
@@ -484,7 +463,7 @@ export default function UCollabitCaseStudy() {
           </motion.div>
         </div>
 
-        <motion.p {...fadeIn} className="font-mono text-xs text-[#80887C] max-w-[820px] leading-relaxed">
+        <motion.p {...fadeIn} className="font-mono text-[11px] sm:text-xs text-[#80887C] max-w-[820px] leading-relaxed">
           * Note: uCollabit&apos;s published features include Creative DNA profiles, portfolios,
           project sharing, discovery, direct messaging, and five specific interaction types. These are
           documented product features, while the UX framing here is an independent design analysis.
@@ -494,42 +473,42 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 5. THE EXPERIENCE: CREATIVE DNA */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div {...fadeIn}>
-            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
               03 // THE EXPERIENCE &bull; FEATURE 01
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] mb-6 leading-tight">
+            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] mb-4 sm:mb-6 leading-tight">
               A living profile,
               <br />
               not a static résumé.
             </h2>
-            <p className="text-lg text-[#DCEBD8] mb-6 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#DCEBD8] mb-4 sm:mb-6 leading-relaxed">
               Creative DNA consolidates portfolios, resumes, career milestones, photos, videos, and
               achievements. The goal is to help collaborators understand both a creator&apos;s
               capabilities and their current artistic trajectory.
             </p>
-            <div className="p-6 rounded-xl bg-[#161D18] border border-[#28352A] mb-6">
-              <span className="font-mono text-xs text-[#A8CAAA] uppercase tracking-wider block mb-2 font-semibold">
+            <div className="p-4 sm:p-6 rounded-xl bg-[#161D18] border border-[#28352A] mb-4 sm:mb-6">
+              <span className="font-mono text-xs text-[#A8CAAA] uppercase tracking-wider block mb-1.5 sm:mb-2 font-semibold">
                 Core Design Principle
               </span>
-              <p className="text-[#F1F0E9] text-[15px] leading-relaxed">
+              <p className="text-[#F1F0E9] text-sm sm:text-[15px] leading-relaxed">
                 Make credibility and artistic personality discoverable at a glance &mdash; without
                 flattening someone&apos;s identity into a hollow follower count.
               </p>
             </div>
-            <ul className="space-y-3 font-mono text-xs sm:text-sm text-[#A09D95]">
+            <ul className="space-y-2.5 sm:space-y-3 font-mono text-xs sm:text-sm text-[#A09D95]">
               <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#F14417]" />
+                <CheckCircle2 className="w-4 h-4 text-[#F14417] shrink-0" />
                 <span>Multimodal showcase: Video, high-res stills, interactive links</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#F14417]" />
+                <CheckCircle2 className="w-4 h-4 text-[#F14417] shrink-0" />
                 <span>Career timeline mapping milestones alongside active projects</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#F14417]" />
+                <CheckCircle2 className="w-4 h-4 text-[#F14417] shrink-0" />
                 <span>Explicit collaboration availability & preferred interaction modes</span>
               </li>
             </ul>
@@ -537,9 +516,9 @@ export default function UCollabitCaseStudy() {
 
           <motion.div
             {...fadeIn}
-            className="p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-[#18241D] to-[#101511] border border-[#263329] flex flex-col items-center justify-center relative overflow-hidden"
+            className="p-5 sm:p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-[#18241D] to-[#101511] border border-[#263329] flex flex-col items-center justify-center relative overflow-hidden"
           >
-            <div className="sm:rotate-2 hover:rotate-0 transition-transform duration-500 w-full max-w-[320px]">
+            <div className="sm:rotate-2 hover:rotate-0 transition-transform duration-500 w-full max-w-[260px] sm:max-w-[320px]">
               <MobileSlot
                 src={IMG.creativeDna}
                 alt="Maya Chen Creative DNA screen"
@@ -549,10 +528,10 @@ export default function UCollabitCaseStudy() {
                   <span>Creative DNA</span>
                   <span className="text-[#3D5F45]">⚙</span>
                 </div>
-                <div className="h-28 rounded-xl bg-[#C4DAC6] flex items-center justify-center text-3xl my-2">
+                <div className="h-24 sm:h-28 rounded-xl bg-[#C4DAC6] flex items-center justify-center text-3xl my-2">
                   <span>🪴</span>
                 </div>
-                <h4 className="font-serif text-lg text-[#1B3324] font-bold">Maya Chen</h4>
+                <h4 className="font-serif text-base sm:text-lg text-[#1B3324] font-bold">Maya Chen</h4>
                 <div className="flex gap-1.5 flex-wrap my-1">
                   <span className="bg-[#E8EEE2] px-2 py-0.5 rounded text-[8px] font-semibold text-[#3D5F45]">
                     Illustration
@@ -564,11 +543,11 @@ export default function UCollabitCaseStudy() {
                     Open to collab
                   </span>
                 </div>
-                <div className="bg-white p-2.5 rounded-lg border border-[#E4E6DB] text-[9px] my-1">
+                <div className="bg-white p-2 sm:p-2.5 rounded-lg border border-[#E4E6DB] text-[9px] my-1">
                   <b className="text-[#1A281E] block text-[10px]">Featured projects</b>
                   <span className="text-[#647266]">Identity systems &bull; Editorial artworks</span>
                 </div>
-                <div className="bg-white p-2.5 rounded-lg border border-[#E4E6DB] text-[9px]">
+                <div className="bg-white p-2 sm:p-2.5 rounded-lg border border-[#E4E6DB] text-[9px]">
                   <b className="text-[#1A281E] block text-[10px]">Career milestone</b>
                   <span className="text-[#647266]">Completed first collaborative gallery exhibition</span>
                 </div>
@@ -581,24 +560,24 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 6. INTERACTION DESIGN: FIVE WAYS TO CONTRIBUTE */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-14">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-14">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             04 // INTERACTION DESIGN
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-3 sm:mb-4">
             Five ways to contribute.
             <br />
             Zero dependence on a like.
           </h2>
-          <p className="text-lg sm:text-xl text-[#A09D95] max-w-[760px] leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-[#A09D95] max-w-[760px] leading-relaxed">
             uCollabit describes five interaction choices intended to create more purposeful,
             intentional creator engagement.
           </p>
         </motion.div>
 
         {/* The 5 Interactions Grid + CTA Card */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-6 sm:mb-8">
           {[
             {
               icon: Lightbulb,
@@ -635,14 +614,14 @@ export default function UCollabitCaseStudy() {
               key={item.title}
               {...fadeIn}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="p-7 rounded-xl bg-[#121614] border border-[#212720] hover:border-[#35533c] transition-colors flex flex-col justify-between"
+              className="p-5 sm:p-6 lg:p-7 rounded-xl bg-[#121614] border border-[#212720] hover:border-[#35533c] transition-colors flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <span className="font-mono text-xs text-[#F14417] font-bold">{item.num}</span>
                   <item.icon className="w-5 h-5 text-[#A8CAAA]" />
                 </div>
-                <h3 className="font-display font-bold text-2xl text-[#F1F0E9] mb-2">{item.title}</h3>
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F1F0E9] mb-2">{item.title}</h3>
                 <p className="text-[#A09D95] text-sm leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>
@@ -652,17 +631,17 @@ export default function UCollabitCaseStudy() {
           <motion.div
             {...fadeIn}
             transition={{ duration: 0.6, delay: 0.45 }}
-            className="p-7 rounded-xl bg-gradient-to-br from-[#1B261D] to-[#121C14] border border-[#35533C] flex flex-col items-center justify-center text-center group cursor-default"
+            className="p-5 sm:p-6 lg:p-7 rounded-xl bg-gradient-to-br from-[#1B261D] to-[#121C14] border border-[#35533C] flex flex-col items-center justify-center text-center group cursor-default"
           >
-            <Sparkles className="w-8 h-8 text-[#F14417] mb-3 transition-transform group-hover:scale-110" />
-            <p className="font-display font-bold text-xl sm:text-2xl text-[#DCEBD8] leading-snug">
+            <Sparkles className="w-7 sm:w-8 h-7 sm:h-8 text-[#F14417] mb-2 sm:mb-3 transition-transform group-hover:scale-110" />
+            <p className="font-display font-bold text-lg sm:text-xl lg:text-2xl text-[#DCEBD8] leading-snug">
               Engagement becomes an invitation to collaborate. ↗
             </p>
           </motion.div>
         </div>
 
-        <motion.div {...fadeIn} className="p-5 rounded-lg bg-[#1B201B] border border-[#374639]">
-          <p className="font-mono text-xs text-[#B2C6B4] leading-relaxed">
+        <motion.div {...fadeIn} className="p-4 sm:p-5 rounded-lg bg-[#1B201B] border border-[#374639]">
+          <p className="font-mono text-[11px] sm:text-xs text-[#B2C6B4] leading-relaxed">
             Note: The labels and existence of the five interactions are verified from public product documentation.
             The descriptions above are plain-language UX interpretations, not confirmation of proprietary payment
             processing, hiring workflows, or barter fulfillment pipelines.
@@ -673,14 +652,14 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 7. DISCOVERY & AI MATCHING */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Discovery Mockup */}
           <motion.div
             {...fadeIn}
-            className="order-2 lg:order-1 p-8 sm:p-12 rounded-2xl bg-gradient-to-b from-[#18241D] to-[#101511] border border-[#263329] flex flex-col items-center justify-center relative overflow-hidden"
+            className="order-2 lg:order-1 p-5 sm:p-8 lg:p-12 rounded-2xl bg-gradient-to-b from-[#18241D] to-[#101511] border border-[#263329] flex flex-col items-center justify-center relative overflow-hidden"
           >
-            <div className="sm:-rotate-2 hover:rotate-0 transition-transform duration-500 w-full max-w-[320px]">
+            <div className="sm:-rotate-2 hover:rotate-0 transition-transform duration-500 w-full max-w-[260px] sm:max-w-[320px]">
               <MobileSlot
                 src={IMG.discovery}
                 alt="uCollabit Discovery screen mockup"
@@ -690,7 +669,7 @@ export default function UCollabitCaseStudy() {
                   <span>Discover</span>
                   <span className="text-[#3D5F45]">⌕</span>
                 </div>
-                <h4 className="font-serif text-xl text-[#1B3324] font-bold mt-2 leading-tight">
+                <h4 className="font-serif text-lg sm:text-xl text-[#1B3324] font-bold mt-2 leading-tight">
                   Find your
                   <br />
                   creative circle.
@@ -741,31 +720,31 @@ export default function UCollabitCaseStudy() {
 
           {/* Text Content */}
           <motion.div {...fadeIn} className="order-1 lg:order-2">
-            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+            <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
               05 // DISCOVERY &bull; FEATURE 02
             </span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] mb-6 leading-tight">
+            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] mb-4 sm:mb-6 leading-tight">
               Less noise.
               <br />
               More creative fit.
             </h2>
-            <p className="text-lg text-[#DCEBD8] mb-6 leading-relaxed">
+            <p className="text-base sm:text-lg text-[#DCEBD8] mb-4 sm:mb-6 leading-relaxed">
               uCollabit states that its AI-enabled discovery suggests collaborators based on
               interests and complementary skills, highlighting aligned people and projects rather than
               vanity popularity.
             </p>
-            <p className="text-[16px] text-[#A09D95] mb-8 leading-relaxed">
+            <p className="text-sm sm:text-[16px] text-[#A09D95] mb-6 sm:mb-8 leading-relaxed">
               A key UX objective is making algorithm suggestions legible and trustworthy: clearly
               showing shared aesthetic tastes, missing skillsets, and a friction-free gateway to direct
               conversation.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-5 rounded-xl bg-[#121614] border border-[#212720]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="p-4 sm:p-5 rounded-xl bg-[#121614] border border-[#212720]">
                 <span className="font-mono text-xs text-[#F14417] block mb-1">SKILL COMPLEMENT</span>
                 <p className="text-xs text-[#A09D95] m-0">Pairs animators with sound designers</p>
               </div>
-              <div className="p-5 rounded-xl bg-[#121614] border border-[#212720]">
+              <div className="p-4 sm:p-5 rounded-xl bg-[#121614] border border-[#212720]">
                 <span className="font-mono text-xs text-[#F14417] block mb-1">INTENT MATCHING</span>
                 <p className="text-xs text-[#A09D95] m-0">Filters by collaboration availability</p>
               </div>
@@ -777,17 +756,17 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 8. END-TO-END JOURNEY LOOP */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-12">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-12">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             06 // END-TO-END JOURNEY
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-3 sm:mb-4">
             A four-step loop designed to turn discovery into opportunity.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {[
             {
               step: "01",
@@ -814,20 +793,20 @@ export default function UCollabitCaseStudy() {
               key={item.step}
               {...fadeIn}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="p-6 rounded-xl bg-[#121614] border-t-2 border-[#F14417] border-x border-b border-[#212720] flex flex-col justify-between"
+              className="p-5 sm:p-6 rounded-xl bg-[#121614] border-t-2 border-[#F14417] border-x border-b border-[#212720] flex flex-col justify-between"
             >
               <div>
-                <span className="font-mono text-2xl font-bold text-[#F14417] block mb-3">
+                <span className="font-mono text-xl sm:text-2xl font-bold text-[#F14417] block mb-2 sm:mb-3">
                   {item.step}
                 </span>
-                <h3 className="font-display font-bold text-lg text-[#F1F0E9] mb-2">{item.title}</h3>
+                <h3 className="font-display font-bold text-base sm:text-lg text-[#F1F0E9] mb-1.5 sm:mb-2">{item.title}</h3>
                 <p className="text-xs text-[#A09D95] leading-relaxed">{item.desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <motion.p {...fadeIn} className="font-mono text-xs text-[#80887C]">
+        <motion.p {...fadeIn} className="font-mono text-[11px] sm:text-xs text-[#80887C]">
           * This journey is a case-study synthesis of available product features, not a verified internal analytics funnel.
         </motion.p>
       </section>
@@ -835,34 +814,34 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 9. DESIGN LANGUAGE PROPOSAL */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-14">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-14">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             07 // DESIGN LANGUAGE PROPOSAL
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-3 sm:mb-4">
             Let the creative work remain the hero.
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
           {/* Palette proposal */}
           <motion.div
             {...fadeIn}
-            className="p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
+            className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
           >
             <div>
               <span className="font-mono text-xs text-[#F14417] block mb-2">COLOR SYSTEM // CONCEPT</span>
-              <h3 className="font-display font-bold text-2xl text-[#F1F0E9] mb-3">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F1F0E9] mb-2 sm:mb-3">
                 Calm, expressive foundation
               </h3>
-              <p className="text-[#A09D95] text-sm leading-relaxed mb-6">
+              <p className="text-[#A09D95] text-sm leading-relaxed mb-4 sm:mb-6">
                 A restrained dark substrate lets creators&apos; artwork supply the color, while
                 collaboration badges and action cues remain immediately scannable.
               </p>
 
               {/* Swatches */}
-              <div className="flex gap-2.5 mb-3">
+              <div className="flex gap-2 sm:gap-2.5 mb-3">
                 {[
                   { bg: "#0B0C0B", label: "Base" },
                   { bg: "#35533C", label: "Forest" },
@@ -872,10 +851,10 @@ export default function UCollabitCaseStudy() {
                 ].map((s) => (
                   <div key={s.bg} className="flex-1 flex flex-col gap-1.5">
                     <div
-                      className="h-12 rounded-lg border border-white/10"
+                      className="h-10 sm:h-12 rounded-lg border border-white/10"
                       style={{ backgroundColor: s.bg }}
                     />
-                    <span className="font-mono text-[10px] text-[#80887C] text-center">{s.label}</span>
+                    <span className="font-mono text-[9px] sm:text-[10px] text-[#80887C] text-center">{s.label}</span>
                   </div>
                 ))}
               </div>
@@ -888,29 +867,29 @@ export default function UCollabitCaseStudy() {
           {/* Interaction components */}
           <motion.div
             {...fadeIn}
-            className="p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
+            className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720] flex flex-col justify-between"
           >
             <div>
               <span className="font-mono text-xs text-[#F14417] block mb-2">
                 INTERACTION // PATTERNS
               </span>
-              <h3 className="font-display font-bold text-2xl text-[#F1F0E9] mb-3">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F1F0E9] mb-2 sm:mb-3">
                 Clear and friendly actions
               </h3>
-              <p className="text-[#A09D95] text-sm leading-relaxed mb-6">
+              <p className="text-[#A09D95] text-sm leading-relaxed mb-4 sm:mb-6">
                 Direct, communicative micro-copy with visible outcomes removes hesitation when
                 approaching peers for potential creative partnerships.
               </p>
 
               {/* Demo Buttons */}
-              <div className="flex flex-wrap gap-3 items-center">
-                <span className="inline-block bg-[#35533C] text-white px-5 py-2.5 rounded-full text-xs font-bold tracking-wide">
+              <div className="flex flex-wrap gap-2.5 sm:gap-3 items-center">
+                <span className="inline-block bg-[#35533C] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs font-bold tracking-wide">
                   Connect with creator &rarr;
                 </span>
-                <span className="inline-block bg-[#1B261D] text-[#A8CAAA] border border-[#35533C] px-4 py-2.5 rounded-full text-xs font-semibold">
+                <span className="inline-block bg-[#1B261D] text-[#A8CAAA] border border-[#35533C] px-3.5 sm:px-4 py-2.5 rounded-full text-xs font-semibold">
                   Offer Ideas ✦
                 </span>
-                <span className="inline-block bg-[#1B261D] text-[#A8CAAA] border border-[#35533C] px-4 py-2.5 rounded-full text-xs font-semibold">
+                <span className="inline-block bg-[#1B261D] text-[#A8CAAA] border border-[#35533C] px-3.5 sm:px-4 py-2.5 rounded-full text-xs font-semibold">
                   Barter Skills ⇄
                 </span>
               </div>
@@ -925,45 +904,45 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 10. EVIDENCE, STATUS & OUTCOMES */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-14">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-14">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             08 // EVIDENCE AND OUTCOMES
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[820px] mb-3 sm:mb-4">
             What is live, what is claimed, and what remains to be tested.
           </h2>
         </motion.div>
 
         {/* 3 Outcome status cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121614] border border-[#212720]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
+          <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720]">
             <span className="font-mono text-xs text-[#A8CAAA] uppercase tracking-wider block mb-2 font-bold">
               PUBLISHED STATUS
             </span>
-            <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">Early-access App</h3>
+            <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">Early-access App</h3>
             <p className="text-[#A09D95] text-sm leading-relaxed">
               Google Play listing verifies uCollabit as an active early-access social platform,
               confirming its core documented feature architecture.
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121614] border border-[#212720]">
+          <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720]">
             <span className="font-mono text-xs text-[#A8CAAA] uppercase tracking-wider block mb-2 font-bold">
               VERIFIED RELEASE
             </span>
-            <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">Updated Sep 2026</h3>
+            <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">Updated Sep 2026</h3>
             <p className="text-[#A09D95] text-sm leading-relaxed">
               Google Play recorded active update rollouts as of September 18, 2026, demonstrating ongoing
               iteration toward public launch.
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121614] border border-[#212720]">
+          <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720]">
             <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 font-bold">
               NOT PUBLIC
             </span>
-            <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">Usage & Retention</h3>
+            <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">Usage & Retention</h3>
             <p className="text-[#A09D95] text-sm leading-relaxed">
               Retention curves, collaboration completion ratios, and customer satisfaction metrics are
               proprietary and not published in public domain sources.
@@ -973,11 +952,11 @@ export default function UCollabitCaseStudy() {
 
         {/* What I would measure next */}
         <motion.div {...fadeIn} className="mb-6">
-          <h3 className="font-display font-bold text-2xl text-[#F1F0E9] mb-6">
+          <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F1F0E9] mb-4 sm:mb-6">
             What I would measure next as a Product Designer
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-xl bg-[#161D18] border border-[#28352A]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="p-5 sm:p-6 rounded-xl bg-[#161D18] border border-[#28352A]">
               <span className="font-mono text-xs text-[#F14417] block mb-2 font-bold">
                 01 // ACTIVATION
               </span>
@@ -986,7 +965,7 @@ export default function UCollabitCaseStudy() {
                 two past milestones and an availability status.
               </p>
             </div>
-            <div className="p-6 rounded-xl bg-[#161D18] border border-[#28352A]">
+            <div className="p-5 sm:p-6 rounded-xl bg-[#161D18] border border-[#28352A]">
               <span className="font-mono text-xs text-[#F14417] block mb-2 font-bold">
                 02 // DISCOVERY CONVERSION
               </span>
@@ -995,7 +974,7 @@ export default function UCollabitCaseStudy() {
                 Ideas, Barter) versus a dismissed card.
               </p>
             </div>
-            <div className="p-6 rounded-xl bg-[#161D18] border border-[#28352A]">
+            <div className="p-5 sm:p-6 rounded-xl bg-[#161D18] border border-[#28352A]">
               <span className="font-mono text-xs text-[#F14417] block mb-2 font-bold">
                 03 // COLLABORATIVE VALUE
               </span>
@@ -1011,42 +990,42 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 11. REFLECTION & TAKEAWAYS */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-14">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-8 sm:mb-14">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             09 // REFLECTION
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F1F0E9] max-w-[900px] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F1F0E9] max-w-[900px] mb-3 sm:mb-4">
             The next generation of creative platforms may be judged by what people make together.
           </h2>
-          <p className="text-lg text-[#A09D95] max-w-[760px] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#A09D95] max-w-[760px] leading-relaxed">
             uCollabit&apos;s most compelling product insight is that creator engagement must convey an
             actionable intention, rather than passive vanity appreciation.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121614] border border-[#212720]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
+          <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720]">
             <span className="font-mono text-xs text-[#F14417] block mb-2 font-bold">TAKEAWAY 01</span>
-            <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">Identity is evolving</h3>
+            <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">Identity is evolving</h3>
             <p className="text-[#A09D95] text-sm leading-relaxed">
               Creative DNA rightly recognizes that portfolios and professional journeys are dynamic,
               multidisciplinary, and continuously evolving.
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121614] border border-[#212720]">
+          <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720]">
             <span className="font-mono text-xs text-[#F14417] block mb-2 font-bold">TAKEAWAY 02</span>
-            <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">Actions carry meaning</h3>
+            <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">Actions carry meaning</h3>
             <p className="text-[#A09D95] text-sm leading-relaxed">
               Five distinct interaction modes create structured clarity, distinguishing between
               casual feedback, skill trades, and paid commercial interest.
             </p>
           </motion.div>
 
-          <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121614] border border-[#212720]">
+          <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121614] border border-[#212720]">
             <span className="font-mono text-xs text-[#F14417] block mb-2 font-bold">TAKEAWAY 03</span>
-            <h3 className="font-display font-bold text-xl text-[#F1F0E9] mb-3">Success must be proven</h3>
+            <h3 className="font-display font-bold text-lg sm:text-xl text-[#F1F0E9] mb-2 sm:mb-3">Success must be proven</h3>
             <p className="text-[#A09D95] text-sm leading-relaxed">
               The product model unlocks its full potential when supported by robust trust and safety
               mechanisms and verified collaboration completions.
@@ -1056,13 +1035,13 @@ export default function UCollabitCaseStudy() {
 
         <motion.div
           {...fadeIn}
-          className="p-8 sm:p-10 rounded-xl bg-[#131512] border-l-4 border-[#F14417] max-w-[920px]"
+          className="p-5 sm:p-8 lg:p-10 rounded-xl bg-[#131512] border-l-4 border-[#F14417] max-w-[920px]"
         >
-          <p className="text-xl sm:text-2xl text-[#F0EEE7] font-medium leading-snug mb-3">
+          <p className="text-lg sm:text-xl lg:text-2xl text-[#F0EEE7] font-medium leading-snug mb-2 sm:mb-3">
             &ldquo;The opportunity isn&apos;t to build a bigger audience. It&apos;s to help creative
             people build something together.&rdquo;
           </p>
-          <cite className="font-mono text-xs text-[#80887C] not-italic">
+          <cite className="font-mono text-[11px] sm:text-xs text-[#80887C] not-italic">
             Case study conclusion &mdash; independent UX editorial interpretation.
           </cite>
         </motion.div>
@@ -1071,48 +1050,48 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 12. SOURCES & ATTRIBUTION */}
       {/* ========================================================= */}
-      <section className="py-20 sm:py-28 px-6 sm:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
-        <motion.div {...fadeIn} className="mb-10">
-          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-3">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-b border-white/[0.08]">
+        <motion.div {...fadeIn} className="mb-6 sm:mb-10">
+          <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider block mb-2 sm:mb-3">
             10 // SOURCES & ATTRIBUTION
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[#F1F0E9] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#F1F0E9] mb-3 sm:mb-4">
             Grounded in uCollabit&apos;s published materials.
           </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-3 mb-10 max-w-[780px]">
+        <div className="flex flex-col gap-3 mb-8 sm:mb-10 max-w-[780px]">
           <a
             href="https://www.ucollabit.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-[#A8CAAA] hover:text-[#F14417] transition-colors inline-flex items-center gap-2"
+            className="font-mono text-xs sm:text-sm text-[#A8CAAA] hover:text-[#F14417] transition-colors inline-flex items-center gap-2"
           >
             <span>&bull; uCollabit official website &mdash; product positioning and AI discovery</span>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
           </a>
           <a
             href="https://play.google.com/store/apps/details?id=com.ucollabit"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-[#A8CAAA] hover:text-[#F14417] transition-colors inline-flex items-center gap-2"
+            className="font-mono text-xs sm:text-sm text-[#A8CAAA] hover:text-[#F14417] transition-colors inline-flex items-center gap-2"
           >
             <span>&bull; uCollabit on Google Play &mdash; feature listing, permissions, and app status</span>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
           </a>
           <a
             href="https://www.linkedin.com/company/ucollabit"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-sm text-[#A8CAAA] hover:text-[#F14417] transition-colors inline-flex items-center gap-2"
+            className="font-mono text-xs sm:text-sm text-[#A8CAAA] hover:text-[#F14417] transition-colors inline-flex items-center gap-2"
           >
             <span>&bull; uCollabit on LinkedIn &mdash; company profile & announcements</span>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
           </a>
         </div>
 
-        <motion.div {...fadeIn} className="p-6 rounded-xl bg-[#121614] border border-[#212720] max-w-[920px]">
-          <p className="font-mono text-xs text-[#80887C] leading-relaxed">
+        <motion.div {...fadeIn} className="p-4 sm:p-6 rounded-xl bg-[#121614] border border-[#212720] max-w-[920px]">
+          <p className="font-mono text-[11px] sm:text-xs text-[#80887C] leading-relaxed">
             Important Notice: This is an independently created UX case study analysis, not a claim of
             employment, direct participation in uCollabit&apos;s product development, or original client
             work. Phone screens, palettes, journeys, and UI treatments are illustrative reconstructions
@@ -1125,32 +1104,10 @@ export default function UCollabitCaseStudy() {
       {/* ========================================================= */}
       {/* 13. PROJECT NAVIGATION */}
       {/* ========================================================= */}
-      <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
-          <Link
-            href="/work/descartes"
-            className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
-          >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span>Previous: Descartes Dashboard</span>
-          </Link>
-
-          <Link
-            href="/#work"
-            className="font-mono text-[16px] text-[#7A7873] hover:text-[#F5F4F1] border border-white/10 hover:border-white/20 rounded-full px-5 py-2 transition-colors"
-          >
-            Back to Selected Projects
-          </Link>
-
-          <Link
-            href="/work/tiny-bits-of-love"
-            className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
-          >
-            <span>Next: Tiny Bits of Love</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </section>
+      <ProjectNav
+        prev={{ title: "Descartes", href: "/work/descartes" }}
+        next={{ title: "Tiny Bits of Love", href: "/work/tiny-bits-of-love" }}
+      />
     </main>
   );
 }

@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
@@ -22,6 +20,7 @@ import {
   ChevronRight,
   Sparkles,
 } from "lucide-react";
+import { Screen, DecisionNote, MetaRow, ProjectNav } from "@/components/case-study";
 
 /**
  * IMAGE SLOTS
@@ -43,97 +42,6 @@ const IMG = {
   designSystem: "/images/projects/military-pcs/design-system.png",
 };
 
-/** Desktop-style screen frame with graceful fallback when the image isn't added yet. */
-function Screen({
-  src,
-  alt,
-  caption,
-  ratio = "aspect-[16/9]",
-  priority = false,
-  hideIfMissing = false,
-  fit = "contain",
-  position = "object-center",
-}: {
-  src: string;
-  alt: string;
-  caption?: string;
-  ratio?: string;
-  priority?: boolean;
-  hideIfMissing?: boolean;
-  fit?: "cover" | "contain";
-  position?: string;
-}) {
-  const [missing, setMissing] = useState(false);
-  const fileName = src.split("/").pop();
-
-  if (missing && hideIfMissing) return null;
-
-  return (
-    <div className="w-full flex flex-col gap-4">
-      <div className="rounded-xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)]">
-        {/* Window chrome */}
-        <div className="flex items-center gap-2 px-4 h-9 border-b border-white/[0.08] bg-[#17171a]">
-          <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-        </div>
-
-        <div className={`relative w-full ${ratio} bg-[#0A0A0A]`}>
-          {missing ? (
-            <div className="absolute inset-4 rounded-lg border border-dashed border-white/15 flex flex-col items-center justify-center gap-1 text-center px-6">
-              <span className="font-mono text-xs text-[#F14417]">IMAGE SLOT</span>
-              <span className="font-mono text-sm text-[#A09D95]">{fileName}</span>
-            </div>
-          ) : (
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              priority={priority}
-              sizes="(max-width: 1260px) 100vw, 1260px"
-              className={`${fit === "contain" ? "object-contain" : "object-cover"} ${position}`}
-              onError={() => setMissing(true)}
-            />
-          )}
-        </div>
-      </div>
-      {caption && <span className="font-mono text-sm text-[#7A7873]">{caption}</span>}
-    </div>
-  );
-}
-
-/** Decision → Why → Trade-off. */
-function DecisionNote({
-  decision,
-  why,
-  tradeoff,
-}: {
-  decision: string;
-  why: string;
-  tradeoff: string;
-}) {
-  return (
-    <div className="rounded-xl bg-[#121211] border border-white/[0.08] divide-y divide-white/[0.06]">
-      {[
-        { label: "DECISION", text: decision, accent: true },
-        { label: "WHY", text: why, accent: false },
-        { label: "TRADE-OFF", text: tradeoff, accent: false },
-      ].map((row) => (
-        <div key={row.label} className="p-6 grid grid-cols-[96px_1fr] gap-4 items-start">
-          <span className={`font-mono text-xs pt-1 ${row.accent ? "text-[#F14417]" : "text-[#7A7873]"}`}>
-            {row.label}
-          </span>
-          <p
-            className={`text-[16px] leading-relaxed ${row.accent ? "text-[#F5F4F1] font-medium" : "text-[#A09D95]"}`}
-          >
-            {row.text}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function MilitaryPCSCaseStudy() {
   const fadeIn = {
     initial: { opacity: 0, y: 24 },
@@ -143,70 +51,64 @@ export default function MilitaryPCSCaseStudy() {
   };
 
   return (
-    <main className="min-h-screen bg-[#0B0B0A] text-[#F5F4F1] relative selection:bg-[#F14417] selection:text-white pb-24">
+    <main className="min-h-screen bg-[#0B0B0A] text-[#F5F4F1] relative selection:bg-[#F14417] selection:text-white pb-[max(3rem,env(safe-area-inset-bottom))] overflow-x-hidden">
       <Navbar />
 
       {/* ========================================================= */}
       {/* 1. HERO */}
       {/* ========================================================= */}
-      <section className="pt-36 sm:pt-44 pb-16 px-6 sm:px-12 max-w-[1260px] mx-auto relative z-10">
-        <motion.div {...fadeIn} className="mb-8">
+      <section className="pt-28 sm:pt-36 lg:pt-44 pb-12 sm:pb-16 lg:pb-20 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto relative z-10">
+        <motion.div {...fadeIn} className="mb-6 sm:mb-8">
           <Link
             href="/#work"
-            className="inline-flex items-center gap-2 font-mono text-[16px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
+            className="inline-flex items-center gap-2 font-mono text-[15px] sm:text-[16px] text-[#A09D95] hover:text-[#F14417] transition-colors group min-h-[44px]"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Selected work</span>
           </Link>
         </motion.div>
 
-        <div className="flex flex-col gap-6 max-w-[960px]">
+        <div className="flex flex-col gap-4 sm:gap-6 max-w-[960px]">
           <motion.div {...fadeIn} className="flex items-center gap-3">
-            <span className="font-mono text-[18px] text-[#F14417]">/case-study</span>
-            <span className="font-mono text-[16px] text-[#A09D95] border border-white/10 rounded-full px-3 py-0.5">
+            <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/case-study</span>
+            <span className="font-mono text-xs sm:text-[16px] text-[#A09D95] border border-white/10 rounded-full px-3 py-0.5">
               Case 04
             </span>
           </motion.div>
 
           <motion.h1
             {...fadeIn}
-            className="font-display font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-[-0.04em] text-[#F5F4F1] leading-[1.02]"
+            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-[-0.04em] text-[#F5F4F1] leading-[1.05] break-words"
           >
             MilitaryPCS
           </motion.h1>
 
           <motion.p
             {...fadeIn}
-            className="text-xl sm:text-2xl md:text-3xl text-[#A09D95] font-light leading-relaxed max-w-[42ch]"
+            className="text-lg sm:text-2xl md:text-3xl text-[#A09D95] font-light leading-relaxed max-w-[42ch]"
           >
             Making military relocation simpler, more connected, and less overwhelming.
           </motion.p>
         </div>
 
-        <motion.div
-          {...fadeIn}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 mt-12 border-t border-b border-white/[0.08]"
-        >
-          {[
-            { k: "Category", v: "Military Relocation • PropTech" },
-            { k: "Platform", v: "Web Application" },
-            { k: "Design Focus", v: "UX Strategy, IA, User Flows, UI Design" },
-            { k: "Role", v: "UI/UX Designer" },
-          ].map((m) => (
-            <div key={m.k}>
-              <span className="font-mono text-sm text-[#7A7873] block mb-1">{m.k}</span>
-              <span className="text-[17px] text-[#F5F4F1] font-medium leading-snug">{m.v}</span>
-            </div>
-          ))}
+        <motion.div {...fadeIn}>
+          <MetaRow
+            items={[
+              { label: "Category", value: "Military Relocation • PropTech" },
+              { label: "Platform", value: "Web Application" },
+              { label: "Design Focus", value: "UX Strategy, IA, User Flows, UI Design" },
+              { label: "Role", value: "UI/UX Designer" },
+            ]}
+          />
         </motion.div>
 
-        <motion.div {...fadeIn} className="mt-12">
+        <motion.div {...fadeIn} className="mt-8 sm:mt-12">
           <Screen
             src={IMG.hero}
             alt="MilitaryPCS command center displayed in desktop environment"
             caption="MilitaryPCS: Desktop experience showcasing the centralized relocation command center and housing exploration"
             ratio="aspect-[4/3]"
-            fit="contain"
+            position="object-center"
             priority
           />
         </motion.div>
@@ -215,24 +117,24 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 2. SUMMARY */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8 sm:gap-12 lg:gap-20">
           <motion.div {...fadeIn} className="flex flex-col gap-2">
-            <span className="font-mono text-[18px] text-[#F14417]">/summary</span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-tight text-[#F5F4F1]">
+            <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/summary</span>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#F5F4F1]">
               The idea in short
             </h2>
           </motion.div>
 
-          <motion.div {...fadeIn} className="flex flex-col gap-8">
-            <p className="text-[#F5F4F1] text-xl sm:text-2xl leading-relaxed">
+          <motion.div {...fadeIn} className="flex flex-col gap-6 sm:gap-8">
+            <p className="text-[#F5F4F1] text-lg sm:text-xl lg:text-2xl leading-relaxed">
               MilitaryPCS is a military-first relocation platform designed to support service members and their families throughout every stage of a Permanent Change of Station (PCS) move.
             </p>
-            <p className="text-[#A09D95] text-lg leading-relaxed">
+            <p className="text-[#A09D95] text-base sm:text-lg leading-relaxed">
               Instead of navigating disconnected resources for housing, local services, financial guidance, and community information, families can access everything through one centralized experience. The platform combines an interactive installation map, housing discovery, verified military-affiliated professionals, relocation planning tools, and community insights to help families move with greater confidence.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               {[
                 {
                   n: "01",
@@ -250,10 +152,10 @@ export default function MilitaryPCSCaseStudy() {
                   d: "A unified digital platform connecting housing, planning, financing, and community support into a guided, manageable journey.",
                 },
               ].map((c) => (
-                <div key={c.n} className="p-5 rounded-lg bg-[#121211] border border-white/[0.08]">
+                <div key={c.n} className="p-4 sm:p-5 rounded-lg bg-[#121211] border border-white/[0.08]">
                   <span className="font-mono text-xs text-[#F14417] block mb-2">{c.n}</span>
-                  <h3 className="font-display font-bold text-lg text-[#F5F4F1] mb-1">{c.t}</h3>
-                  <p className="text-[#A09D95] text-[15px] leading-relaxed">{c.d}</p>
+                  <h3 className="font-display font-bold text-base sm:text-lg text-[#F5F4F1] mb-1">{c.t}</h3>
+                  <p className="text-[#A09D95] text-sm sm:text-[15px] leading-relaxed">{c.d}</p>
                 </div>
               ))}
             </div>
@@ -264,20 +166,20 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 3. PROBLEM */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#F14417]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#F14417]">
             /problem
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             Relocating a military family involves far more than moving boxes.
           </motion.h2>
 
-          <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <div className="flex flex-col gap-4 sm:gap-6 text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
               Military relocations involve much more than moving between locations. Families must evaluate unfamiliar communities, find suitable housing, connect with reliable professionals, manage finances, and coordinate multiple responsibilities, often under tight timelines.
             </motion.p>
@@ -286,7 +188,7 @@ export default function MilitaryPCSCaseStudy() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-2">
             {[
               {
                 t: "Fragmented resources",
@@ -307,22 +209,22 @@ export default function MilitaryPCSCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]"
+                className="p-5 sm:p-6 rounded-xl bg-[#121211] border border-white/[0.08]"
               >
                 <span className="font-mono text-xs text-[#7A7873] block mb-2">WHERE IT BREAKS</span>
-                <h3 className="font-display font-bold text-xl text-[#F5F4F1] mb-2">{g.t}</h3>
-                <p className="text-[#A09D95] text-[16px] leading-relaxed">{g.d}</p>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#F5F4F1] mb-2">{g.t}</h3>
+                <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">{g.d}</p>
               </motion.div>
             ))}
           </div>
 
           <motion.div
             {...fadeIn}
-            className="mt-4 p-8 sm:p-12 rounded-xl bg-[#121211] border border-white/[0.08] relative overflow-hidden"
+            className="mt-2 sm:mt-4 p-5 sm:p-8 lg:p-12 rounded-xl bg-[#121211] border border-white/[0.08] relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-1.5 h-full bg-[#F14417]" />
-            <span className="font-mono text-[16px] text-[#F14417] block mb-3">THE DESIGN QUESTION</span>
-            <blockquote className="font-display font-semibold text-2xl sm:text-3xl md:text-4xl text-[#F5F4F1] tracking-tight leading-snug">
+            <span className="font-mono text-xs sm:text-[16px] text-[#F14417] block mb-2 sm:mb-3">THE DESIGN QUESTION</span>
+            <blockquote className="font-display font-semibold text-xl sm:text-3xl md:text-4xl text-[#F5F4F1] tracking-tight leading-snug">
               &ldquo;How might we transform a fragmented, high-stress military relocation into a single guided experience that provides clarity, reliable support, and trusted community connections at every stage?&rdquo;
             </blockquote>
           </motion.div>
@@ -332,18 +234,18 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 4. UX STRATEGY */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <motion.div {...fadeIn} className="flex flex-col gap-4 mb-14">
-          <span className="font-mono text-[18px] text-[#F14417]">/ux-strategy</span>
-          <h2 className="font-display font-bold text-3xl sm:text-5xl tracking-tight text-[#F5F4F1] max-w-[26ch]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <motion.div {...fadeIn} className="flex flex-col gap-3 sm:gap-4 mb-8 sm:mb-14">
+          <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/ux-strategy</span>
+          <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-[#F5F4F1] max-w-[26ch]">
             Four strategic pillars designed for high-stress transitions
           </h2>
-          <p className="text-[#A09D95] text-lg max-w-[58ch] leading-relaxed">
+          <p className="text-[#A09D95] text-base sm:text-lg max-w-[58ch] leading-relaxed">
             The UX strategy centered on reducing cognitive load, establishing trust, and helping users understand their next action without navigating complex menus. Rather than designing another conventional service directory, we focused on creating a connected relocation experience.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           {[
             {
               n: "01",
@@ -372,11 +274,11 @@ export default function MilitaryPCSCaseStudy() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] hover:border-[#F14417]/40 transition-colors"
+              className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] hover:border-[#F14417]/40 transition-colors"
             >
-              <span className="font-mono text-sm text-[#F14417] block mb-4">PILLAR {p.n}</span>
-              <h3 className="font-display font-bold text-2xl text-[#F5F4F1] mb-3">{p.t}</h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">{p.d}</p>
+              <span className="font-mono text-xs sm:text-sm text-[#F14417] block mb-3 sm:mb-4">PILLAR {p.n}</span>
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F4F1] mb-2 sm:mb-3">{p.t}</h3>
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">{p.d}</p>
             </motion.div>
           ))}
         </div>
@@ -385,19 +287,19 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 5. USER JOURNEY */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-12">
-          <motion.div {...fadeIn} className="flex flex-col gap-4 max-w-[62ch]">
-            <span className="font-mono text-[18px] text-[#F14417]">/user-journey</span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-8 sm:gap-12">
+          <motion.div {...fadeIn} className="flex flex-col gap-3 sm:gap-4 max-w-[62ch]">
+            <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/user-journey</span>
+            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
               Three stages. One continuous relocation journey.
             </h2>
-            <p className="text-[#A09D95] text-lg sm:text-xl leading-relaxed">
+            <p className="text-[#A09D95] text-base sm:text-lg lg:text-xl leading-relaxed">
               We organized the entire platform around the natural lifecycle of a military move: Before Orders, During Move, and After Arrival.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
             {[
               {
                 stage: "STAGE 01",
@@ -448,21 +350,21 @@ export default function MilitaryPCSCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col justify-between"
+                className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08] flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4">
                     <span className="font-mono text-xs text-[#F14417] tracking-wider">{s.stage}</span>
                     <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: s.accent }} />
                   </div>
-                  <h3 className="font-display font-bold text-2xl text-[#F5F4F1]">{s.title}</h3>
-                  <span className="font-mono text-sm text-[#7A7873] block mb-4">{s.subtitle}</span>
-                  <p className="text-[#A09D95] text-[15px] leading-relaxed mb-6">{s.focus}</p>
+                  <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F4F1]">{s.title}</h3>
+                  <span className="font-mono text-xs sm:text-sm text-[#7A7873] block mb-3 sm:mb-4">{s.subtitle}</span>
+                  <p className="text-[#A09D95] text-sm sm:text-[15px] leading-relaxed mb-4 sm:mb-6">{s.focus}</p>
                 </div>
 
-                <div className="pt-6 border-t border-white/[0.06]">
-                  <span className="font-mono text-xs text-[#7A7873] block mb-3">KEY FEATURES</span>
-                  <ul className="flex flex-col gap-2 text-[14px] text-[#F5F4F1]">
+                <div className="pt-4 sm:pt-6 border-t border-white/[0.06]">
+                  <span className="font-mono text-xs text-[#7A7873] block mb-2 sm:mb-3">KEY FEATURES</span>
+                  <ul className="flex flex-col gap-2 text-xs sm:text-[14px] text-[#F5F4F1]">
                     {s.features.map((feat) => (
                       <li key={feat} className="flex items-start gap-2">
                         <span className="text-[#F14417] text-xs pt-1">•</span>
@@ -480,33 +382,33 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 6. INFORMATION ARCHITECTURE */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-12">
-          <motion.div {...fadeIn} className="flex flex-col gap-4 max-w-[62ch]">
-            <span className="font-mono text-[18px] text-[#F14417]">/information-architecture</span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-8 sm:gap-12">
+          <motion.div {...fadeIn} className="flex flex-col gap-3 sm:gap-4 max-w-[62ch]">
+            <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/information-architecture</span>
+            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
               A progressive hierarchy organized around user intent
             </h2>
-            <p className="text-[#A09D95] text-lg sm:text-xl leading-relaxed">
+            <p className="text-[#A09D95] text-base sm:text-lg lg:text-xl leading-relaxed">
               We mapped the application structure to follow relocation stages rather than technical databases, ensuring every tool is surfaced exactly when families need it.
             </p>
           </motion.div>
 
           {/* CSS-based IA Visual Diagram */}
-          <motion.div {...fadeIn} className="flex flex-col gap-6">
+          <motion.div {...fadeIn} className="flex flex-col gap-4 sm:gap-6">
             {/* Level 1: Stage Gate */}
-            <div className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]">
+            <div className="p-4 sm:p-6 rounded-xl bg-[#121211] border border-white/[0.08]">
               <span className="font-mono text-xs text-[#F14417] block mb-3 uppercase tracking-wider">
                 Level 01 • Relocation Lifecycle Gateway
               </span>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
                 {[
                   { name: "Before Orders", desc: "Base discovery, duty station exploration, market research" },
                   { name: "During Move", desc: "PCS timeline coordination, housing selection, verified movers" },
                   { name: "After Arrival", desc: "Local community onboarding, schools, services, spousal network" },
                 ].map((lvl) => (
-                  <div key={lvl.name} className="p-4 rounded-lg bg-white/[0.03] border border-white/[0.05]">
-                    <div className="font-display font-bold text-[#F5F4F1] text-lg">{lvl.name}</div>
+                  <div key={lvl.name} className="p-3 sm:p-4 rounded-lg bg-white/[0.03] border border-white/[0.05]">
+                    <div className="font-display font-bold text-[#F5F4F1] text-base sm:text-lg">{lvl.name}</div>
                     <div className="text-[#7A7873] text-xs mt-1">{lvl.desc}</div>
                   </div>
                 ))}
@@ -515,15 +417,15 @@ export default function MilitaryPCSCaseStudy() {
 
             {/* Connecting Indicator */}
             <div className="flex justify-center -my-2 text-[#7A7873]">
-              <span className="font-mono text-xs tracking-widest text-[#F14417]">▼ PRIMARY PLATFORM CAPABILITIES ▼</span>
+              <span className="font-mono text-[11px] sm:text-xs tracking-widest text-[#F14417]">▼ PRIMARY PLATFORM CAPABILITIES ▼</span>
             </div>
 
             {/* Level 2: Core Feature Pillars */}
-            <div className="p-6 sm:p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
-              <span className="font-mono text-xs text-[#F14417] block mb-4 uppercase tracking-wider">
+            <div className="p-4 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
+              <span className="font-mono text-xs text-[#F14417] block mb-3 sm:mb-4 uppercase tracking-wider">
                 Level 02 • Six Core Command Pillars
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {[
                   {
                     icon: Compass,
@@ -556,10 +458,10 @@ export default function MilitaryPCSCaseStudy() {
                     desc: "Contextual assistance answering installation-specific questions and moving policies 24/7.",
                   },
                 ].map((feat) => (
-                  <div key={feat.title} className="p-5 rounded-lg bg-white/[0.02] border border-white/[0.06] flex flex-col gap-2">
-                    <div className="flex items-center gap-3">
+                  <div key={feat.title} className="p-4 sm:p-5 rounded-lg bg-white/[0.02] border border-white/[0.06] flex flex-col gap-1.5 sm:gap-2">
+                    <div className="flex items-center gap-2.5 sm:gap-3">
                       <feat.icon className="w-4 h-4 text-[#F14417]" />
-                      <h4 className="font-display font-bold text-[#F5F4F1] text-[16px]">{feat.title}</h4>
+                      <h4 className="font-display font-bold text-[#F5F4F1] text-[15px] sm:text-[16px]">{feat.title}</h4>
                     </div>
                     <p className="text-[#A09D95] text-xs leading-relaxed">{feat.desc}</p>
                   </div>
@@ -568,11 +470,11 @@ export default function MilitaryPCSCaseStudy() {
             </div>
 
             {/* Level 3: Platform Foundations */}
-            <div className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]">
+            <div className="p-4 sm:p-6 rounded-xl bg-[#121211] border border-white/[0.08]">
               <span className="font-mono text-xs text-[#7A7873] block mb-3 uppercase tracking-wider">
                 Level 03 • Shared Services &amp; Identity
               </span>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {[
                   "Military Verification Engine",
                   "Duty Station Preferences",
@@ -582,7 +484,7 @@ export default function MilitaryPCSCaseStudy() {
                 ].map((sys) => (
                   <span
                     key={sys}
-                    className="font-mono text-xs text-[#A09D95] bg-white/[0.03] border border-white/[0.08] px-3.5 py-1.5 rounded-md"
+                    className="font-mono text-xs text-[#A09D95] bg-white/[0.03] border border-white/[0.08] px-3 py-1.5 rounded-md"
                   >
                     {sys}
                   </span>
@@ -596,28 +498,28 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 7. KEY SCREENS */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-20">
-          <motion.div {...fadeIn} className="flex flex-col gap-4 max-w-[62ch]">
-            <span className="font-mono text-[18px] text-[#F14417]">/key-screens</span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-14 sm:gap-20">
+          <motion.div {...fadeIn} className="flex flex-col gap-3 sm:gap-4 max-w-[62ch]">
+            <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/key-screens</span>
+            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
               Essential interfaces that anchor the relocation experience
             </h2>
-            <p className="text-[#A09D95] text-lg sm:text-xl leading-relaxed">
+            <p className="text-[#A09D95] text-base sm:text-lg lg:text-xl leading-relaxed">
               Every screen balances dense logistical data with intuitive interactions, allowing military families to explore, compare, and act with confidence.
             </p>
           </motion.div>
 
           {/* Screen 01: Base Explorer */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 sm:gap-8">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 01 • GEOSPATIAL MAP
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#F5F4F1]">
                 Interactive Base Explorer
               </h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">
                 Discover military installations, nearby communities, gate locations, and essential local amenities through an immersive map interface.
               </p>
             </motion.div>
@@ -628,7 +530,7 @@ export default function MilitaryPCSCaseStudy() {
                 alt="MilitaryPCS Base Explorer interactive map"
                 caption="Base Explorer: Spatial installation mapping showing base boundaries, gate routes, schools, and neighborhood clusters"
                 ratio="aspect-[1800/1013]"
-                fit="contain"
+                position="object-center"
               />
             </motion.div>
 
@@ -642,15 +544,15 @@ export default function MilitaryPCSCaseStudy() {
           </div>
 
           {/* Screen 02: Housing Discovery */}
-          <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
+          <div className="flex flex-col gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 02 • HOUSING ECOSYSTEM
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#F5F4F1]">
                 Housing Discovery &amp; Community Insights
               </h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">
                 Explore on-base housing opportunities, private rentals, and purchase listings filtered by military rank, BAH budget, and school ratings.
               </p>
             </motion.div>
@@ -661,21 +563,21 @@ export default function MilitaryPCSCaseStudy() {
                 alt="MilitaryPCS Housing Discovery interface"
                 caption="Housing Discovery: Verified property listings paired with community sentiment, BAH price matching, and property details"
                 ratio="aspect-[1800/1055]"
-                fit="contain"
+                position="object-center"
               />
             </motion.div>
           </div>
 
           {/* Screen 03: PCS Planner */}
-          <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
+          <div className="flex flex-col gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 03 • RELOCATION MANAGEMENT
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#F5F4F1]">
                 PCS Planner &amp; Milestone Timeline
               </h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">
                 Organize tasks, track relocation milestones, manage documents, and stay prepared throughout every day of the move.
               </p>
             </motion.div>
@@ -686,7 +588,7 @@ export default function MilitaryPCSCaseStudy() {
                 alt="MilitaryPCS PCS Journey and timeline planner"
                 caption="PCS Planner: Stage-gated milestone roadmap automatically generated from the service member's report date"
                 ratio="aspect-[1800/1450]"
-                fit="contain"
+                position="object-center"
               />
             </motion.div>
 
@@ -700,33 +602,33 @@ export default function MilitaryPCSCaseStudy() {
           </div>
 
           {/* Screen 04: Verified Professional Directory & Marketplace */}
-          <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
+          <div className="flex flex-col gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 04 • TRUSTED NETWORK
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#F5F4F1]">
                 Verified Professional Directory &amp; Local Marketplace
               </h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">
                 Connect with military-affiliated professionals, veteran-owned businesses, VA lenders, and military-spouse service providers who understand military life.
               </p>
             </motion.div>
 
-            <motion.div {...fadeIn} className="flex flex-col gap-8">
+            <motion.div {...fadeIn} className="flex flex-col gap-6 sm:gap-8">
               <Screen
                 src={IMG.directory}
                 alt="MilitaryPCS Verified Professional Directory"
                 caption="Verified Directory: Curated directory of military-affiliated realtors, VA loan specialists, and service providers with verified veteran credentials and direct connection workflows"
                 ratio="aspect-[1024/599]"
-                fit="contain"
+                position="object-center"
               />
               <Screen
                 src={IMG.marketplace}
                 alt="MilitaryPCS Local Services and Retail Marketplace"
                 caption="Local Marketplace: Veteran-owned retail, auto maintenance, health & wellness, and local dining with community ratings"
                 ratio="aspect-[1024/600]"
-                fit="contain"
+                position="object-center"
               />
             </motion.div>
 
@@ -740,41 +642,41 @@ export default function MilitaryPCSCaseStudy() {
           </div>
 
           {/* Screen 05: Financial Guidance & Calculators */}
-          <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
+          <div className="flex flex-col gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 05 • FINANCIAL EMPOWERMENT
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#F5F4F1]">
                 Financial Guidance, Calculators &amp; Protection
               </h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">
                 Navigate home financing, VA loan eligibility, interactive relocation expense calculators, and move insurance in one reliable portal.
               </p>
             </motion.div>
 
-            <motion.div {...fadeIn} className="flex flex-col gap-8">
+            <motion.div {...fadeIn} className="flex flex-col gap-6 sm:gap-8">
               <Screen
                 src={IMG.financial}
                 alt="MilitaryPCS Home Financing and Readiness Dashboard"
                 caption="Home Financing &amp; Readiness: Centralized relocation financial dashboard tracking readiness score (82% prepared), checklist milestones, and verified mortgage professionals"
                 ratio="aspect-[1024/785]"
-                fit="contain"
+                position="object-center"
               />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
                 <Screen
                   src={IMG.calculator}
                   alt="MilitaryPCS VA Loan and Mortgage Calculator"
                   caption="Mortgage Calculators: Comprehensive monthly payment breakdowns, loan limits, and VA funding fee estimations"
                   ratio="aspect-[891/1024]"
-                  fit="contain"
+                  position="object-center"
                 />
                 <Screen
                   src={IMG.insurance}
                   alt="MilitaryPCS Moving Insurance and Coverage Guidance"
                   caption="Insurance &amp; Coverage: Move protection guidance and verified insurance networks"
                   ratio="aspect-[1024/849]"
-                  fit="contain"
+                  position="object-center"
                 />
               </div>
             </motion.div>
@@ -789,15 +691,15 @@ export default function MilitaryPCSCaseStudy() {
           </div>
 
           {/* Screen 06: AI Battle Buddy (hideIfMissing) */}
-          <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
+          <div className="flex flex-col gap-6 sm:gap-8 pt-8 sm:pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 06 • CONTEXTUAL ASSISTANCE
               </span>
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-[#F5F4F1]">
                 AI Battle Buddy
               </h3>
-              <p className="text-[#A09D95] text-[16px] leading-relaxed">
+              <p className="text-[#A09D95] text-sm sm:text-[16px] leading-relaxed">
                 Contextual assistance answering complex relocation policies, military entitlement questions, and local installation requirements 24/7.
               </p>
             </motion.div>
@@ -826,14 +728,14 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 8. DESIGN SYSTEM */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-12">
-          <motion.div {...fadeIn} className="flex flex-col gap-4 max-w-[62ch]">
-            <span className="font-mono text-[18px] text-[#F14417]">/design-system</span>
-            <h2 className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-8 sm:gap-12">
+          <motion.div {...fadeIn} className="flex flex-col gap-3 sm:gap-4 max-w-[62ch]">
+            <span className="font-mono text-sm sm:text-[18px] text-[#F14417]">/design-system</span>
+            <h2 className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] leading-tight">
               An authoritative, respectful design system built for military life
             </h2>
-            <p className="text-[#A09D95] text-lg sm:text-xl leading-relaxed">
+            <p className="text-[#A09D95] text-base sm:text-lg lg:text-xl leading-relaxed">
               Drawn directly from verified design tokens across the application screens. The visual direction balances military authority and tactical discipline with approachable, modern warmth.
             </p>
           </motion.div>
@@ -848,9 +750,9 @@ export default function MilitaryPCSCaseStudy() {
           </motion.div>
 
           {/* Real Extracted Color Palette */}
-          <motion.div {...fadeIn} className="flex flex-col gap-6">
-            <span className="font-mono text-sm text-[#F14417]">CORE COLOUR PALETTE (EXACT EXTRACTED TOKENS)</span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <motion.div {...fadeIn} className="flex flex-col gap-4 sm:gap-6">
+            <span className="font-mono text-xs sm:text-sm text-[#F14417]">CORE COLOUR PALETTE (EXACT EXTRACTED TOKENS)</span>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
               {[
                 { name: "Military Navy", hex: "#1B2B48", desc: "Primary brand background, header surfaces, authoritative presence", dark: true },
                 { name: "Tactical Olive", hex: "#556B2F", desc: "Military insignia badge, primary action accents, active states", dark: true },
@@ -866,20 +768,20 @@ export default function MilitaryPCSCaseStudy() {
                   className="rounded-xl bg-[#121211] border border-white/[0.08] overflow-hidden flex flex-col"
                 >
                   <div
-                    className="h-20 w-full relative p-3 flex items-end justify-between"
+                    className="h-16 sm:h-20 w-full relative p-2.5 sm:p-3 flex items-end justify-between"
                     style={{ backgroundColor: swatch.hex }}
                   >
                     <span
-                      className={`font-mono text-xs font-semibold ${
+                      className={`font-mono text-[11px] sm:text-xs font-semibold ${
                         swatch.dark ? "text-white" : "text-black"
                       }`}
                     >
                       {swatch.hex}
                     </span>
                   </div>
-                  <div className="p-4 flex flex-col gap-1">
-                    <span className="font-display font-bold text-[#F5F4F1] text-sm">{swatch.name}</span>
-                    <span className="text-[#7A7873] text-xs leading-normal">{swatch.desc}</span>
+                  <div className="p-3 sm:p-4 flex flex-col gap-1">
+                    <span className="font-display font-bold text-[#F5F4F1] text-xs sm:text-sm">{swatch.name}</span>
+                    <span className="text-[#7A7873] text-[11px] sm:text-xs leading-normal">{swatch.desc}</span>
                   </div>
                 </div>
               ))}
@@ -887,15 +789,15 @@ export default function MilitaryPCSCaseStudy() {
           </motion.div>
 
           {/* Typography & Components Breakdown */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
-              <span className="font-mono text-xs text-[#F14417] block mb-3 uppercase tracking-wider">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-2 sm:mt-4">
+            <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
+              <span className="font-mono text-xs text-[#F14417] block mb-2 sm:mb-3 uppercase tracking-wider">
                 Typography Architecture
               </span>
-              <h3 className="font-display font-bold text-2xl text-[#F5F4F1] mb-4">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F4F1] mb-3 sm:mb-4">
                 Structured, High-Legibility Type Hierarchy
               </h3>
-              <ul className="flex flex-col gap-3 text-[#A09D95] text-[15px] leading-relaxed">
+              <ul className="flex flex-col gap-2.5 sm:gap-3 text-[#A09D95] text-sm sm:text-[15px] leading-relaxed">
                 <li>
                   <strong className="text-[#F5F4F1]">Display Headlines:</strong> Clear, confident weights built for rapid scanning of installation names and base commands.
                 </li>
@@ -908,14 +810,14 @@ export default function MilitaryPCSCaseStudy() {
               </ul>
             </motion.div>
 
-            <motion.div {...fadeIn} className="p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
-              <span className="font-mono text-xs text-[#F14417] block mb-3 uppercase tracking-wider">
+            <motion.div {...fadeIn} className="p-5 sm:p-6 lg:p-8 rounded-xl bg-[#121211] border border-white/[0.08]">
+              <span className="font-mono text-xs text-[#F14417] block mb-2 sm:mb-3 uppercase tracking-wider">
                 Key Interface Patterns
               </span>
-              <h3 className="font-display font-bold text-2xl text-[#F5F4F1] mb-4">
+              <h3 className="font-display font-bold text-xl sm:text-2xl text-[#F5F4F1] mb-3 sm:mb-4">
                 Specialized Military Components
               </h3>
-              <ul className="flex flex-col gap-3 text-[#A09D95] text-[15px] leading-relaxed">
+              <ul className="flex flex-col gap-2.5 sm:gap-3 text-[#A09D95] text-sm sm:text-[15px] leading-relaxed">
                 <li>
                   <strong className="text-[#F5F4F1]">Geospatial Gate Distance Pins:</strong> Interactive markers showing exact drive times to installation entry gates.
                 </li>
@@ -934,20 +836,20 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 9. OUTCOME */}
       {/* ========================================================= */}
-      <section className="py-24 sm:py-32 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col gap-10">
-          <motion.span {...fadeIn} className="font-mono text-[18px] text-[#F14417]">
+      <section className="py-14 sm:py-20 lg:py-32 px-5 sm:px-6 lg:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
+        <div className="flex flex-col gap-6 sm:gap-10">
+          <motion.span {...fadeIn} className="font-mono text-sm sm:text-[18px] text-[#F14417]">
             /outcome
           </motion.span>
 
           <motion.h2
             {...fadeIn}
-            className="font-display font-bold text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
+            className="font-display font-bold text-2xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-[#F5F4F1] max-w-[28ch] leading-tight"
           >
             A calm, unified command center for military transitions.
           </motion.h2>
 
-          <div className="flex flex-col gap-6 text-[#A09D95] text-lg sm:text-xl max-w-[64ch] leading-relaxed">
+          <div className="flex flex-col gap-4 sm:gap-6 text-[#A09D95] text-base sm:text-lg lg:text-xl max-w-[64ch] leading-relaxed">
             <motion.p {...fadeIn}>
               MilitaryPCS establishes a unified digital platform that brings housing discovery, financial planning, base navigation, and local support resources into one stage-based experience.
             </motion.p>
@@ -956,7 +858,7 @@ export default function MilitaryPCSCaseStudy() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-2 sm:mt-4">
             {[
               {
                 title: "Reduced Cognitive Load",
@@ -977,18 +879,18 @@ export default function MilitaryPCSCaseStudy() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="p-6 rounded-xl bg-[#121211] border border-white/[0.08]"
+                className="p-5 sm:p-6 rounded-xl bg-[#121211] border border-white/[0.08]"
               >
                 <span className="font-mono text-xs text-[#F14417] block mb-2">QUALITATIVE IMPACT</span>
-                <h3 className="font-display font-bold text-xl text-[#F5F4F1] mb-2">{o.title}</h3>
-                <p className="text-[#A09D95] text-[15px] leading-relaxed">{o.desc}</p>
+                <h3 className="font-display font-bold text-lg sm:text-xl text-[#F5F4F1] mb-2">{o.title}</h3>
+                <p className="text-[#A09D95] text-sm sm:text-[15px] leading-relaxed">{o.desc}</p>
               </motion.div>
             ))}
           </div>
 
           <motion.blockquote
             {...fadeIn}
-            className="mt-12 max-w-[840px] font-display font-bold text-2xl sm:text-4xl tracking-[-0.02em] text-[#F5F4F1] leading-snug"
+            className="mt-8 sm:mt-12 max-w-[840px] font-display font-bold text-xl sm:text-3xl lg:text-4xl tracking-[-0.02em] text-[#F5F4F1] leading-snug"
           >
             &ldquo;Making military relocation simpler, more connected, and less overwhelming.&rdquo;
           </motion.blockquote>
@@ -998,32 +900,10 @@ export default function MilitaryPCSCaseStudy() {
       {/* ========================================================= */}
       {/* 10. PROJECT NAVIGATION */}
       {/* ========================================================= */}
-      <section className="pt-16 pb-24 px-6 sm:px-12 max-w-[1260px] mx-auto border-t border-white/[0.08]">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 py-8">
-          <Link
-            href="/work/mazeflower"
-            className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
-          >
-            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            <span>Previous: MazeFlower</span>
-          </Link>
-
-          <Link
-            href="/#work"
-            className="font-mono text-[16px] text-[#7A7873] hover:text-[#F5F4F1] border border-white/10 hover:border-white/20 rounded-full px-5 py-2 transition-colors"
-          >
-            Back to Selected Projects
-          </Link>
-
-          <Link
-            href="/work/descartes"
-            className="inline-flex items-center gap-3 font-mono text-[18px] text-[#A09D95] hover:text-[#F14417] transition-colors group"
-          >
-            <span>Next: Descartes</span>
-            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      </section>
+      <ProjectNav
+        prev={{ title: "MazeFlower", href: "/work/mazeflower" }}
+        next={{ title: "Descartes", href: "/work/descartes" }}
+      />
     </main>
   );
 }
