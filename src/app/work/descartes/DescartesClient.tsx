@@ -186,9 +186,9 @@ export default function DescartesCaseStudy() {
         <motion.div {...fadeIn} className="mt-12">
           <Screen
             src={IMG.hero}
-            alt="Descartes dashboard and Live Monitor screens"
-            caption="Descartes: the dashboard overview and the Live Monitor"
-            ratio="aspect-[1024/766]"
+            alt="Descartes dashboard, Live Monitor, and marketing intelligence screens"
+            caption="Descartes: multi-device ecosystem across desktop dashboard, Live Monitor, and procedural telemetry"
+            ratio="aspect-[16/10]"
             fit="contain"
             priority
           />
