@@ -33,9 +33,12 @@ const IMG = {
   overview: "/images/projects/military-pcs/hero.webp",
   baseExplorer: "/images/projects/military-pcs/base-explorer.webp",
   housing: "/images/projects/military-pcs/housing.webp",
-  planner: "/images/projects/military-pcs/planner.png",
+  planner: "/images/projects/military-pcs/planner.webp",
   directory: "/images/projects/military-pcs/directory.webp",
+  marketplace: "/images/projects/military-pcs/marketplace.webp",
   financial: "/images/projects/military-pcs/financial.webp",
+  calculator: "/images/projects/military-pcs/calculator.webp",
+  insurance: "/images/projects/military-pcs/insurance.webp",
   battleBuddy: "/images/projects/military-pcs/battle-buddy.png",
   designSystem: "/images/projects/military-pcs/design-system.png",
 };
@@ -696,26 +699,33 @@ export default function MilitaryPCSCaseStudy() {
             </motion.div>
           </div>
 
-          {/* Screen 04: Verified Professional Directory */}
+          {/* Screen 04: Verified Professional Directory & Marketplace */}
           <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 04 • TRUSTED NETWORK
               </span>
               <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
-                Verified Professional Directory
+                Verified Professional Directory &amp; Local Marketplace
               </h3>
               <p className="text-[#A09D95] text-[16px] leading-relaxed">
                 Connect with military-affiliated professionals, veteran-owned businesses, VA lenders, and military-spouse service providers who understand military life.
               </p>
             </motion.div>
 
-            <motion.div {...fadeIn}>
+            <motion.div {...fadeIn} className="flex flex-col gap-8">
               <Screen
                 src={IMG.directory}
                 alt="MilitaryPCS Verified Professional Directory"
-                caption="Verified Directory: Curated directory of military-affiliated realtors, lenders, and community services with authentic peer reviews"
-                ratio="aspect-[1800/1054]"
+                caption="Verified Directory: Curated directory of military-affiliated realtors, VA loan specialists, and service providers with verified veteran credentials and direct connection workflows"
+                ratio="aspect-[1024/599]"
+                fit="contain"
+              />
+              <Screen
+                src={IMG.marketplace}
+                alt="MilitaryPCS Local Services and Retail Marketplace"
+                caption="Local Marketplace: Veteran-owned retail, auto maintenance, health & wellness, and local dining with community ratings"
+                ratio="aspect-[1024/600]"
                 fit="contain"
               />
             </motion.div>
@@ -729,29 +739,44 @@ export default function MilitaryPCSCaseStudy() {
             </motion.div>
           </div>
 
-          {/* Screen 05: Financial Guidance (hideIfMissing) */}
+          {/* Screen 05: Financial Guidance & Calculators */}
           <div className="flex flex-col gap-8 pt-12 border-t border-white/[0.08]">
             <motion.div {...fadeIn} className="flex flex-col gap-2 max-w-[60ch]">
               <span className="font-mono text-xs text-[#F14417] uppercase tracking-wider">
                 FEATURE 05 • FINANCIAL EMPOWERMENT
               </span>
               <h3 className="font-display font-bold text-2xl sm:text-3xl text-[#F5F4F1]">
-                Financial Guidance &amp; Entitlements
+                Financial Guidance, Calculators &amp; Protection
               </h3>
               <p className="text-[#A09D95] text-[16px] leading-relaxed">
-                Navigate home financing, VA loan eligibility, military move insurance, and relocation expense calculators in one reliable portal.
+                Navigate home financing, VA loan eligibility, interactive relocation expense calculators, and move insurance in one reliable portal.
               </p>
             </motion.div>
 
-            <motion.div {...fadeIn}>
+            <motion.div {...fadeIn} className="flex flex-col gap-8">
               <Screen
                 src={IMG.financial}
-                alt="MilitaryPCS Financial Guidance"
-                caption="Financial Guidance: Comprehensive calculations for DITY/PPM moves, VA loan pre-qualifications, and moving allowance planning"
-                ratio="aspect-[1800/1380]"
+                alt="MilitaryPCS Home Financing and Readiness Dashboard"
+                caption="Home Financing &amp; Readiness: Centralized relocation financial dashboard tracking readiness score (82% prepared), checklist milestones, and verified mortgage professionals"
+                ratio="aspect-[1024/785]"
                 fit="contain"
-                hideIfMissing
               />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <Screen
+                  src={IMG.calculator}
+                  alt="MilitaryPCS VA Loan and Mortgage Calculator"
+                  caption="Mortgage Calculators: Comprehensive monthly payment breakdowns, loan limits, and VA funding fee estimations"
+                  ratio="aspect-[891/1024]"
+                  fit="contain"
+                />
+                <Screen
+                  src={IMG.insurance}
+                  alt="MilitaryPCS Moving Insurance and Coverage Guidance"
+                  caption="Insurance &amp; Coverage: Move protection guidance and verified insurance networks"
+                  ratio="aspect-[1024/849]"
+                  fit="contain"
+                />
+              </div>
             </motion.div>
 
             <motion.div {...fadeIn}>
