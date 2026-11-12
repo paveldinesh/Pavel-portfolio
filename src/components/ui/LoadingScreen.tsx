@@ -60,7 +60,9 @@ export default function LoadingScreen() {
           {/* Centered Loading text with universal unicode system fallback */}
           <div className="flex items-center justify-center z-10 text-center min-h-[140px] px-4">
             <AnimatePresence mode="wait">
-              <motion.h1
+              <motion.div
+                role="status"
+                aria-live="polite"
                 key={loadingWords[index]?.text}
                 initial={{ y: 16, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -74,7 +76,7 @@ export default function LoadingScreen() {
               >
                 {loadingWords[index]?.text}
                 <span className="text-[#F14417] ml-2 font-mono">.</span>
-              </motion.h1>
+              </motion.div>
             </AnimatePresence>
           </div>
         </motion.div>

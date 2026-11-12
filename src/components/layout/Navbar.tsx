@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import RollText from "@/components/ui/RollText";
 import Link from "next/link";
@@ -8,6 +8,17 @@ import Link from "next/link";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
+
+  // Close mobile drawer on Escape key press for keyboard accessibility
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
 
   // Hide on scroll down, show on scroll up (never hide while the menu is open)
   const { scrollY } = useScroll();
@@ -91,8 +102,10 @@ export default function Navbar() {
           {/* Mobile toggle button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col justify-center gap-1.5 w-6 h-5 focus:outline-none"
+            className="md:hidden flex flex-col justify-center gap-1.5 w-6 h-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F14417] rounded"
             aria-label="Toggle Navigation"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-drawer"
           >
             <span
               className={`block h-px w-full bg-[#F5F4F1] transition-transform duration-300 ${
@@ -117,6 +130,9 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-nav-drawer"
+            role="region"
+            aria-label="Mobile Navigation Drawer"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

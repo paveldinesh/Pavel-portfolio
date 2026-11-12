@@ -42,7 +42,7 @@ export default function Projects() {
       description:
         "Surgical activity dashboard, procedural workflow tracking, and comparative analytics platform designed for operating room consistency and clinical planning.",
       tags: ["Dashboard", "Surgical AI", "Complex Data", "Design System"],
-      image: "/images/projects/descartes/hero.png",
+      image: "/images/projects/descartes/hero.webp",
       link: "/work/descartes",
       isExternal: false,
     },
@@ -54,7 +54,7 @@ export default function Projects() {
       description:
         "Mindful relationship wellness app designed around nurturing bonds through daily affirmations, shared streaks, and gamified growth.",
       tags: ["Mobile App", "UI/UX", "Gamification", "Design System"],
-      image: "/images/projects/tiny-bits-of-love.png",
+      image: "/images/projects/tiny-bits-of-love.webp",
       link: "/work/tiny-bits-of-love",
       isExternal: false,
       liveLinks: {
@@ -71,7 +71,7 @@ export default function Projects() {
       description:
         "A music-centered social platform connecting fans, artists and merchandise vendors through shared listening, personalised discovery and song-linked commerce.",
       tags: ["UI/UX", "Interaction Design", "Prototyping", "Design System"],
-      image: "/images/projects/mazeflower/hero.png",
+      image: "/images/projects/mazeflower/hero.webp",
       link: "/work/mazeflower",
       isExternal: false,
     },
@@ -83,7 +83,7 @@ export default function Projects() {
       description:
         "A military-first relocation platform that brings housing, local services, planning tools and community insights into one map-first PCS experience.",
       tags: ["UX Strategy", "Information Architecture", "UI Design"],
-      image: "/images/projects/military-pcs/main-screen.jpg",
+      image: "/images/projects/military-pcs/main-screen.webp",
       link: "/work/military-pcs",
       isExternal: false,
     },
@@ -100,7 +100,7 @@ export default function Projects() {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const count = projects.length;
     const idx = Math.max(0, Math.min(Math.floor(latest * count), count - 1));
-    setActiveIndex(idx);
+    setActiveIndex((prev) => (prev !== idx ? idx : prev));
   });
 
   // Sync index on initial load / reload

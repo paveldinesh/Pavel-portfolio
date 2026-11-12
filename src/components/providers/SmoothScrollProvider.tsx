@@ -57,7 +57,18 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
+    // Pause Lenis when tab is hidden to save CPU/battery
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        lenis.stop();
+      } else {
+        lenis.start();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       delete (window as unknown as { __lenis?: Lenis }).__lenis;
       delete (window as unknown as { lenis?: Lenis }).lenis;
       window.removeEventListener("beforeunload", handleBeforeUnload);

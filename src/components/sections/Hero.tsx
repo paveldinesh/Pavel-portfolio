@@ -80,13 +80,13 @@ export default function Hero() {
       <div
         ref={bgRef}
         className="hidden md:block absolute inset-0 z-0 bg-no-repeat opacity-90 pointer-events-none will-change-transform md:bg-[size:auto_100%] lg:bg-[size:auto_92%] md:bg-[right_5%_center] lg:bg-[right_10%_center]"
-        style={{ backgroundImage: `url('/images/hero-portrait.png')` }}
+        style={{ backgroundImage: `url('/images/hero-portrait.webp')` }}
       />
 
       {/* Background Hero Image - Mobile View */}
       <div
         className="block md:hidden absolute inset-0 z-0 bg-cover bg-[center_15%] sm:bg-[center_20%] bg-no-repeat opacity-90 pointer-events-none will-change-transform"
-        style={{ backgroundImage: `url('/images/hero-portrait-mobile.jpg')` }}
+        style={{ backgroundImage: `url('/images/hero-portrait-mobile.webp')` }}
       />
 
       {/* Mobile-specific contrast fade: subtle top tint, clear portrait visibility in center, smooth blend at bottom */}

@@ -157,7 +157,7 @@ export default function PullQuote() {
         className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-[38vw] lg:w-[35vw] xl:w-[33vw] max-w-[560px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] select-none will-change-transform origin-center"
       >
         <Image
-          src="/images/philosophy-left.png"
+          src="/images/philosophy-left.webp"
           alt=""
           width={912}
           height={895}
@@ -180,7 +180,7 @@ export default function PullQuote() {
         className="md:hidden absolute -left-6 -top-2 w-[75vw] max-w-[340px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_right,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] select-none will-change-transform"
       >
         <Image
-          src="/images/philosophy-left.png"
+          src="/images/philosophy-left.webp"
           alt=""
           width={912}
           height={895}
@@ -205,7 +205,7 @@ export default function PullQuote() {
         className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[38vw] lg:w-[35vw] xl:w-[33vw] max-w-[560px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_35%,rgba(0,0,0,0)_95%)] select-none will-change-transform origin-center"
       >
         <Image
-          src="/images/philosophy-right.png"
+          src="/images/philosophy-right.webp"
           alt=""
           width={912}
           height={895}
@@ -228,7 +228,7 @@ export default function PullQuote() {
         className="md:hidden absolute -right-6 -bottom-2 w-[75vw] max-w-[340px] pointer-events-none z-0 mix-blend-lighten [mask-image:linear-gradient(to_left,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] [-webkit-mask-image:linear-gradient(to_left,rgba(0,0,0,1)_40%,rgba(0,0,0,0)_95%)] select-none will-change-transform"
       >
         <Image
-          src="/images/philosophy-right.png"
+          src="/images/philosophy-right.webp"
           alt=""
           width={912}
           height={895}

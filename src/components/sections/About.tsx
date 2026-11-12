@@ -20,7 +20,7 @@ const VALUES = [
     id: "research",
     label: "01",
     name: "User Research",
-    image: "/images/about-value-sculpture-1.png",
+    image: "/images/about-value-sculpture-1.webp",
     alt: "User Research intertwined organic cloth sculpture",
     description:
       "Gain insights through user interviews, surveys, and usability testing. Understand behaviors to inform design.",
@@ -29,7 +29,7 @@ const VALUES = [
     id: "design",
     label: "02",
     name: "Product Design",
-    image: "/images/about-value-sculpture-2.png",
+    image: "/images/about-value-sculpture-2.webp",
     alt: "Product Design architectural ribbon loop sculpture",
     description:
       "Craft scalable design systems, responsive interfaces, and intuitive interaction flows that convert complex requirements into effortless user journeys.",
@@ -38,7 +38,7 @@ const VALUES = [
     id: "frontend",
     label: "03",
     name: "Frontend UI",
-    image: "/images/about-value-sculpture-3.png",
+    image: "/images/about-value-sculpture-3.webp",
     alt: "Frontend UI dynamic wave lattice and helix sculpture",
     description:
       "Bridge design and engineering with clean, accessible, and performant code — handing off working interfaces rather than static mockups.",

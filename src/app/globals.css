@@ -18,8 +18,8 @@
   --color-emerald-glow: rgba(241, 68, 23, 0.15);
   --color-emeraldGlow: rgba(241, 68, 23, 0.15);
 
-  --font-sans: var(--font-geist-sans), Inter, system-ui, sans-serif;
-  --font-display: var(--font-syne), var(--font-geist-sans), sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-geist-sans), "Geist", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
   --animate-pulse-subtle: pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -46,7 +46,7 @@
   --bg-raise-2: #181816;
   --fg: #F5F4F1;
   --muted: #A09D95;
-  --muted-2: #7A7873;
+  --muted-2: #8E8B85;
   --accent: #F14417;
   --line: rgba(245, 244, 241, 0.10);
   --line-2: rgba(245, 244, 241, 0.05);
@@ -148,6 +148,20 @@ body::before {
 ::selection {
   background-color: #F14417;
   color: #FFFFFF;
+}
+
+:focus-visible {
+  outline: 2px solid #F14417;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Enforce portfolio minimum font size 18px across labels, paragraphs, buttons, and spans */

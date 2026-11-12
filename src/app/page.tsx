@@ -1,18 +1,47 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import PullQuote from "@/components/sections/PullQuote";
-import Experience from "@/components/sections/Experience";
-import Skills from "@/components/sections/Skills";
 import About from "@/components/sections/About";
-import Contact from "@/components/sections/Contact";
 import LoadingScreen from "@/components/ui/LoadingScreen";
 import SectionReveal from "@/components/ui/SectionReveal";
 import KineticBand from "@/components/ui/KineticBand";
 
+// Dynamically import heavy below-the-fold sections to minimize initial JS bundle
+const Experience = dynamic(() => import("@/components/sections/Experience"));
+const Skills = dynamic(() => import("@/components/sections/Skills"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pavel Dinesh",
+  jobTitle: "UI/UX Designer & Frontend UI Developer",
+  url: "https://paveldinesh.com",
+  sameAs: [
+    "https://www.linkedin.com/in/pavel-dinesh-9a727b238",
+    "https://dribbble.com",
+    "https://github.com",
+  ],
+  knowsAbout: [
+    "UI/UX Design",
+    "Product Design",
+    "Design Systems",
+    "Frontend Development",
+    "Next.js",
+    "React",
+    "Figma",
+  ],
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0B0B0A] text-[#F5F4F1] relative selection:bg-[#F14417] selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LoadingScreen />
       <Navbar />
 
