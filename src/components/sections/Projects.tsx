@@ -142,23 +142,8 @@ export default function Projects() {
           {/* Two-Column Pinned Workspace */}
           <div className="flex-1 flex items-center justify-center my-auto w-full">
             <div className="grid grid-cols-[1.15fr_0.85fr] xl:grid-cols-[1.2fr_1fr] gap-12 xl:gap-16 items-center w-full">
-              {/* LEFT: Pinned Browser Frame (Always still, image crossfades) */}
-              <div className="w-full rounded-xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)] flex flex-col">
-                {/* Window Chrome Header */}
-                <div className="flex items-center justify-between px-4 h-9 border-b border-white/[0.08] bg-[#17171a] shrink-0 select-none">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-                  </div>
-                  <span className="font-mono text-[11px] text-[#7A7873] tracking-wider truncate max-w-[240px]">
-                    {currentProject.link !== "#"
-                      ? `pavel.design${currentProject.link}`
-                      : "pavel.design/preview"}
-                  </span>
-                  <div className="w-10" />
-                </div>
-
+              {/* LEFT: Pinned Preview Frame (Always still, image crossfades) */}
+              <div className="w-full rounded-2xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-[0_30px_70px_-20px_rgba(0,0,0,0.9)]">
                 {/* Viewport Aspect Container */}
                 <div className="relative w-full aspect-[16/10] bg-[#0A0A0A] overflow-hidden">
                   <AnimatePresence mode="wait">
@@ -183,7 +168,7 @@ export default function Projects() {
                               fill
                               sizes="(max-width: 1024px) 100vw, 55vw"
                               priority
-                              className="object-contain object-center transition-transform duration-500 group-hover/frame:scale-[1.02]"
+                              className="object-cover object-center transition-transform duration-500 group-hover/frame:scale-[1.02]"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover/frame:bg-black/25 transition-colors flex items-center justify-center">
                               <span className="font-mono text-xs uppercase tracking-wider text-white bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-white/15 opacity-0 group-hover/frame:opacity-100 transition-opacity">
@@ -198,7 +183,7 @@ export default function Projects() {
                             fill
                             sizes="(max-width: 1024px) 100vw, 55vw"
                             priority
-                            className="object-contain object-center"
+                            className="object-cover object-center"
                           />
                         )
                       ) : (
@@ -345,13 +330,8 @@ export default function Projects() {
           {projects.map((proj) => (
             <div key={proj.num} className="flex flex-col gap-6">
               {/* Frame */}
-              <div className="w-full rounded-xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-xl">
-                <div className="flex items-center gap-2 px-4 h-8 border-b border-white/[0.08] bg-[#17171a]">
-                  <span className="w-2 h-2 rounded-full bg-white/15" />
-                  <span className="w-2 h-2 rounded-full bg-white/15" />
-                  <span className="w-2 h-2 rounded-full bg-white/15" />
-                </div>
-                <div className="relative w-full aspect-[16/10] bg-[#0A0A0A]">
+              <div className="w-full rounded-2xl overflow-hidden border border-white/[0.1] bg-[#121211] shadow-xl">
+                <div className="relative w-full aspect-[16/10] bg-[#0A0A0A] overflow-hidden">
                   {proj.image ? (
                     proj.link !== "#" ? (
                       <Link href={proj.link} className="block relative w-full h-full">
@@ -360,7 +340,7 @@ export default function Projects() {
                           alt={proj.title}
                           fill
                           sizes="100vw"
-                          className="object-contain object-center"
+                          className="object-cover object-center"
                         />
                       </Link>
                     ) : (
@@ -369,7 +349,7 @@ export default function Projects() {
                         alt={proj.title}
                         fill
                         sizes="100vw"
-                        className="object-contain object-center"
+                        className="object-cover object-center"
                       />
                     )
                   ) : (
